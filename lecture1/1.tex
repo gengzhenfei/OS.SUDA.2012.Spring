@@ -48,6 +48,12 @@
 \includegraphics[width=0.9\textwidth]{boot-screen.jpg}
 \end{frame}
 
+\begin{frame}{用Wubi安装Ubuntu以后的启动界面}
+\includegraphics[width=0.9\textwidth]{boot-screen.jpg}
+
+思考：这个界面截图是如何生成的？
+\end{frame}
+
 \begin{frame}{Ubuntu 11.10图形界面}
 \includegraphics[width=1.0\textwidth]{ubuntu-1110.jpg}
 \end{frame}
@@ -167,9 +173,29 @@ systems, video games
 %\includegraphics[width=1.0\textwidth]{os-function.png}
 \begin{columns}
 \column{.5\textwidth}
+磁盘读写操作：
+\begin{itemize}
+\item 磁头、柱面、磁道、扇区
+\item 读写前需等待机械运动结束
+\item 数据存储可能不连续
+\item 磁盘大小、速度各不相同
+\item 对程序员而言, 编程读写磁盘数据是非常复杂的任务
+\end{itemize}
+
+操作系统提供的磁盘读写界面：
+\begin{itemize}
+\item read()
+\item write()
+\item named files(按名访问)
+\end{itemize}
+
 \column{.5\textwidth}
 \includegraphics[width=1.0\textwidth]{disk.jpg}
 \end{columns}
+\end{frame}
+
+\begin{frame}{操作系统的作用: 分时系统}
+\includegraphics[width=1.0\textwidth]{timesharing.png}
 \end{frame}
 
 \begin{frame}{计算机硬件系统}
@@ -197,6 +223,22 @@ systems, video games
 \item 硬件中断与软件中断
 \end{itemize}
 \includegraphics[width=1.0\textwidth]{interrupt.png}
+\end{frame}
+
+\begin{frame}{中断(interrupt)}
+思考：为什么I/O完成后，一定要中断CPU正在进行的操作，并转入操作系统的相应处理模块？
+\end{frame}
+
+\begin{frame}{中断(interrupt)}
+\begin{columns}
+\column{.5\textwidth}
+\begin{itemize}
+\item 根据事件类型确定中断处理程序(interrupt handler)
+\item 因此，需要先确定中断源，然后将PC设置为相应中断处理程序的入口
+\end{itemize}
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{int.png}
+\end{columns}
 \end{frame}
 
 \begin{frame}{直接内存访问(DMA)}
@@ -249,11 +291,219 @@ systems, video games
 \includegraphics[width=1.0\textwidth]{mode.png}
 \end{frame}
 
-%\begin{frame}{进程管理}
-%\begin{itemize}
-%\item 
-%\end{itemize}
+\begin{frame}{核心态与用户态}
+\includegraphics[width=1.0\textwidth]{regs.png}
+\end{frame}
+
+\begin{frame}{操作系统提供的服务}
+\includegraphics[width=1.0\textwidth]{services.jpg}
+\end{frame}
+
+\begin{frame}{操作系统的结构：Unix为例}
+\includegraphics[width=1.0\textwidth]{structure.png}
+\end{frame}
+
+\begin{frame}{操作系统的结构：Unix为例}
+\includegraphics[width=1.0\textwidth]{onion.png}
+\end{frame}
+
+\begin{frame}{用户界面：命令行界面}
+\includegraphics[width=1.0\textwidth]{bash.png}
+\end{frame}
+
+\begin{frame}{用户界面：图形用户界面}
+\includegraphics[width=1.0\textwidth]{macos.jpg}
+\end{frame}
+
+\begin{frame}{思考及演示：CLI与GUI的优缺点对比}
+\begin{itemize}
+\item Demo 1 --- word frequency counting
+\item Demo 2 --- lines of C source code 
+\item Unix/Linux命令行界面的哲学
+\end{itemize}
+\end{frame}
+
+\begin{frame}{系统调用}
+\begin{itemize}
+\item CLI/GUI是人使用操作系统时的界面
+\item 系统调用可看作获取操作系统服务的编程界面(接口)
+\item 一般可用C/C++编写
+\item 通常将系统调用封装成API方便使用
+\item 常见API:
+\begin{itemize}
+\item Win32 API
+\item POSIX API (Unix, Linux, Mac OS X)
+\item Java API
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{系统调用示例: 文件拷贝}
+\includegraphics[width=1.0\textwidth]{syscall.png}
+\end{frame}
+
+\begin{frame}{API -- 系统调用 -- 操作系统之间的关系}
+\includegraphics[width=1.0\textwidth]{syscall-os.jpg}
+\end{frame}
+
+\begin{frame}{API -- 系统调用 -- 操作系统之间的关系: 标准C函数库的例子}
+\includegraphics[width=1.0\textwidth]{printf.png}
+\end{frame}
+
+\begin{frame}{系统调用的例子}
+\includegraphics[width=0.9\textwidth]{examples.jpg}
+\end{frame}
+
+\begin{frame}{系统程序(system programs)}
+%\includegraphics[width=0.9\textwidth]{examples.jpg}
+\begin{itemize}
+\item 操作系统提供的用于系统管理等任务的程序
+\item 某些系统程序只是系统调用的接口程序(例如删除文件)
+\item 文件管理程序
+\begin{itemize}
+\item touch
+\item rm
+\item cp
+\item rename
+\item mkdir
+\end{itemize}
+\item 编程语言相关的程序
+\begin{itemize}
+\item 编译器
+\item 汇编器
+\item 调试器
+\item 解释器
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{进程概念}
+\begin{itemize}
+\item 操作系统执行用户程序
+\begin{itemize}
+\item 批处理系统 --- 作业
+\item 分时系统 --- 用户程序、任务
+\end{itemize}
+\item 进程: 运行中的程序 
+\item 进程包含三部分内容：
+\begin{itemize}
+\item 程序代码(text section)
+\item 当前状态: 程序计数器(program counter)以及寄存器(registers)
+\item 栈(函数参数, 返回地址, 局部变量)
+\item 数据区(data section, 全局变量)
+\item 堆(运行时动态分配的内存)
+\end{itemize}
+%\includegraphics[width=1.0\textwidth]{services.jpg}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{进程在内存中的结构}
+\begin{columns}%[t]
+\column{.5\textwidth}
+\begin{itemize}
+\item Code/Text -- 程序指令
+\item Data -- 全局变量数据
+\item Stack -- 栈
+\item Heap -- 堆
+\item 目的：将指令与数据分开(why?)
+\item 堆、栈朝相对的方向增长
+\end{itemize}
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{memory.png}
+\end{columns}%[t]
+\end{frame}
+
+\begin{frame}{进程的状态}
+\begin{itemize}
+\item new: 进程正在被创建当中
+\item running: 进程的指令正在CPU上执行
+\item waiting: 等待某事件的发生(e.g, I/O)
+\item ready: 等待CPU
+\item terminated: 进程终止
+\end{itemize}
+\end{frame}
+
+\begin{frame}{进程状态迁移}
+\includegraphics[width=1.0\textwidth]{state.png}
+\end{frame}
+
+\begin{frame}{进程控制块(PCB)}
+\begin{columns}%[t]
+\column{.5\textwidth}
+用于存放与每个进程相关的信息
+\begin{itemize}
+\item 进程状态
+\item 程序计数器PC
+\item CPU寄存器
+\item CPU调度信息
+\item 内存管理信息
+\item I/O状态信息
+\item 记账信息
+\end{itemize}
+\column{.5\textwidth}
+\includegraphics[width=0.6\textwidth]{PCB.png}
+\end{columns}%[t]
+\end{frame}
+
+\begin{frame}{CPU在进程间切换}
+\includegraphics[width=1.0\textwidth]{switch.png}
+\end{frame}
+
+\begin{frame}{进程调度}
+\begin{itemize}
+\item 最大化CPU利用率; 实现分时系统
+\item 进程调度器：从ready状态的进程中选择一个运行
+\item 调度队列:
+\begin{itemize}
+\item 作业队列(Job queue) -- 系统中所有进程的集合
+\item 就绪队列(ready queue) -- 内存中所有处于ready状态的进程
+\item 设备队列(device queues) -- 等待某I/O设备的进程集合
+\item 进程在上述队列之间来回迁移
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{就绪队列及设备队列示意}
+\includegraphics[width=0.8\textwidth]{queues.png}
+\end{frame}
+
+\begin{frame}{进程调度示意图}
+\includegraphics[width=0.8\textwidth]{scheduling.jpg}
+\end{frame}
+
+
+\begin{frame}{上下文切换(context switch)}
+\begin{itemize}
+\item CPU分配给新进程时，原进程的状态需要保存，新进程的状态需要载入
+\item 进程的上下文(context)保存于进程控制块(PCB)中
+\item 上下文切换时间纯属无用开销，因此越快越好
+\item 切换时间取决于硬件支持(e.g, 具有多组寄存器的CPU)
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{API -- 系统调用 -- 操作系统之间的关系}
+%\includegraphics[width=1.0\textwidth]{syscall-os.jpg}
 %\end{frame}
+
+%\begin{frame}{API -- 系统调用 -- 操作系统之间的关系: 标准C函数库的例子}
+%\includegraphics[width=1.0\textwidth]{printf.png}
+%\end{frame}
+
+%\begin{frame}{系统调用的例子}
+%\end{frame}
+
+\begin{frame}{进程创建, 子进程}
+\begin{columns}%[t]
+\column{.5\textwidth}
+\begin{itemize}
+\item 进程可以创建子进程，形成进程树
+\item process identifier (pid)
+\item 父进程、子进程之间的资源共享
+\end{itemize}
+\column{.5\textwidth}
+\includegraphics[width=0.9\textwidth]{tree.jpg}
+\end{columns}%[t]
+\end{frame}
 
 \end{CJK*}
 \end{document}

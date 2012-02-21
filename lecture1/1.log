@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.15)  21 FEB 2012 14:34
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.15)  21 FEB 2012 20:05
 entering extended mode
  %&-line parsing enabled.
 **1.tex
@@ -1297,83 +1297,212 @@ File: boot-screen.jpg Graphic file (type jpg)
  <use boot-screen.jpg>
 [5
 
- <./boot-screen.jpg>] <ubuntu-1110.jpg, id=101, 1282.7925pt x 676.5275pt>
+ <./boot-screen.jpg>]
+File: boot-screen.jpg Graphic file (type jpg)
+ <use boot-screen.jpg> [6
+
+]
+<ubuntu-1110.jpg, id=114, 1282.7925pt x 676.5275pt>
 File: ubuntu-1110.jpg Graphic file (type jpg)
+ <use ubuntu-1110.jpg>
+[7
 
-<use ubuntu-1110.jpg> [6
-
- <./ubuntu-1110.jpg>]
-<uninstall.png, id=109, 803.0pt x 602.25pt>
+ <./ubuntu-1110.jpg>] <uninstall.png, id=123, 803.0pt x 602.25pt>
 File: uninstall.png Graphic file (type png)
- <use uninstall.png> [7
+
+<use uninstall.png> [8
 
  <./uninstall.png (PNG copy)>]
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <5> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 72.
- [8
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 78.
+ [9
 
-] [9
+] [10
 
 ]
-<frustrated-user.jpeg, id=172, 248.93pt x 178.6675pt>
+<frustrated-user.jpeg, id=180, 248.93pt x 178.6675pt>
 File: frustrated-user.jpeg Graphic file (type jpg)
 
-<use frustrated-user.jpeg> [10
+<use frustrated-user.jpeg> [11
 
- <./frustrated-user.jpeg>] [11
+ <./frustrated-user.jpeg>] [12
 
-] [12
+] [13
 
 ]
-<system.png, id=204, 725.71124pt x 578.16pt>
+<system.png, id=210, 725.71124pt x 578.16pt>
 File: system.png Graphic file (type png)
- <use system.png> [13
+ <use system.png> [14
 
- <./system.png (PNG copy)>] [14
+ <./system.png (PNG copy)>] [15
 
-] <os-function.png, id=220, 1147.28625pt x 395.4775pt>
+] <os-function.png, id=225, 1147.28625pt x 395.4775pt>
 File: os-function.png Graphic file (type png)
 
-<use os-function.png> [15
+<use os-function.png> [16
 
  <./os-function.png>]
-<disk.jpg, id=227, 308.8338pt x 254.8722pt>
+<disk.jpg, id=232, 308.8338pt x 254.8722pt>
 File: disk.jpg Graphic file (type jpg)
- <use disk.jpg> [16
+ <use disk.jpg> [17
 
  <./disk.jpg>]
-<org.png, id=233, 834.86906pt x 412.54124pt>
+<timesharing.png, id=238, 941.5175pt x 437.635pt>
+File: timesharing.png Graphic file (type png)
+ <use timesharing.png>
+[18
+
+ <./timesharing.png>] <org.png, id=245, 834.86906pt x 412.54124pt>
 File: org.png Graphic file (type png)
- <use org.png> [17
 
- <./org.png (PNG copy)>] [18
+<use org.png> [19
 
-] <interrupt.png, id=246, 821.31844pt x 401.24907pt>
+ <./org.png (PNG copy)>] [20
+
+]
+<interrupt.png, id=259, 821.31844pt x 401.24907pt>
 File: interrupt.png Graphic file (type png)
+ <use interrupt.png> [21
 
-<use interrupt.png> [19
+ <./interrupt.png (PNG copy)>] [22
 
- <./interrupt.png (PNG copy)>]
-<vonneumann.jpg, id=254, 302.8113pt x 241.02045pt>
+] <int.png, id=273, 430.60875pt x 480.79625pt>
+File: int.png Graphic file (type png)
+
+<use int.png> [23
+
+ <./int.png>]
+<vonneumann.jpg, id=282, 302.8113pt x 241.02045pt>
 File: vonneumann.jpg Graphic file (type jpg)
  <use vonneumann.jpg>
-[20
+[24
 
- <./vonneumann.jpg>] <storage.png, id=261, 660.96938pt x 554.07pt>
+ <./vonneumann.jpg>] <storage.png, id=289, 660.96938pt x 554.07pt>
 File: storage.png Graphic file (type png)
 
-<use storage.png> [21
+<use storage.png> [25
 
  <./storage.png (PNG copy)>]
-<jobs.png, id=267, 394.47375pt x 607.51968pt>
+<jobs.png, id=296, 394.47375pt x 607.51968pt>
 File: jobs.png Graphic file (type png)
- <use jobs.png> [22
+ <use jobs.png> [26
 
- <./jobs.png (PNG copy)>] <mode.png, id=273, 934.24031pt x 288.3272pt>
+ <./jobs.png (PNG copy)>] <mode.png, id=302, 934.24031pt x 288.3272pt>
 File: mode.png Graphic file (type png)
- <use mode.png> [23
+ <use mode.png> [27
 
- <./mode.png (PNG copy)>]
+ <./mode.png (PNG copy)>] <regs.png, id=308, 1204.5pt x 590.205pt>
+File: regs.png Graphic file (type png)
+ <use regs.png>
+[28
+
+ <./regs.png>] <services.jpg, id=315, 486.3771pt x 242.8272pt>
+File: services.jpg Graphic file (type jpg)
+
+<use services.jpg> [29
+
+ <./services.jpg>]
+<structure.png, id=321, 966.61125pt x 546.04pt>
+File: structure.png Graphic file (type png)
+ <use structure.png> [30
+
+ <./structure.png>] <onion.png, id=328, 999.735pt x 691.58376pt>
+File: onion.png Graphic file (type png)
+ <use onion.png>
+[31
+
+ <./onion.png>] <bash.png, id=336, 446.66875pt x 367.3725pt>
+File: bash.png Graphic file (type png)
+ <use bash.png>
+Overfull \vbox (11.85353pt too high) detected at line 312
+ []
+
+[32
+
+ <./bash.png>] <macos.jpg, id=343, 770.88pt x 578.16pt>
+File: macos.jpg Graphic file (type jpg)
+ <use macos.jpg>
+[33
+
+ <./macos.jpg>] [34
+
+] [35
+
+] <syscall.png, id=363, 770.88pt x 521.69907pt>
+File: syscall.png Graphic file (type png)
+
+<use syscall.png> [36
+
+ <./syscall.png (PNG copy)>]
+<syscall-os.jpg, id=369, 345.81195pt x 211.7511pt>
+File: syscall-os.jpg Graphic file (type jpg)
+ <use syscall-os.jpg>
+[37
+
+ <./syscall-os.jpg>] <printf.png, id=376, 770.88pt x 578.16pt>
+File: printf.png Graphic file (type png)
+
+<use printf.png>
+Overfull \vbox (7.45135pt too high) detected at line 351
+ []
+
+[38
+
+ <./printf.png (PNG copy)>]
+<examples.jpg, id=382, 369.66106pt x 329.5512pt>
+File: examples.jpg Graphic file (type jpg)
+ <use examples.jpg>
+Overfull \vbox (5.66109pt too high) detected at line 355
+ []
+
+[39
+
+ <./examples.jpg>] [40
+
+] [41
+
+] <memory.png, id=398, 472.76625pt x 602.25pt>
+File: memory.png Graphic file (type png)
+
+<use memory.png> [42
+
+ <./memory.png>] [43
+
+]
+<state.png, id=411, 853.68938pt x 340.27126pt>
+File: state.png Graphic file (type png)
+ <use state.png> [44
+
+ <./state.png (PNG copy)>] <PCB.png, id=417, 339.51843pt x 545.03625pt>
+File: PCB.png Graphic file (type png)
+ <use PCB.png>
+[45
+
+ <./PCB.png (PNG copy)>] <switch.png, id=423, 921.4425pt x 618.81187pt>
+File: switch.png Graphic file (type png)
+
+<use switch.png> [46
+
+ <./switch.png (PNG copy)>] [47
+
+]
+<queues.png, id=435, 711.4078pt x 613.54219pt>
+File: queues.png Graphic file (type png)
+ <use queues.png> [48
+
+ <./queues.png (PNG copy)>] <scheduling.jpg, id=443, 316.5426pt x 182.8431pt>
+File: scheduling.jpg Graphic file (type jpg)
+
+<use scheduling.jpg> [49
+
+ <./scheduling.jpg>] [50
+
+]
+<tree.jpg, id=455, 362.0727pt x 319.07205pt>
+File: tree.jpg Graphic file (type jpg)
+ <use tree.jpg> [51
+
+ <./tree.jpg>]
 \tf@nav=\write6
 \openout6 = `1.nav'.
 
@@ -1383,67 +1512,71 @@ File: mode.png Graphic file (type png)
 \tf@snm=\write8
 \openout8 = `1.snm'.
 
- (./1.aux) ) 
+
+(./1.aux) ) 
 Here is how much of TeX's memory you used:
- 17463 strings out of 495046
- 308693 string characters out of 1181936
- 372078 words of memory out of 3000000
- 19879 multiletter control sequences out of 15000+50000
- 65604 words of font info for 209 fonts, out of 3000000 for 9000
+ 17971 strings out of 495046
+ 315227 string characters out of 1181936
+ 374078 words of memory out of 3000000
+ 20285 multiletter control sequences out of 15000+50000
+ 72630 words of font info for 234 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 49i,11n,53p,409b,1523s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/t
-exmf/fonts/type1/arphic/gbsnu/gbsnu30.pfb></usr/share/texmf/fonts/type1/arphic/
-gbsnu/gbsnu4e.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu4f.pfb></usr/
-share/texmf/fonts/type1/arphic/gbsnu/gbsnu50.pfb></usr/share/texmf/fonts/type1/
-arphic/gbsnu/gbsnu51.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu52.pfb
-></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu53.pfb></usr/share/texmf/fonts
-/type1/arphic/gbsnu/gbsnu54.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsn
-u56.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu57.pfb></usr/share/texm
-f/fonts/type1/arphic/gbsnu/gbsnu58.pfb></usr/share/texmf/fonts/type1/arphic/gbs
-nu/gbsnu59.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5b.pfb></usr/sha
-re/texmf/fonts/type1/arphic/gbsnu/gbsnu5c.pfb></usr/share/texmf/fonts/type1/arp
-hic/gbsnu/gbsnu5d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5e.pfb></
-usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5f.pfb></usr/share/texmf/fonts/ty
-pe1/arphic/gbsnu/gbsnu60.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu62
-.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu63.pfb></usr/share/texmf/f
-onts/type1/arphic/gbsnu/gbsnu64.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/
-gbsnu65.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu66.pfb></usr/share/
-texmf/fonts/type1/arphic/gbsnu/gbsnu67.pfb></usr/share/texmf/fonts/type1/arphic
-/gbsnu/gbsnu68.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu69.pfb></usr
-/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6b.pfb></usr/share/texmf/fonts/type1
-/arphic/gbsnu/gbsnu6c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6d.pf
-b></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6e.pfb></usr/share/texmf/font
-s/type1/arphic/gbsnu/gbsnu70.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbs
-nu72.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu73.pfb></usr/share/tex
-mf/fonts/type1/arphic/gbsnu/gbsnu74.pfb></usr/share/texmf/fonts/type1/arphic/gb
-snu/gbsnu75.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu76.pfb></usr/sh
-are/texmf/fonts/type1/arphic/gbsnu/gbsnu77.pfb></usr/share/texmf/fonts/type1/ar
-phic/gbsnu/gbsnu78.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu79.pfb><
-/usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7a.pfb></usr/share/texmf/fonts/t
-ype1/arphic/gbsnu/gbsnu7b.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7
-c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7e.pfb></usr/share/texmf/
-fonts/type1/arphic/gbsnu/gbsnu7f.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu
-/gbsnu80.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu81.pfb></usr/share
-/texmf/fonts/type1/arphic/gbsnu/gbsnu82.pfb></usr/share/texmf/fonts/type1/arphi
-c/gbsnu/gbsnu86.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu88.pfb></us
-r/share/texmf/fonts/type1/arphic/gbsnu/gbsnu89.pfb></usr/share/texmf/fonts/type
-1/arphic/gbsnu/gbsnu8a.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8b.p
-fb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8c.pfb></usr/share/texmf/fon
-ts/type1/arphic/gbsnu/gbsnu8d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gb
-snu8f.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu90.pfb></usr/share/te
-xmf/fonts/type1/arphic/gbsnu/gbsnu91.pfb></usr/share/texmf/fonts/type1/arphic/g
-bsnu/gbsnu95.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu96.pfb></usr/s
-hare/texmf/fonts/type1/arphic/gbsnu/gbsnu97.pfb></usr/share/texmf/fonts/type1/a
-rphic/gbsnu/gbsnu98.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu9a.pfb>
-</usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnuff.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texmf-texlive/fonts/type1
-/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr
-8a.pfb>
-Output written on 1.pdf (23 pages, 2399993 bytes).
+ 49i,11n,53p,409b,1612s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/te
+xmf/fonts/type1/arphic/gbsnu/gbsnu30.pfb></usr/share/texmf/fonts/type1/arphic/g
+bsnu/gbsnu4e.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu4f.pfb></usr/s
+hare/texmf/fonts/type1/arphic/gbsnu/gbsnu50.pfb></usr/share/texmf/fonts/type1/a
+rphic/gbsnu/gbsnu51.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu52.pfb>
+</usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu53.pfb></usr/share/texmf/fonts/
+type1/arphic/gbsnu/gbsnu54.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu
+56.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu57.pfb></usr/share/texmf
+/fonts/type1/arphic/gbsnu/gbsnu58.pfb></usr/share/texmf/fonts/type1/arphic/gbsn
+u/gbsnu59.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5b.pfb></usr/shar
+e/texmf/fonts/type1/arphic/gbsnu/gbsnu5c.pfb></usr/share/texmf/fonts/type1/arph
+ic/gbsnu/gbsnu5d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5e.pfb></u
+sr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5f.pfb></usr/share/texmf/fonts/typ
+e1/arphic/gbsnu/gbsnu60.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu61.
+pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu62.pfb></usr/share/texmf/fo
+nts/type1/arphic/gbsnu/gbsnu63.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/g
+bsnu64.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu65.pfb></usr/share/t
+exmf/fonts/type1/arphic/gbsnu/gbsnu66.pfb></usr/share/texmf/fonts/type1/arphic/
+gbsnu/gbsnu67.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu68.pfb></usr/
+share/texmf/fonts/type1/arphic/gbsnu/gbsnu69.pfb></usr/share/texmf/fonts/type1/
+arphic/gbsnu/gbsnu6a.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6b.pfb
+></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6c.pfb></usr/share/texmf/fonts
+/type1/arphic/gbsnu/gbsnu6d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsn
+u6e.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6f.pfb></usr/share/texm
+f/fonts/type1/arphic/gbsnu/gbsnu70.pfb></usr/share/texmf/fonts/type1/arphic/gbs
+nu/gbsnu71.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu72.pfb></usr/sha
+re/texmf/fonts/type1/arphic/gbsnu/gbsnu73.pfb></usr/share/texmf/fonts/type1/arp
+hic/gbsnu/gbsnu74.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu75.pfb></
+usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu76.pfb></usr/share/texmf/fonts/ty
+pe1/arphic/gbsnu/gbsnu77.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu78
+.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu79.pfb></usr/share/texmf/f
+onts/type1/arphic/gbsnu/gbsnu7a.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/
+gbsnu7b.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7c.pfb></usr/share/
+texmf/fonts/type1/arphic/gbsnu/gbsnu7e.pfb></usr/share/texmf/fonts/type1/arphic
+/gbsnu/gbsnu7f.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu80.pfb></usr
+/share/texmf/fonts/type1/arphic/gbsnu/gbsnu81.pfb></usr/share/texmf/fonts/type1
+/arphic/gbsnu/gbsnu82.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu83.pf
+b></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu86.pfb></usr/share/texmf/font
+s/type1/arphic/gbsnu/gbsnu88.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbs
+nu89.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8a.pfb></usr/share/tex
+mf/fonts/type1/arphic/gbsnu/gbsnu8b.pfb></usr/share/texmf/fonts/type1/arphic/gb
+snu/gbsnu8c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8d.pfb></usr/sh
+are/texmf/fonts/type1/arphic/gbsnu/gbsnu8f.pfb></usr/share/texmf/fonts/type1/ar
+phic/gbsnu/gbsnu90.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu91.pfb><
+/usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu95.pfb></usr/share/texmf/fonts/t
+ype1/arphic/gbsnu/gbsnu96.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu9
+7.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu98.pfb></usr/share/texmf/
+fonts/type1/arphic/gbsnu/gbsnu9a.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu
+/gbsnuff.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam
+10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam7.pfb>
+</usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-
+texlive/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on 1.pdf (51 pages, 4340476 bytes).
 PDF statistics:
- 495 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
- 360 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 705 PDF objects out of 1000 (max. 8388607)
+ 103 named destinations out of 1000 (max. 500000)
+ 475 words of extra memory for PDF output out of 10000 (max. 10000000)
 
