@@ -183,5 +183,39 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{管程:解决生产者--消费者问题}
+\begin{columns}[b]
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{mon1.png}
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{mon2.png}
+\end{columns}%[t]
+
+\alert{注意概念:} 条件变量empty, full以及wait, signal
+
+此外，insert与remove之间的互斥由编译器完成
+\end{frame}
+
+\begin{frame}{管程:解决生产者--消费者问题}
+\begin{itemize}
+\item 管程内程序段之间的互斥（自动）
+\item 进程同步问题?：条件变量及wait, signal实现
+\begin{itemize}
+\item wait: 将当前进程阻塞，并允许其他进程进入管程
+\item signal: 将被相应条件变量阻塞的进程唤醒
+\end{itemize}
+\item 上述方法中，signal必须是最后一条指令，为什么？ 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{消息传递机制：解决不同机器上进程间同步问题}
+\begin{columns}[b]
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{msgprod.png}
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{msgcons.png}
+\end{columns}%[t]
+\end{frame}
+
 \end{CJK*}
 \end{document}
