@@ -126,5 +126,62 @@
 缺陷: 测试count==0成功后，消费者进程调用sleep之前，调度生产者进程运行...
 \end{frame}
 
+\begin{frame}{信号量机制(Semaphores)}
+为了解决唤醒信号丢失的问题，引入信号量，它是一种特殊的整型变量。在信号量上定义两个\alert{原子操作}：
+\begin{description}
+\item[down]  如果信号量值大于0，则将其减1然后返回；否则，进程在该信号量上进入睡眠
+\item[up]  如果有进程在该信号量上睡眠，则选择其中一个唤醒；否则，信号量加1 
+\end{description}
+\end{frame}
+
+\begin{frame}{用信号量解决生产者--消费者问题}
+\begin{columns}[b]
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{prodsem.png}
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{conssem.png}
+\end{columns}%[t]
+
+该方案中，信号量empty和full具有计数和同步功能，而mutex仅有互斥功能。
+\end{frame}
+
+\begin{frame}{专门用来实现互斥的特殊信号量 -- 互斥锁}
+互斥锁只有两种状态：locked (1) / unlocked (0)
+
+\includegraphics[width=0.5\textwidth]{mutex.png}
+\end{frame}
+
+\begin{frame}{互斥锁与忙等待的区别}
+\begin{columns}[b]
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{mutex.png}
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{tsl.png}
+\end{columns}%[t]
+后者：不断利用CPU指令测试临界资源，直至时间片用光被从CPU上撤下来
+\end{frame}
+
+\begin{frame}{信号量的危险情形 --- 管程机制的引入}
+\begin{columns}[b]
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{prodsem.png}
+\column{.5\textwidth}
+\includegraphics[width=1.0\textwidth]{conssem.png}
+\end{columns}%[t]
+
+\alert{危险:}如果程序员不小心把producer中的down(empty)和down(mutex)顺序颠倒，
+则当缓冲区满时，会发生什么？
+\end{frame}
+
+\begin{frame}{信号量的危险情形 --- 管程机制的引入}
+\begin{itemize}
+\item 发生死锁。
+\item[]
+\item 因此，最好由编译器自动处理这种容易出错的程序段。---引入管程。
+\item[]
+\item 对比：C++中构造函数与析构函数
+\end{itemize}
+\end{frame}
+
 \end{CJK*}
 \end{document}
