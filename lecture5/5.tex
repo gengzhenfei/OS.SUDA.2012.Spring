@@ -17,25 +17,25 @@
 \begin{CJK*}{UTF8}{gbsn}
 
 
-\title{进程间的同步、互斥及通信}
+\title{进程间的同步、互斥、通信以及调度}
 
 %\begin{frame}{安装Ubuntu 11.10操作系统: ISO文件}
 %\includegraphics[width=1.5\textwidth]{ubuntu-iso.png}
 %\end{frame}
 
-\begin{frame}{课堂测试 -- 限时20分钟以内}
-\begin{enumerate}
-\item 请说明什么是用户态与核心态。
-\item[]
-\item 进程运行态、阻塞态及就绪态这三个状态之间在理论上有6种可能的相互转换，但其中有两种不可能存在，请问是哪两种并说明原因。
-\item[]
-\item 我们在编程作业中用到的函数, printf属于C语言库函数，write属于操作系统提供的系统调用函数。在没有其它任何信息的情况下，请你
-判断getpid()(获取进程编号)是库函数还是系统调用？说明你的理由。
-\item[]
-\item 什么是进程上下文切换？如果让你实现上下文切换功能，你会采用下列编程语言中的哪一种：Java, C, C++, 汇编语言.
-说明你选择该编程语言的原因。
-\end{enumerate}
-\end{frame}
+%\begin{frame}{课堂测试 -- 限时20分钟以内}
+%\begin{enumerate}
+%\item 请说明什么是用户态与核心态。
+%\item[]
+%\item 进程运行态、阻塞态及就绪态这三个状态之间在理论上有6种可能的相互转换，但其中有两种不可能存在，请问是哪两种并说明原因。
+%\item[]
+%\item 我们在编程作业中用到的函数, printf属于C语言库函数，write属于操作系统提供的系统调用函数。在没有其它任何信息的情况下，请你
+%判断getpid()(获取进程编号)是库函数还是系统调用？说明你的理由。
+%\item[]
+%\item 什么是进程上下文切换？如果让你实现上下文切换功能，你会采用下列编程语言中的哪一种：Java, C, C++, 汇编语言.
+%说明你选择该编程语言的原因。
+%\end{enumerate}
+%\end{frame}
 
 %\begin{frame}{系统调用的例子}
 %\includegraphics[width=0.9\textwidth]{examples.jpg}
@@ -217,5 +217,81 @@
 \end{columns}%[t]
 \end{frame}
 
+\begin{frame}{进程（线程）调度}
+当系统中有多个进程或线程处于就绪态时，操作系统需要从中选择一个放到CPU上运行。
+这就是进程调度问题。实现该任务的部件称作调度器。
+\end{frame}
+
+\begin{frame}{进程的典型行为: CPU密集型与IO密集型进程}
+\includegraphics[width=1.0\textwidth]{behav.png}
+
+思考：两种进程举例？
+
+二者关键区别：不是I/O时间长度，而是CPU时间长度
+\end{frame}
+
+\begin{frame}{进程的典型行为: CPU密集型与IO密集型进程}
+CPU速度增长快于I/O速度增长，因此随着技术发展，进程倾向于越来越I/O密集。
+后果：I/O密集型进程的调度显得越来越关键。
+\end{frame}
+
+\begin{frame}{进程的典型行为: CPU密集型与IO密集型进程}
+基本想法：如果某I/O进程处于就绪态，则应该努力优先让其运行。为什么？(这里有个深刻原因)
+
+思考2：如何动态识别某进程是CPU密集型还是I/O密集型？
+\end{frame}
+
+\begin{frame}{进程的典型行为: CPU密集型与IO密集型进程}
+\includegraphics[width=1.0\textwidth]{util.png}
+\end{frame}
+
+\begin{frame}{进程调度的时机：何时调度？}
+\begin{enumerate}
+\item 新进程创建时，是继续运行父进程，还是运行新创建的子进程？
+\item 当前进程退出时，CPU空闲，此时需从就绪态进程集合中选择一个运行
+\item 当前进程阻塞时（I/O或者信号量引起）
+\item 当发生I/O中断时，由此I/O信号导致阻塞的进程进入就绪态
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{抢占式调度与非抢占式调度}
+\begin{itemize}
+\item 时钟硬件中断信号的频率大约为50～60Hz
+\item 在1个或者K个时钟中断信号处，强迫终止当前运行的进程。这类调度称为抢占式调度
+\item 非抢占式调度：进程一旦运行，则除非它阻塞或者自愿放弃CPU，不剥夺其CPU使用权。
+\item 抢占式调度用于分时系统；需要\alert{时钟硬件}的支持
+\end{itemize}
+\end{frame}
+
+\begin{frame}{时间片轮转调度算法}
+\begin{itemize}
+\item 最简单、最古老、最公平、广泛使用
+\item 时间片长度设置：
+\begin{itemize}
+\item 时间片不能太短，否则进程切换开销比例太大
+\item 时间片太长，则导致交互式使用时等待时间过久
+\end{itemize}
+\end{itemize}
+\includegraphics[width=1.0\textwidth]{round.png}
+\end{frame}
+
+\begin{frame}{基于优先级的调度算法}
+\begin{itemize}
+\item 时间片轮转算法的假设：所有进程都同等重要
+\item 有时，有些进程比较重要（校长、院长、主任、教授、秘书、清洁工、学生）
+\item 优先级调度算法：从就绪进程集合中选择优先级最高的进程运行
+\item 关键数据结构：\alert{优先队列}
+\item 为避免优先级高的进程独霸CPU，可以动态调整优先级
+\item 为照顾I/O密集型进程，优先级可以设置为1/f, 其中f为进程在上一时间片中实际占用CPU的时间比例
+\end{itemize}
+\end{frame}
+
+\begin{frame}{优先级调度与时间片轮转相结合的调度算法}
+\includegraphics[width=1.0\textwidth]{comb.png}
+\end{frame}
+
+\begin{frame}{线程调度}
+\includegraphics[width=1.0\textwidth]{thread.png}
+\end{frame}
 \end{CJK*}
 \end{document}
