@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.15)  14 MAR 2012 19:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.15)  20 MAR 2012 18:06
 entering extended mode
  %&-line parsing enabled.
 **5.tex
@@ -1271,115 +1271,117 @@ File: booking.jpg Graphic file (type jpg)
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./booking.jpg>] [2
 
+] [3
+
 ]
-<mutual.png, id=112, 1186.4325pt x 599.23875pt>
+<mutual.png, id=125, 1186.4325pt x 599.23875pt>
 File: mutual.png Graphic file (type png)
- <use mutual.png> [3
+ <use mutual.png> [4
 
- <./mutual.png>] <alter.png, id=120, 1116.17pt x 301.125pt>
+ <./mutual.png>] <alter.png, id=133, 1116.17pt x 301.125pt>
 File: alter.png Graphic file (type png)
- <use alter.png> [4
+ <use alter.png> [5
 
- <./alter.png>] <tsl.png, id=135, 403.5075pt x 371.3875pt>
+ <./alter.png>] <tsl.png, id=145, 403.5075pt x 371.3875pt>
 File: tsl.png Graphic file (type png)
- <use tsl.png> [5
+ <use tsl.png> [6
 
  <./tsl.png>]
-[6
+[7
 
-] <prod.png, id=162, 614.295pt x 532.99126pt>
+] <prod.png, id=172, 614.295pt x 532.99126pt>
 File: prod.png Graphic file (type png)
  <use prod.png>
-<consum.png, id=163, 652.4375pt x 477.785pt>
+<consum.png, id=173, 652.4375pt x 477.785pt>
 File: consum.png Graphic file (type png)
- <use consum.png> [7
+ <use consum.png> [8
 
- <./prod.png> <./consum.png>] [8
+ <./prod.png> <./consum.png>] [9
 
-] <prodsem.png, id=187, 482.80376pt x 651.43375pt>
+] <prodsem.png, id=192, 482.80376pt x 651.43375pt>
 File: prodsem.png Graphic file (type png)
 
-<use prodsem.png> <conssem.png, id=188, 458.71375pt x 446.66875pt>
+<use prodsem.png> <conssem.png, id=193, 458.71375pt x 446.66875pt>
 File: conssem.png Graphic file (type png)
 
-<use conssem.png> [9
+<use conssem.png> [10
 
  <./prodsem.png> <./conssem.png>]
-<mutex.png, id=196, 454.69875pt x 403.5075pt>
+<mutex.png, id=201, 454.69875pt x 403.5075pt>
 File: mutex.png Graphic file (type png)
- <use mutex.png> [10
+ <use mutex.png> [11
 
  <./mutex.png>]
 File: mutex.png Graphic file (type png)
  <use mutex.png>
 File: tsl.png Graphic file (type png)
- <use tsl.png> [11
+ <use tsl.png> [12
 
 ]
 File: prodsem.png Graphic file (type png)
  <use prodsem.png>
 File: conssem.png Graphic file (type png)
  <use conssem.png>
-Overfull \vbox (8.14421pt too high) detected at line 174
+Overfull \vbox (8.14421pt too high) detected at line 178
  []
 
-[12
+[13
 
-] [13
+] [14
 
-] <mon1.png, id=221, 583.17876pt x 688.5725pt>
+] <mon1.png, id=226, 583.17876pt x 688.5725pt>
 File: mon1.png Graphic file (type png)
  <use mon1.png>
-<mon2.png, id=222, 587.19376pt x 550.055pt>
+<mon2.png, id=227, 587.19376pt x 550.055pt>
 File: mon2.png Graphic file (type png)
- <use mon2.png> [14
+ <use mon2.png> [15
 
- <./mon1.png> <./mon2.png>] [15
+ <./mon1.png> <./mon2.png>] [16
 
-] <msgprod.png, id=239, 529.98pt x 486.81876pt>
+] <msgprod.png, id=244, 529.98pt x 486.81876pt>
 File: msgprod.png Graphic file (type png)
 
-<use msgprod.png> <msgcons.png, id=240, 606.265pt x 437.635pt>
+<use msgprod.png> <msgcons.png, id=245, 606.265pt x 437.635pt>
 File: msgcons.png Graphic file (type png)
 
-<use msgcons.png> [16
+<use msgcons.png> [17
 
- <./msgprod.png> <./msgcons.png>] [17
+ <./msgprod.png> <./msgcons.png>] [18
 
 ]
-<behav.png, id=253, 1194.4625pt x 489.83pt>
+<behav.png, id=258, 1194.4625pt x 489.83pt>
 File: behav.png Graphic file (type png)
- <use behav.png> [18
+ <use behav.png> [19
 
  <./behav.png>]
-[19
+[20
 
-] [20
+] [21
 
-] <util.png, id=271, 861.2175pt x 489.83pt>
+] <util.png, id=276, 861.2175pt x 489.83pt>
 File: util.png Graphic file (type png)
- <use util.png> [21
+ <use util.png> [22
 
- <./util.png>] [22
+ <./util.png>] [23
 
-] [23
+] [24
 
-] <round.png, id=290, 1187.43625pt x 253.94875pt>
+] <round.png, id=295, 1187.43625pt x 253.94875pt>
 File: round.png Graphic file (type png)
 
-<use round.png> [24
+<use round.png> [25
 
- <./round.png>] [25
+ <./round.png>] [26
 
 ]
-<comb.png, id=305, 827.09pt x 386.44376pt>
+<comb.png, id=310, 827.09pt x 386.44376pt>
 File: comb.png Graphic file (type png)
- <use comb.png> [26
+ <use comb.png> [27
 
  <./comb.png>]
-<thread.png, id=312, 1186.4325pt x 575.14874pt>
+<thread.png, id=317, 1186.4325pt x 575.14874pt>
 File: thread.png Graphic file (type png)
- <use thread.png> [27
+ <use thread.png> [28
 
  <./thread.png>]
 \tf@nav=\write6
@@ -1393,10 +1395,10 @@ File: thread.png Graphic file (type png)
 
  (./5.aux) ) 
 Here is how much of TeX's memory you used:
- 17685 strings out of 495046
- 310766 string characters out of 1181936
+ 17697 strings out of 495046
+ 310918 string characters out of 1181936
  374078 words of memory out of 3000000
- 20102 multiletter control sequences out of 15000+50000
+ 20112 multiletter control sequences out of 15000+50000
  62954 words of font info for 200 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  49i,11n,53p,409b,1265s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1449,9 +1451,9 @@ type1/arphic/gbsnu/gbsnu9a.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu
 ff.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb
 ></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/
 share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on 5.pdf (27 pages, 1574788 bytes).
+Output written on 5.pdf (28 pages, 1578205 bytes).
 PDF statistics:
- 540 PDF objects out of 1000 (max. 8388607)
- 55 named destinations out of 1000 (max. 500000)
+ 545 PDF objects out of 1000 (max. 8388607)
+ 57 named destinations out of 1000 (max. 500000)
  383 words of extra memory for PDF output out of 10000 (max. 10000000)
 

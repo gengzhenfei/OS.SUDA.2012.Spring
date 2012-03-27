@@ -12,6 +12,7 @@
 \usepackage{url}
 \usepackage{CJKutf8}
 \usepackage{graphics}
+\usepackage{amsmath}
 
 \begin{document}
 \begin{CJK*}{UTF8}{gbsn}
@@ -19,9 +20,37 @@
 
 \title{内存管理}
 
-\begin{frame}
-\maketitle
+%\begin{frame}
+%\maketitle
+%\end{frame}
+
+\begin{frame}{第6次编程作业：寻找互素数对}
+%\maketitle
+\begin{equation}
+4 \perp 9, \quad 34 \perp 35
+\end{equation}
+
+\begin{equation}
+\Pr(m \perp n) = \frac{6}{\pi^2} \approx 0.607927102
+\end{equation}
+
 \end{frame}
+
+\begin{frame}{第6次编程作业：寻找互素数对}
+%在Intel Core2 Duo上，计算100000以内（共100亿个数对）互素的数对个数，
+%结果是6079301507（理论预测值为6079271020，误差万分之0.05), 用时18分钟。
+\begin{itemize}
+\item 硬件平台：Intel Core2 (Duo)
+\item 计算100000以内互素的数对的个数
+\item 共涉及100亿个数对
+\item 计算结果：6079301507
+\item 理论预测：6079271020
+\item 相对误差：万分之0.05
+\item 耗时：18分钟
+\item 本次作业：用多线程编程技术加速
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Parkinson's law}
 \begin{columns}%[t]
 \column{.5\textwidth}
@@ -46,22 +75,38 @@
 \end{columns}%[t]
 \end{frame}
 
+\begin{frame}{内存管理器(Memory Manager)的任务}
+\begin{itemize}
+\item 提供内存抽象界面
+\item 分配物理内存，回收物理内存
+\item 记录内存使用情况等
+\end{itemize}
+\end{frame}
+
 \begin{frame}{没有内存抽象：程序员直接操作物理内存}
 \includegraphics[width=1.0\textwidth]{nomem.png}
 
 a. 内存中一次只能驻留一个程序：\alert{MOV REGISTER1, 1000}
 
-b. 操作系统自身代码难以保护
+b. 操作系统自身代码难以保护(没有地址空间概念)
 \end{frame}
 
 \begin{frame}{虚拟内存技术}
-虚拟内存技术可以解决以上问题
+%虚拟内存技术可解决个问题:
+\begin{itemize}
+\item 问题一：如何让多个程序驻留内存?
 \begin{itemize}
 \item 每个程序有专属地址空间
-\item 地址空间分成若干页面
-\item 地址空间的页面映射到物理内存的页框内
+\item 程序不能非法访问其他程序的地址空间
+\end{itemize}
+\item 问题二：如何满足程序对内存的无限需求？
+\begin{itemize}
+\item 地址空间分成若干\alert{页面}
+\item 地址空间的页面映射到物理内存的\alert{页框}内
+\item 利用\alert{页表}实现页面号到页框号的映射
 \item 不是所有的页面都需要放到物理内存中
 \item 缺页中断技术
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -124,6 +169,84 @@ b. 操作系统自身代码难以保护
 \end{columns}%[t]
 \end{frame}
 
+\begin{frame}{页表项}
+\includegraphics[width=1.0\textwidth]{pte.png}
+\begin{description}
+\item[page frame number]描述该页表项对应的页框编号
+\item[present / absent]表示该页表是否在内存中
+\item[protection]含读、写、执行等权限信息
+\item[modified]该页表内容是否被修改过
+\item[referenced]该页表内容是否被用过（读写）
+\item[caching disabled]用于memory mapped I/O（后续）
+\end{description}
+\end{frame}
+
+\begin{frame}{虚拟内存技术与分页技术面临的两大问题}
+\begin{enumerate}
+\item 从虚拟地址到物理地址的映射必须快
+\begin{itemize}
+\item 每条指令都需从内存取出
+\item 大量指令涉及读写内存(CISC机器)
+\end{itemize}
+\item 如果虚拟地址空间很大，则页表规模会特别大
+
+考虑页面大小4K的虚拟内存系统：
+\begin{itemize}
+\item 32位虚拟地址: 100万个页表项
+\item 64位虚拟地址：？？
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{从虚拟地址到物理地址的快速映射：TLB(联想式存储)}
+\includegraphics[width=1.0\textwidth]{tlb.png}
+
+放置在MMU里面。来虚拟地址，先查TLB。
+\begin{itemize}
+\item 若能在TLB中查到该虚拟地址，则直接输出物理页框号码
+\item 否则，去内存中的页表中查找对应页框号码，并将其调入TLB
+\end{itemize}
+\end{frame}
+
+\begin{frame}{处理大规模地址空间的方法一：多级页表}
+\includegraphics[width=0.7\textwidth]{multi.png}
+\end{frame}
+
+\begin{frame}{处理大规模地址空间的方法二：倒排页表}
+\includegraphics[width=1.0\textwidth]{inverted.png}
+\end{frame}
+
+\begin{frame}{页面置换算法}
+当发生缺页时，OS需要选择一个页面将其从物理内存转移至硬盘，然后从硬盘调入所缺页面。
+\end{frame}
+
+\begin{frame}{老化(aging)页面置换算法}
+\includegraphics[width=1.0\textwidth]{aging.png}
+\end{frame}
+
+\begin{frame}{工作集(working set)页面置换算法}
+\begin{itemize}
+\item 访问的\alert{局部性}：在任一时间段内，程序仅仅访问其所有页面的一小部分。
+\item[]
+\item 我们将程序在某时间段内密集访问的页面集合成为\alert{工作集}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{工作集(working set)页面置换算法}
+\includegraphics[width=1.0\textwidth]{ws0.png}
+\end{frame}
+
+\begin{frame}{工作集(working set)页面置换算法}
+\includegraphics[width=1.0\textwidth]{ws.png}
+\end{frame}
+
+\begin{frame}{WSClock页面置换算法}
+\includegraphics[width=1.0\textwidth]{wsclock1.png}
+\end{frame}
+
+\begin{frame}{WSClock页面置换算法}
+\includegraphics[width=1.0\textwidth]{wsclock2.png}
+\end{frame}
 %\begin{frame}{对临界资源的互斥访问}
 %\includegraphics[width=1.0\textwidth]{mutual.png}
 %\end{frame}
