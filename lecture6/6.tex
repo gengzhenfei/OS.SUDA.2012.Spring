@@ -51,6 +51,29 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{第6次编程作业--要求}
+\begin{enumerate}
+\item 输出结果：必须与单线程结果（6079301507）保持一致
+\item 电子邮件发送内容
+\begin{itemize}
+\item 源程序
+\item 文档：描述软硬件平台，记录原始testgcd.c运行时间，2-10个线程加速后运行时间，你们的分析
+\end{itemize}
+\item 手写报告内容
+\begin{itemize}
+\item 每位队员的贡献（简短描述）
+\item 全体队员签名
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{推荐阅读文章}
+\begin{enumerate}
+\item 如何成为一名黑客 (作者: Eric S. Raymond, 英文How to become a hacker)
+\item 完全用Linux工作  (作业：王垠)
+\end{enumerate}
+\end{frame}
+
 \begin{frame}{Parkinson's law}
 \begin{columns}%[t]
 \column{.5\textwidth}
@@ -110,8 +133,14 @@ b. 操作系统自身代码难以保护(没有地址空间概念)
 \end{itemize}
 \end{frame}
 
+\begin{frame}{虚拟内存技术}
+分页技术的精髓：不是所有页面都需要同时调入内存
+\end{frame}
+
 \begin{frame}{虚拟地址、物理地址及内存管理单元}
 \includegraphics[width=0.9\textwidth]{mmu.png}
+
+\alert{注意}:程序中的地址全都是虚拟地址
 \end{frame}
 
 %\begin{frame}{系统调用的例子}
@@ -137,16 +166,21 @@ b. 操作系统自身代码难以保护(没有地址空间概念)
 \begin{columns}%[t]
 \column{.4\textwidth}
 \begin{block}{MOV REG, 20500}
-20500 = 20K + 20 
+20500 = 5 * 4K + 20 
 
 页面5 $\rightarrow$ 页框3
 
 12K + 20 = 12308（物理地址）
 \end{block}
 \begin{block}{MOV REG, 32780}
+32780 = 8 * 4K + 12
+
 对应虚拟页面8（缺页）
 
 \alert{what next?}
+\end{block}
+\begin{block}{页表内容}
+需要由操作系统维护
 \end{block}
 \column{.6\textwidth}
 \includegraphics[width=1.0\textwidth]{vm.png}
@@ -193,7 +227,8 @@ b. 操作系统自身代码难以保护(没有地址空间概念)
 考虑页面大小4K的虚拟内存系统：
 \begin{itemize}
 \item 32位虚拟地址: 100万个页表项
-\item 64位虚拟地址：？？
+\item 64位虚拟地址：45035996亿个页表项
+\item 注意：每个进程都需要单独的页表！！
 \end{itemize}
 \end{enumerate}
 \end{frame}
@@ -209,7 +244,14 @@ b. 操作系统自身代码难以保护(没有地址空间概念)
 \end{frame}
 
 \begin{frame}{处理大规模地址空间的方法一：多级页表}
+%\begin{columns}%[t]
+%\column{.3\textwidth}
+%多级页表：页表的全部内容不必都放在内存中
+%\column{.7\textwidth}
 \includegraphics[width=0.7\textwidth]{multi.png}
+%\end{columns}%[t]
+
+多级页表：页表的全部内容不必都放在内存中
 \end{frame}
 
 \begin{frame}{处理大规模地址空间的方法二：倒排页表}
@@ -238,27 +280,90 @@ b. 操作系统自身代码难以保护(没有地址空间概念)
 
 \begin{frame}{工作集(working set)页面置换算法}
 \includegraphics[width=1.0\textwidth]{ws.png}
+
+思考：如果找不到不在工作集的页面，怎么办？
 \end{frame}
 
 \begin{frame}{WSClock页面置换算法}
 \includegraphics[width=1.0\textwidth]{wsclock1.png}
+
+如果当前页R=1，将其设为0，然后考察下一页
 \end{frame}
 
 \begin{frame}{WSClock页面置换算法}
 \includegraphics[width=1.0\textwidth]{wsclock2.png}
+
+如果当前页R=0, M=0, 且其age足够大，则将其置换出物理内存% $设为0，然后考察下一页
+
+思考：如果M不为0？
 \end{frame}
+
+\begin{frame}{分页技术：页面大小如何确定？}
+%\includegraphics[width=1.0\textwidth]{mutual.png}
+有以下几点考虑：
+\begin{enumerate}
+\item 页面太大？导致最后一页浪费太多（半页）
+\item 页面太小，导致页表规模很大
+\item 额外开销计算
+\begin{equation*}
+overhead = e \cdot \frac{s}{p} + \frac{p}{2}
+\end{equation*}
+其中，$p$为页面大小，s为进程平均大小（字节），e为每个页表项的大小（字节）
+\end{enumerate}
+容易算出，当$p = \sqrt{2s\cdot e}$时，额外开销最少
+\end{frame}
+
+\begin{frame}{单纯分页技术的缺点--分段技术的引入}
+\includegraphics[width=0.7\textwidth]{noseg.png}
+\end{frame}
+
+\begin{frame}{单纯分页技术的缺点--分段技术的引入}
+\includegraphics[width=1.0\textwidth]{seg.png}
+
+每个段(segment)是独立的地址空间，互不干涉，可自如伸缩
+\end{frame}
+
+\begin{frame}{分段技术}
+\begin{itemize}
+\item 程序员（编译器）可见
+\item 每个段可以对应子函数、栈、数组、其它类型变量中的一种(但一般不是多种）
+\item 分段以后，更有利于保护（代码段--执行、数据段--读写）
+\item 分段以后，更便于在进程间共享代码与数据
+\end{itemize}
+\end{frame}
+
+\begin{frame}{分段与分页技术的比较}
+\includegraphics[width=1.0\textwidth]{comp.png}
+\end{frame}
+
+\begin{frame}{分段与分页技术相结合 --- 融合二者优点}
+如果某个段(segment)特别大，无法全放入内存，怎么办？
+
+\alert{答案}:针对每个段，采用分页技术。即只把每段中部分页面放入物理内存
+\end{frame}
+
+\begin{frame}{MULTICS的分段分页技术: 段表与页表}
+\includegraphics[width=1.0\textwidth]{seg1.png}
+\end{frame}
+
+\begin{frame}{MULTICS的分段分页技术: 段表项}
+\includegraphics[width=1.0\textwidth]{seg2.png}
+\end{frame}
+
+\begin{frame}{MULTICS的分段分页技术: 虚拟地址格式}
+\includegraphics[width=1.0\textwidth]{seg3.png}
+
+思考：MULTICS可以支持多少个段？%页面大小？页面个数？
+\end{frame}
+
+\begin{frame}{MULTICS的分段分页技术: 虚拟地址到物理地址的映射}
+\includegraphics[width=1.0\textwidth]{seg4.png}
+\end{frame}
+
 %\begin{frame}{对临界资源的互斥访问}
 %\includegraphics[width=1.0\textwidth]{mutual.png}
 %\end{frame}
 
-%\begin{frame}{信号量机制(Semaphores)}
-%为了解决唤醒信号丢失的问题，引入信号量，它是一种特殊的整型变量。在信号量上定义两个\alert{原子操作}：
-%\begin{description}
-%\item[down]  如果信号量值大于0，则将其减1然后返回；否则，进程在该信号量上进入睡眠
-%\item[up]  如果有进程在该信号量上睡眠，则选择其中一个唤醒；否则，信号量加1 
-%\end{description}
-%\end{frame}
-%
 %\begin{frame}{用信号量解决生产者--消费者问题}
 %\begin{columns}[b]
 %\column{.5\textwidth}
