@@ -360,6 +360,50 @@ overhead = e \cdot \frac{s}{p} + \frac{p}{2}
 \includegraphics[width=1.0\textwidth]{seg4.png}
 \end{frame}
 
+\begin{frame}{MULTICS的分段分页技术: 虚拟地址到物理地址的映射}
+\alert{问题：}如果每次访问内存都需要做这样的映射，则系统效率会很差，怎么办？
+\end{frame}
+
+\begin{frame}{MULTICS的分段分页技术: TLB}
+\includegraphics[width=1.0\textwidth]{tlb2.png}
+
+思考：最后两列的用途
+\end{frame}
+
+\begin{frame}{Intel平台上的分段分页技术: GDT与LDT}
+Intel平台上，所有段表分成两类：
+\begin{enumerate}
+\item[]
+\item GDT (Global Descriptor Table) -- 系统段(OS), 仅1个
+\item[]
+\item LDT (Local Descriptor Table) -- 每个进程都有自己的LDT
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Intel平台上的分段分页技术: 段选择符(Segment Selector)}
+\includegraphics[width=1.0\textwidth]{selector.png}
+
+\begin{description}
+\item[CS寄存器] 存放代码段的段选择符
+\item[DS寄存器] 存放数据段的段选择符
+\item[其他] 四个段寄存器
+\end{description}
+\end{frame}
+
+\begin{frame}{Intel平台上的分段分页技术: 段描述符(Segment Descriptor) -- 段表项}
+\includegraphics[width=1.0\textwidth]{descriptor.png}
+
+三个关键字段：BASE，LIMIT，G
+\end{frame}
+
+\begin{frame}{Intel平台上的分段分页技术: 从（段选择符，偏移）到线性地址的映射}
+\includegraphics[width=1.0\textwidth]{smap.png}
+\end{frame}
+
+\begin{frame}{Intel平台上的分段分页技术: 从线性地址到物理地址的映射}
+\includegraphics[width=1.0\textwidth]{pmap.png}
+\end{frame}
+
 %\begin{frame}{对临界资源的互斥访问}
 %\includegraphics[width=1.0\textwidth]{mutual.png}
 %\end{frame}

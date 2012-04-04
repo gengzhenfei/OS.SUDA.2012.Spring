@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.15)  30 MAR 2012 20:30
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.15)  4 APR 2012 15:32
 entering extended mode
  %&-line parsing enabled.
 **6.tex
@@ -1409,7 +1409,35 @@ File: seg3.png Graphic file (type png)
 File: seg4.png Graphic file (type png)
  <use seg4.png> [36
 
- <./seg4.png>]
+ <./seg4.png>] [37
+
+] <tlb2.png, id=394, 733.74126pt x 519.9425pt>
+File: tlb2.png Graphic file (type png)
+ <use tlb2.png> [38
+
+ <./tlb2.png>] [39
+
+] <selector.png, id=406, 809.0225pt x 254.9525pt>
+File: selector.png Graphic file (type png)
+ <use selector.png>
+[40
+
+ <./selector.png>] <descriptor.png, id=413, 1199.48125pt x 499.8675pt>
+File: descriptor.png Graphic file (type png)
+
+<use descriptor.png> [41
+
+ <./descriptor.png>]
+<smap.png, id=420, 847.165pt x 437.635pt>
+File: smap.png Graphic file (type png)
+ <use smap.png> [42
+
+ <./smap.png>]
+<pmap.png, id=427, 1217.54875pt x 676.5275pt>
+File: pmap.png Graphic file (type png)
+ <use pmap.png> [43
+
+ <./pmap.png>]
 \tf@nav=\write6
 \openout6 = `6.nav'.
 
@@ -1419,13 +1447,14 @@ File: seg4.png Graphic file (type png)
 \tf@snm=\write8
 \openout8 = `6.snm'.
 
+
 (./6.aux) ) 
 Here is how much of TeX's memory you used:
- 17798 strings out of 495046
- 312681 string characters out of 1181936
+ 17885 strings out of 495046
+ 313743 string characters out of 1181936
  374077 words of memory out of 3000000
- 20152 multiletter control sequences out of 15000+50000
- 75168 words of font info for 234 fonts, out of 3000000 for 9000
+ 20218 multiletter control sequences out of 15000+50000
+ 75745 words of font info for 236 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  49i,11n,53p,409b,1373s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/te
@@ -1485,9 +1514,9 @@ exmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-t
 exlive/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texmf-texlive/
 fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/h
 elvetic/uhvro8a.pfb>
-Output written on 6.pdf (36 pages, 2155409 bytes).
+Output written on 6.pdf (43 pages, 2549120 bytes).
 PDF statistics:
- 643 PDF objects out of 1000 (max. 8388607)
- 73 named destinations out of 1000 (max. 500000)
- 427 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 694 PDF objects out of 1000 (max. 8388607)
+ 87 named destinations out of 1000 (max. 500000)
+ 452 words of extra memory for PDF output out of 10000 (max. 10000000)
 
