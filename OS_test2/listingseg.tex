@@ -1,0 +1,213 @@
+% listingseg.tex
+% Examples of the listings package for code listings,
+% essentially from the package documentation file
+% John Leis
+% Feb 2002
+% Updated Oct 2003
+% Updated Oct 2006
+
+\documentclass{article}
+
+%---------------------------------------------------------------
+\usepackage{a4page}
+\usepackage{listings}
+\usepackage{color}
+%---------------------------------------------------------------
+
+\begin{document}
+
+%---------------------------------------------------------------
+\title{Typesetting Program Code Using the \texttt{listings} Package}
+\author{John Leis}
+\date{\today}
+\maketitle
+%---------------------------------------------------------------
+
+%---------------------------------------------------------------
+\lstlistoflistings
+%---------------------------------------------------------------
+
+%---------------------------------------------------------------
+\definecolor{listinggray}{gray}{0.9}
+%---------------------------------------------------------------
+
+Only simple examples are shown here; see the package documentation file
+for full descriptions/examples.
+
+%---------------------------------------------------------------
+\section{Listing embedded in \LaTeX\/ source}
+%---------------------------------------------------------------
+
+%---------------------------------------------------------------
+\lstset{language=c++}
+\lstset{commentstyle=\textit}
+\begin{lstlisting}[frame=trbl]{}
+    for(i = 0; i < 10; i++)
+    {
+        // increment the pointer
+        *p++ = i;
+    }
+\end{lstlisting}
+%---------------------------------------------------------------
+
+%---------------------------------------------------------------
+\section{Inline Code}
+%---------------------------------------------------------------
+
+
+
+\lstset{language=c}
+the call \lstinline!socket()! creates a socket.
+
+Using bfseries it is \lstinline[basicstyle=\bfseries]!socket()! which
+distinguishes it from the surrounding text.
+
+Using ttfamily it is  \lstinline[basicstyle=\ttfamily]!socket()! which
+gives a small but helpful distinction from the surrounding text.
+
+
+%---------------------------------------------------------------
+\section{Background Color, Line Numbers}
+%---------------------------------------------------------------
+
+%---------------------------------------------------------------
+% registered trademark symbol
+\newcommand{\reg}{$\mbox{}^{\textregistered}$\hspace{1ex}}
+%---------------------------------------------------------------
+
+%---------------------------------------------------------------
+\lstset{language=matlab}
+%\lstset{backgroundcolor=listinggray}
+\lstset{backgroundcolor=\color{listinggray}}
+\lstset{linewidth=90mm}
+\lstset{frameround=tttt}
+%\lstset{frameround=trbl}
+%\lstset{labelstep=1}
+\lstset{keywordstyle=\color{red}\bfseries\underbar}
+\begin{center}
+    \begin{minipage}{100mm}
+        %\begin{lstlisting}[frame=trBL,indent=10mm,caption=My MATLAB Code,label=lst:matlab,gobble=4]{}
+        \begin{lstlisting}[frame=trBL,caption=Some MATLAB\reg Code,label=lst:matlab,gobble=4]{}
+            for k=1:10
+                array(k, :) = ones(4,1);
+            end
+        \end{lstlisting}
+    \end{minipage}
+\end{center}
+%---------------------------------------------------------------
+
+See Listing~\ref{lst:matlab}.
+
+
+%---------------------------------------------------------------
+\section{Imported Source File}
+%---------------------------------------------------------------
+
+%Listing from source file \texttt{SimpleButtons.java} \\
+Listing from source file \texttt{lowertri.m} \\
+
+%---------------------------------------------------------------
+\lstset{language=matlab}
+%\lstset{backgroundcolor=listinggray,framerulecolor=blue}
+%\lstset{backgroundcolor=listinggray,rulecolor=blue}
+\lstset{backgroundcolor=\color{listinggray},rulecolor=\color{blue}}
+\lstset{linewidth=\textwidth}
+%\lstset{labelstep=10}
+%\lstset{commentstyle=\textit, stringstyle=\upshape,stringspaces=false}
+\lstset{commentstyle=\textit, stringstyle=\upshape,showspaces=false}
+\lstset{frame=trBL,frameround=tttt}
+\lstinputlisting[caption=Some MATLAB Code,label=lst:lowertri]{lowertri.m}
+%---------------------------------------------------------------
+
+
+\clearpage
+%---------------------------------------------------------------
+\section{Continued Listings}
+%---------------------------------------------------------------
+
+%---------------------------------------------------------------
+\lstset{language=c++}
+\lstset{commentstyle=\textit}
+%\lstset{labelstep=1}
+%\lstset{backgroundcolor=,framerulecolor=}
+\lstset{backgroundcolor=,rulecolor=}
+\begin{lstlisting}[frame=tb]{somecode}
+    for(i = 0; i < 10; i++)
+    {
+        // increment the pointer
+        *p++ = i;
+    }
+\end{lstlisting}
+%---------------------------------------------------------------
+
+and later...
+%---------------------------------------------------------------
+\begin{lstlisting}[frame=tb]{somecode}
+    for( i = 0; i < 10; i++ )
+    {
+        for( j = 0; j < 10; j++ )
+        {
+        }
+    }
+\end{lstlisting}
+%---------------------------------------------------------------
+
+%---------------------------------------------------------------
+\section{Embedded Comments}
+%---------------------------------------------------------------
+
+
+% compile warning on \clearpage below
+%---------------------------------------------------------------
+%\lstset{texcl=true}        % latex comment lines
+%\lstset{labelstep=0}
+\begin{lstlisting}[frame=tb,texcl]{}
+    // \upshape this code is \copyright
+    for( i = 0; i < 10; i++ )
+    {
+    }
+    // force continuation on next page \clearpage
+
+    for( i = 0; i < 10; i++ )
+    {
+        for( j = 0; j < 10; j++ )
+        {
+            // \upshape calculate $a_{ij}$
+            a[i][j] = b[j][i];
+        }
+    }
+\end{lstlisting}
+%---------------------------------------------------------------
+
+
+%---------------------------------------------------------------
+\section{Literate Programming}
+%---------------------------------------------------------------
+
+%---------------------------------------------------------------
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{language=c++}
+\lstset{commentstyle=\textit}
+%\lstset{backgroundcolor=lbcolor,framerulecolor=}
+\lstset{backgroundcolor=\color{lbcolor},rulecolor=}
+\lstset{literate={<=}{{$\le$}}{2}}
+%\color{yellow}
+
+\lstset{literate={=}{{$\leftarrow$}}{1}{<=}{{$\le$}}{2}{&&}{{$\cap$}}{2}}
+\begin{lstlisting}[frame=tb]{}
+    a = b && 0x0f;
+    for(i = 0; i < 10; i++)
+    {
+        // increment the pointer
+        *p++ = i;
+        if( *p <= 0xff )
+        {
+        }
+    }
+\end{lstlisting}
+%---------------------------------------------------------------
+
+
+
+\end{document}
+%---------------------------------------------------------------

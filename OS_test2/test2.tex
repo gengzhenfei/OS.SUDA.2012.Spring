@@ -1,0 +1,49 @@
+\documentclass[xcolor=svgnames]{beamer}
+\mode<presentation>
+{
+      \setbeamertemplate{footline}[page number]
+      \setbeamercovered{transparent}
+      \setbeamertemplate{navigation symbols}{}
+      \usecolortheme[named=DarkGreen]{structure}
+}
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{CJKutf8}
+\usepackage{graphics}
+
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+
+
+\title{第二次课堂测试 -- 限时20分钟}
+
+\maketitle
+
+\begin{frame}{第1题}
+在Linux 3.3.2内核源代码flow\_keys.h（如下）中，第1、2行和最后一行所起的作用是什么？
+\lstset{language=C, frame=trbl}
+\lstinputlisting{flowkeys.h}
+
+\end{frame}
+
+\begin{frame}{第2题}
+以下Linux代码中的do和while(0)可否删掉？说明理由
+\lstset{language=C, frame=trbl}
+\lstinputlisting{fpu.h}
+\alert{注意}：该宏在Linux源代码中是这样使用的：
+\lstset{language=C, frame=trbl}
+\lstinputlisting{test.c}
+
+\end{frame}
+
+\begin{frame}{第3题}
+请说明什么是信号量以及down和up操作。
+\end{frame}
+
+\end{CJK*}
+\end{document}
+

@@ -1,0 +1,38 @@
+\documentclass[xcolor=svgnames]{beamer}
+\mode<presentation>
+{
+      \setbeamertemplate{footline}[page number]
+      \setbeamercovered{transparent}
+      \setbeamertemplate{navigation symbols}{}
+      \usecolortheme[named=DarkGreen]{structure}
+}
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{CJKutf8}
+\usepackage{graphics}
+
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+
+
+\begin{frame}{课堂测试 -- 限时20分钟以内}
+\begin{enumerate}
+\item 请说明什么是用户态与核心态。
+\item[]
+\item 进程运行态、阻塞态及就绪态这三个状态之间在理论上有6种可能的相互转换，但其中有两种不可能存在，请问是哪两种并说明原因。
+\item[]
+\item 我们在编程作业中用到的函数, printf属于C语言库函数，write属于操作系统提供的系统调用函数。在没有其它任何信息的情况下，请你
+判断getpid()(获取进程编号)是库函数还是系统调用？说明你的理由。
+\item[]
+\item 什么是进程上下文切换？如果让你实现上下文切换功能，你会采用下列编程语言中的哪一种：Java, C, C++, 汇编语言.
+说明你选择该编程语言的原因。
+\end{enumerate}
+
+\end{frame}
+
+\end{CJK*}
+\end{document}
+
