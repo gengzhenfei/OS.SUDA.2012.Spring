@@ -14,7 +14,7 @@ int main(int argc,char *argv[])
 			printf("not the same!\n");
 			return -1;           
 		}
-		if(n == 0)
+		if(n = 0)
 			break;		
 	}
 	printf("the two files are the same!\n");
