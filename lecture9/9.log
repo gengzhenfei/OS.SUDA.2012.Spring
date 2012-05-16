@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.15)  24 APR 2012 08:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  2 MAY 2012 15:33
 entering extended mode
  %&-line parsing enabled.
 **9.tex
@@ -1321,11 +1321,7 @@ File: omsphv.fd
 )
 LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1.
-)
-Overfull \vbox (18.71162pt too high) detected at line 81
- []
-
-[7
+) [7
 
 ] [8
 
@@ -1333,24 +1329,24 @@ Overfull \vbox (18.71162pt too high) detected at line 81
 
 ] [10
 
-] <cont.png, id=177, 1196.47pt x 606.265pt>
+]
+<cont.png, id=177, 1196.47pt x 606.265pt>
 File: cont.png Graphic file (type png)
- <use cont.png>
-[11
+ <use cont.png> [11
 
- <./cont.png>] [12
+ <./cont.png>]
+[12
 
 ] <linked.png, id=197, 861.2175pt x 578.16pt>
 File: linked.png Graphic file (type png)
-
-<use linked.png> [13
+ <use linked.png> [13
 
  <./linked.png>] [14
 
-]
-<inodes.png, id=212, 324.21124pt x 314.17375pt>
+] <inodes.png, id=212, 324.21124pt x 314.17375pt>
 File: inodes.png Graphic file (type png)
- <use inodes.png> [15
+ <use inodes.png>
+[15
 
  <./inodes.png>] [16
 
@@ -1373,10 +1369,10 @@ File: layout.png Graphic file (type png)
 
  (./9.aux) ) 
 Here is how much of TeX's memory you used:
- 18797 strings out of 495046
- 324824 string characters out of 1181936
- 441670 words of memory out of 3000000
- 21291 multiletter control sequences out of 15000+50000
+ 18791 strings out of 495046
+ 324716 string characters out of 1181937
+ 433670 words of memory out of 3000000
+ 21285 multiletter control sequences out of 15000+50000
  42184 words of font info for 128 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  49i,11n,53p,409b,2104s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1426,7 +1422,7 @@ ype1/arphic/gbsnu/gbsnu97.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu9
 texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texliv
 e/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw
 /helvetic/uhvr8a.pfb>
-Output written on 9.pdf (18 pages, 650248 bytes).
+Output written on 9.pdf (18 pages, 666228 bytes).
 PDF statistics:
  439 PDF objects out of 1000 (max. 8388607)
  37 named destinations out of 1000 (max. 500000)

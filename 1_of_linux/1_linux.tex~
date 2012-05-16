@@ -1,0 +1,425 @@
+\documentclass[xcolor=svgnames]{beamer}
+\mode<presentation>
+{
+      \setbeamertemplate{footline}[page number]
+      \setbeamercovered{transparent}
+      \setbeamertemplate{navigation symbols}{}
+%      \usecolortheme[named=DarkGreen]{structure}
+}
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{url}
+\usepackage{CJKutf8}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{listings}
+
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+
+
+\title{OS概念与Linux内核源代码分析之1}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{Linux内核关键数据结构：list}
+\begin{block}{list\_head的定义}
+\begin{verbatim}
+struct list_head {
+        struct list_head *next, *prev;
+};
+\end{verbatim}
+\end{block}
+
+\begin{block}{list\_head的使用方法：嵌入其它结构}
+\begin{verbatim}
+struct task_struct {
+    ...
+    struct list_head run_list;
+    ...
+};
+\end{verbatim}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Linux内核关键数据结构：list}
+\includegraphics[width=1.0\textwidth]{list.png}
+\begin{block}{list head的定义}
+\begin{verbatim}
+#define LIST_HEAD_INIT(name) { &(name), &(name) }
+
+#define LIST_HEAD(name) \
+    struct list_head name = LIST_HEAD_INIT(name)
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}{针对list结构的操作}
+\begin{description}
+\item[list\_add(new, head)] 把new插入head后面
+\item[list\_add\_tail(new, head)] 把new插入head前面
+\item[list\_del(entry)] 把entry从链表中删除
+\item[list\_empty(head)] 判断链表head是否为空
+\item[list\_splice(list, head)] 合并list和head
+\item[list\_entry(ptr, type, member)] 计算包含ptr的结构体的地址
+\item[list\_for\_each(pos, head)] 遍历以head为头的链表
+\end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{针对list结构的操作: 代码分析举例}
+\begin{verbatim}
+typedef struct list_head list_head;
+
+static inline void list_add(list_head *new, 
+                            list_head *head)
+{
+        __list_add(new, head, head->next);
+}
+
+static inline void __list_add(list_head *new,
+                  list_head *prev,
+                  list_head *next)
+{
+        next->prev = new;
+        new->next = next;
+        new->prev = prev;
+        prev->next = new;
+}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{针对list结构的操作: 代码分析举例}
+\begin{verbatim}
+struct list_head *p;
+
+list_for_each(p, &list) {
+    if (!condition) continue;
+    return list_entry(p, struct task_struct, run);
+}
+
+return NULL;
+\end{verbatim}
+\begin{block}{练习}
+从源文件include/linux/list.h中找出并理解上述针对list的各种操作函数的定义。
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Linux进程表示：task\_struct结构}
+\begin{block}{include/linux/sched.h}
+\begin{verbatim}
+struct task_struct {
+    volatile long state;    /* -1 unrunnable */
+    void *stack;
+    atomic_t usage;
+    unsigned int flags; /* per process flags */
+    unsigned int ptrace;
+
+    int lock_depth;     /* BKL lock depth */
+
+#ifdef CONFIG_SMP
+#ifdef __ARCH_WANT_UNLOCKED_CTXSW
+    int oncpu;
+#endif
+#endif
+    ...
+};
+
+
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux进程表示：task\_struct结构}
+\begin{block}{task\_struct结构的state字段}
+\begin{verbatim}
+#define TASK_RUNNING        0
+#define TASK_INTERRUPTIBLE  1
+#define TASK_UNINTERRUPTIBLE    2
+#define TASK_STOPPED        4
+#define TASK_TRACED     8
+/* in tsk->exit_state */
+#define EXIT_ZOMBIE     16
+#define EXIT_DEAD       32
+/* in tsk->state again */
+#define TASK_DEAD       64
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux进程表示：task\_struct结构}
+\begin{block}{task\_struct结构的rlim字段: include/linux/resource.h}
+\begin{verbatim}
+struct rlimit {
+    unsigned long   rlim_cur;
+    unsigned long   rlim_max;
+};
+
+struct task_struct {
+    ...
+    struct rlimit rlim[RLIM_NLIMITS];
+    ...
+};
+\end{verbatim}
+\end{block}
+\begin{block}{相关系统调用:}
+\begin{verbatim}
+int getrlimit(int res, struct rlimit *rlim);
+int setrlimit(int res, const struct rlimit *rlim);
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux进程表示：task\_struct结构}
+\begin{block}{task\_struct结构的rlim字段: include/asm-generic/resource.h}
+\begin{verbatim}
+#define RLIMIT_CPU      0   
+#define RLIMIT_FSIZE        1  
+#define RLIMIT_DATA     2   
+#define RLIMIT_STACK        3 
+#define RLIMIT_CORE     4   
+#define RLIMIT_NOFILE      7  
+...
+#define RLIM_NLIMITS        15
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}{名字空间(namespaces)的概念}
+
+传统UNIX只有唯一的名字空间：
+
+\begin{description}
+\item[PID] 进程编号
+\item[UID] 用户编号
+\item[GID] 群组编号
+\end{description}
+
+\begin{block}{唯一名字空间的缺点举例}
+计算服务提供商：希望为用户提供Linux操作系统的使用服务，每个用户都可以拥有root权限。
+\end{block}
+
+\begin{block}{解决方法}
+\begin{itemize}
+\item 每个用户一台机器？
+\item 虚拟机(VMWare)？
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{名字空间(namespaces)的概念}
+\includegraphics[width=0.9\textwidth]{ns.png}
+\begin{block}{名字空间的相互关系}
+上图中，子名字空间中的1，2，3编号与父名字空间中的1，2，3完全不相关
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux内核中名字空间的实现}
+\begin{block}{struct nsproxy: 按照功能划分若干名字空间 -- include/linux/nsproxy.h}
+\begin{verbatim}
+struct nsproxy {
+    atomic_t count;
+    struct uts_namespace *uts_ns;
+    struct ipc_namespace *ipc_ns;
+    struct mnt_namespace *mnt_ns;
+    struct pid_namespace *pid_ns;
+    struct user_namespace *user_ns;
+    struct net       *net_ns;
+};
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux内核中名字空间的实现}
+\begin{block}{struct nsproxy: 按照功能划分若干名字空间 -- include/linux/sched.h}
+\begin{verbatim}
+struct task_struct {
+    ...
+    struct nsproxy *nsproxy;
+    ...
+}
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}{Linux内核中名字空间的实现}
+\includegraphics[width=0.9\textwidth]{ns_impl.png}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux内核中名字空间的实现}
+\begin{block}{fork新进程时可以指明是否为此进程建立新的名字空间：}
+\begin{verbatim}
+#define CLONE_NEWUTS    0x04000000  
+#define CLONE_NEWIPC    0x08000000 
+#define CLONE_NEWUSER   0x10000000
+#define CLONE_NEWPID    0x20000000
+#define CLONE_NEWNET    0x40000000 
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{初始全局名字空间的定义}
+\begin{block}{kernel/nsproxy.c}
+\begin{verbatim}
+struct nsproxy init_nsproxy = \
+       INIT_NSPROXY(init_nsproxy);
+\end{verbatim}
+\end{block}
+\begin{block}{include/linux/init\_task.h}
+\begin{verbatim}
+#define INIT_NSPROXY(nsproxy) {                     \
+    .pid_ns     = &init_pid_ns,                 \
+    .count      = ATOMIC_INIT(1),               \
+    .uts_ns     = &init_uts_ns,                 \
+    .mnt_ns     = NULL,                     \
+    INIT_NET_NS(net_ns)                                             \
+    INIT_IPC_NS(ipc_ns)                     \
+    .user_ns    = &init_user_ns,                \
+}
+
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{UTS Namespace}
+\begin{block}{include/linux/utsname.h}
+\begin{verbatim}
+struct uts_namespace {
+    struct kref kref;
+    struct new_utsname name;
+};
+
+struct new_utsname {
+    char sysname[65];
+    char nodename[65];
+    char release[65];
+    char version[65];
+    char machine[65];
+    char domainname[65];
+};
+\end{verbatim}
+\end{block}
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{UTS Namespace的初始值}
+\begin{block}{include/linux/utsname.h}
+\begin{verbatim}
+\end{verbatim}
+\end{block}
+\end{frame}
+
+%\begin{frame}{操作系统中三个最重要的概念}
+
+%\includegraphics[width=1.0\textwidth]{osabstractions.png}
+%\end{frame}
+
+
+%\begin{frame}{对临界资源的互斥访问}
+%\includegraphics[width=1.0\textwidth]{mutual.png}
+%\end{frame}
+
+%\begin{frame}{用信号量解决生产者--消费者问题}
+%\begin{columns}[b]
+%\column{.5\textwidth}
+%\includegraphics[width=1.0\textwidth]{prodsem.png}
+%\column{.5\textwidth}
+%\includegraphics[width=1.0\textwidth]{conssem.png}
+%\end{columns}%[t]
+
+%该方案中，信号量empty和full具有计数和同步功能，而mutex仅有互斥功能。
+%\end{frame}
+
+%\begin{frame}{专门用来实现互斥的特殊信号量 -- 互斥锁}
+%互斥锁只有两种状态：locked (1) / unlocked (0)
+%
+%\includegraphics[width=0.5\textwidth]{mutex.png}
+%\end{frame}
+
+%\begin{frame}{互斥锁与忙等待的区别}
+%\begin{columns}[b]
+%\column{.5\textwidth}
+%\includegraphics[width=1.0\textwidth]{mutex.png}
+%\column{.5\textwidth}
+%\includegraphics[width=1.0\textwidth]{tsl.png}
+%\end{columns}%[t]
+%后者：不断利用CPU指令测试临界资源，直至时间片用光被从CPU上撤下来
+%\end{frame}
+%
+%\begin{frame}{信号量的危险情形 --- 管程机制的引入}
+%\begin{columns}[b]
+%\column{.5\textwidth}
+%\includegraphics[width=1.0\textwidth]{prodsem.png}
+%\column{.5\textwidth}
+%\includegraphics[width=1.0\textwidth]{conssem.png}
+%\end{columns}%[t]
+%\alert{危险:}如果程序员不小心把producer中的down(empty)和down(mutex)顺序颠倒，
+%则当缓冲区满时，会发生什么？
+%\end{frame}
+
+%\begin{frame}{信号量的危险情形 --- 管程机制的引入}
+%\begin{itemize}
+%\item 发生死锁。
+%\item[]
+%\item 因此，最好由编译器自动处理这种容易出错的程序段。---引入管程。
+%\item[]
+%\item 对比：C++中构造函数与析构函数
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{管程:解决生产者--消费者问题}
+%\begin{columns}[b]
+%\column{.5\textwidth}
+%\includegraphics[width=1.0\textwidth]{mon1.png}
+%\column{.5\textwidth}
+%\includegraphics[width=1.0\textwidth]{mon2.png}
+%\end{columns}%[t]
+%
+%\alert{注意概念:} 条件变量empty, full以及wait, signal
+%
+%此外，insert与remove之间的互斥由编译器完成
+%\end{frame}
+
+%\begin{frame}{管程:解决生产者--消费者问题}
+%\begin{itemize}
+%\item 管程内程序段之间的互斥（自动）
+%\item 进程同步问题?：条件变量及wait, signal实现
+%\begin{itemize}
+%\item wait: 将当前进程阻塞，并允许其他进程进入管程
+%\item signal: 将被相应条件变量阻塞的进程唤醒
+%%\end{itemize}
+%\item 上述方法中，signal必须是最后一条指令，为什么？ 
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{消息传递机制：解决不同机器上进程间同步问题}
+%\begin{columns}[b]
+%\column{.5\textwidth}
+%\includegraphics[width=1.0\textwidth]{msgprod.png}
+%\column{.5\textwidth}
+%\includegraphics[width=1.0\textwidth]{msgcons.png}
+%\end{columns}%[t]
+%\end{frame}
+
+
+\end{CJK*}
+\end{document}
