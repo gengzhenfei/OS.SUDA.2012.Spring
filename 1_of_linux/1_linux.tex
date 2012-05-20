@@ -25,6 +25,72 @@
 \maketitle
 \end{frame}
 
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{本课程Linux内核版本}
+\begin{itemize}
+\item linux kernel: 2.6.24 
+\item 为什么？older? newer?
+\item 下载地址: www.kernel.org
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{Linux内核整体架构}
+\includegraphics[width=1.0\textwidth]{kernel.png}
+\end{frame}
+
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{进程与线程的区别与联系}
+\includegraphics[width=1.0\textwidth]{proc_thread.png}
+\begin{itemize}
+\item 进程是资源分配单位（地址空间、I/O等资源）
+\item 线程是执行单位
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{Linux中的内核地址空间与用户地址空间}
+\begin{columns}%[b]
+\column{.4\textwidth}
+\includegraphics[width=1.0\textwidth]{as.png}
+\column{.6\textwidth}
+\begin{itemize}
+\item 用户地址空间从0到TASK\_SIZE-1
+\item 内核地址空间从TASK\_SIZE到$2^{32}$-1
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{Linux中的内核地址空间与用户地址空间}
+\includegraphics[width=1.0\textwidth]{ring.png}
+\begin{itemize}
+\item 用户态下只能访问用户地址空间
+\item 核心态下可以访问所有地址空间
+\item 二者其他区别？
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{分页技术与地址空间共享}
+\includegraphics[width=1.0\textwidth]{paging.png}
+
+注意观察A、B进程的第0页面对应的物理页框；地址空间的共享（代码、数据）
+\end{frame}
+
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{Linux下的多级分页技术}
+\includegraphics[width=1.0\textwidth]{pagetables.png}
+
+CPU内部进行地址映射的两个硬件单元：MMU/TLB
+\end{frame}
+
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{物理内存的分配算法：伙伴系统}
+\includegraphics[width=0.8\textwidth]{buddy.png}
+
+%注意观察A、B进程的第0页面对应的物理页框；地址空间的共享（代码、数据）
+\end{frame}
 
 \begin{frame}[fragile]%{Linux内核关键数据结构：list}
 \frametitle{Linux内核关键数据结构：list}
@@ -196,6 +262,9 @@ int setrlimit(int res, const struct rlimit *rlim);
 ...
 #define RLIM_NLIMITS        15
 \end{verbatim}
+\end{block}
+\begin{block}{相关命令}
+cat /proc/self/limits
 \end{block}
 \end{frame}
 
@@ -374,6 +443,7 @@ struct task_struct {
 \begin{itemize}
 \item children是指向本进程所有子进程的链表表头
 \item sibling用于连接兄弟进程
+\item pstree命令显示进程结构树(用途?)
 \end{itemize}
 \end{block}
 \end{frame}
