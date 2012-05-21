@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  20 MAY 2012 15:53
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  21 MAY 2012 16:35
 entering extended mode
  %&-line parsing enabled.
 **1_linux.tex
@@ -1285,18 +1285,12 @@ File: c70gbsn.fdx 2008/12/29 4.8.2
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-\@verb\lstdemo=\box58
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 38.
- (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 39.
 \openout4 = `1_linux.vrb'.
 
-(./1_linux.vrb
+ (./1_linux.vrb
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
- (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 3.
@@ -1310,6 +1304,11 @@ LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <6> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <5> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 3.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 5.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 5.
 ) [2
@@ -1317,96 +1316,173 @@ LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb
-<kernel.png, id=61, 764.8575pt x 309.155pt>
+ (./1_linux.vrb)
+[3
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb <kernel.png, id=108, 764.8575pt x 309.155pt>
 File: kernel.png Graphic file (type png)
- <use kernel.png>) [3
+
+<use kernel.png>) [4
 
  <./kernel.png>]
+\@verb\lstfox=\box58
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 75.
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [5
+
+]
 \@verb\lstlisthead=\box59
 \@verb\lstlistheadusage=\box60
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [4
+ (./1_linux.vrb)
+[6
 
 ]
 \@verb\lstPCBstate=\box61
 \@verb\lststates=\box62
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb <listhead.png, id=137, 826.08624pt x 630.355pt>
+File: listhead.png Graphic file (type png)
+
+<use listhead.png>) [7
+
+ <./listhead.png>]
 \@verb\lstinit=\box63
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb
-<list.png, id=87, 624.3325pt x 195.73125pt>
-File: list.png Graphic file (type png)
- <use list.png>) [5
+ (./1_linux.vrb) [8
 
- <./list.png>]
-[6
+] [9
 
 ]
 \@verb\lstadd=\box64
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [7
+ (./1_linux.vrb) [10
 
 ]
 \@verb\lstforeach=\box65
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [8
+ (./1_linux.vrb) [11
 
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [9
+ (./1_linux.vrb) [12
 
 ]
 \@verb\lsthlist=\box66
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb
-<hlist.jpeg, id=151, 467.49657pt x 189.70876pt>
+<hlist.jpeg, id=182, 467.49657pt x 189.70876pt>
 File: hlist.jpeg Graphic file (type jpg)
- <use hlist.jpeg>) [10
+ <use hlist.jpeg>) [13
 
- <./hlist.jpeg>] [11
+ <./hlist.jpeg>] [14
 
 ]
 \@verb\lsttasks=\box67
- [12
+ [15
 
 ]
 \@verb\lstrunning=\box68
- [13
+ [16
 
 ]
 \@verb\lstprio=\box69
- [14
+ [17
 
-] [15
+]
+\@verb\lstenqueue=\box70
+ [18
 
-] [16
+] [19
 
-] [17
+] [20
+
+] [21
+
+]
+\@verb\lstparents=\box71
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [22
+
+]
+\openout4 = `1_linux.vrb'.
+
+
+(./1_linux.vrb <parent2.png, id=243, 556.0775pt x 445.665pt>
+File: parent2.png Graphic file (type png)
+ <use parent2.png>) [23
+
+ <./parent2.png>]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [24
+
+]
+\@verb\lstotherrelations=\box72
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [25
+
+]
+\@verb\lstsignalstruct=\box73
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 480.
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [26
+
+]
+\@verb\lstpidtype=\box74
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [27
+
+]
+\@verb\lstpidstruct=\box75
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [28
 
 ]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb
-Overfull \hbox (1.49976pt too wide) in paragraph at lines 22--22
-[]    \OT1/pcr/m/n/10.95 volatile long state;    /* -1 unrunnable */[] 
- []
+<pidhash.png, id=279, 755.82375pt x 380.42125pt>
+File: pidhash.png Graphic file (type png)
+ <use pidhash.png>) [29
 
+ <./pidhash.png>]
+\openout4 = `1_linux.vrb'.
 
-Overfull \hbox (1.49976pt too wide) in paragraph at lines 22--22
-[]    \OT1/pcr/m/n/10.95 unsigned int flags; /* per process flags */[] 
- []
+ (./1_linux.vrb <pidhashes.png, id=286, 678.535pt x 621.32124pt>
+File: pidhashes.png Graphic file (type png)
 
-)
-Overfull \vbox (46.2781pt too high) detected at line 397
- []
+<use pidhashes.png>) [30
 
-[18
+ <./pidhashes.png>]
+\@verb\lstwaitqueuehead=\box76
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [31
+
+]
+\@verb\lstwaitqueue=\box77
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [32
 
 ]
 \openout4 = `1_linux.vrb'.
@@ -1417,140 +1493,30 @@ Overfull \hbox (21.20973pt too wide) in paragraph at lines 20--20
  []
 
 )
-Overfull \vbox (12.1641pt too high) detected at line 429
+Overfull \vbox (12.1641pt too high) detected at line 626
  []
 
-[19
+[33
 
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [20
+ (./1_linux.vrb) [34
 
-] [21
+] [35
 
-] <ns.png, id=244, 693.59125pt x 494.84875pt>
-File: ns.png Graphic file (type png)
-
-<use ns.png>
-Overfull \vbox (5.00636pt too high) detected at line 478
- []
-
-[22
-
- <./ns.png>]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [23
+] [36
 
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [24
-
-]
-<ns_impl.png, id=265, 873.2625pt x 532.99126pt>
-File: ns_impl.png Graphic file (type png)
- <use ns_impl.png> [25
-
- <./ns_impl.png>]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [26
+ (./1_linux.vrb) [37
 
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb
-Overfull \hbox (40.91971pt too wide) in paragraph at lines 20--20
-[]\OT1/pcr/m/n/10.95 #define INIT_NSPROXY(nsproxy) {                     \[] 
- []
-
-
-Overfull \hbox (14.63974pt too wide) in paragraph at lines 20--20
-[]    \OT1/pcr/m/n/10.95 .pid_ns     = &init_pid_ns,                 \[] 
- []
-
-
-Overfull \hbox (14.63974pt too wide) in paragraph at lines 20--20
-[]    \OT1/pcr/m/n/10.95 .count      = ATOMIC_INIT(1),               \[] 
- []
-
-
-Overfull \hbox (14.63974pt too wide) in paragraph at lines 20--20
-[]    \OT1/pcr/m/n/10.95 .uts_ns     = &init_uts_ns,                 \[] 
- []
-
-
-Overfull \hbox (146.03958pt too wide) in paragraph at lines 20--20
-[]    \OT1/pcr/m/n/10.95 INIT_NET_NS(net_ns)                                   
-          \[] 
- []
-
-
-Overfull \hbox (14.63974pt too wide) in paragraph at lines 20--20
-[]    \OT1/pcr/m/n/10.95 .user_ns    = &init_user_ns,                \[] 
- []
-
-)
-Overfull \vbox (12.13333pt too high) detected at line 549
- []
-
-[27
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [28
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [29
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb
-Overfull \hbox (8.06975pt too wide) in paragraph at lines 9--9
-[]    \OT1/pcr/m/n/10.95 struct hlist_head uidhash_table[UIDHASH_SZ];[] 
- []
-
-) [30
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb
-Overfull \hbox (21.20973pt too wide) in paragraph at lines 10--10
-[]    \OT1/pcr/m/n/10.95 struct list_head children; /* children list */[] 
- []
-
-
-Overfull \hbox (73.76967pt too wide) in paragraph at lines 10--10
-[]    \OT1/pcr/m/n/10.95 struct list_head sibling; /* parent's children list */
-[] 
- []
-
-) [31
-
-] <parent.png, id=304, 862.22125pt x 371.3875pt>
-File: parent.png Graphic file (type png)
- <use parent.png> [32
-
- <./parent.png>] [33
-
-] [34
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [35
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [36
+ (./1_linux.vrb)
+[38
 
 ]
 \openout4 = `1_linux.vrb'.
@@ -1561,10 +1527,10 @@ Overfull \hbox (27.77972pt too wide) in paragraph at lines 19--19
  []
 
 )
-Overfull \vbox (7.78215pt too high) detected at line 706
+Overfull \vbox (7.78215pt too high) detected at line 903
  []
 
-[37
+[39
 
 ]
 \tf@nav=\write6
@@ -1578,13 +1544,13 @@ Overfull \vbox (7.78215pt too high) detected at line 706
 
  (./1_linux.aux) ) 
 Here is how much of TeX's memory you used:
- 19395 strings out of 495046
- 333337 string characters out of 1181937
- 572949 words of memory out of 3000000
- 21751 multiletter control sequences out of 15000+50000
- 59779 words of font info for 189 fonts, out of 3000000 for 9000
+ 19436 strings out of 495046
+ 333707 string characters out of 1181937
+ 608949 words of memory out of 3000000
+ 21792 multiletter control sequences out of 15000+50000
+ 56211 words of font info for 177 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 49i,11n,58p,415b,1869s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,11n,58p,415b,2097s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/s
 hare/texmf/fonts/type1/arphic/gbsnu/gbsnu30.pfb></usr/share/texmf/fonts/type1/a
 rphic/gbsnu/gbsnu4e.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu4f.pfb>
@@ -1592,48 +1558,47 @@ rphic/gbsnu/gbsnu4e.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu4f.pfb>
 type1/arphic/gbsnu/gbsnu51.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu
 52.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu53.pfb></usr/share/texmf
 /fonts/type1/arphic/gbsnu/gbsnu54.pfb></usr/share/texmf/fonts/type1/arphic/gbsn
-u/gbsnu55.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu56.pfb></usr/shar
-e/texmf/fonts/type1/arphic/gbsnu/gbsnu57.pfb></usr/share/texmf/fonts/type1/arph
-ic/gbsnu/gbsnu59.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5b.pfb></u
-sr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5c.pfb></usr/share/texmf/fonts/typ
-e1/arphic/gbsnu/gbsnu5e.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5f.
-pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu60.pfb></usr/share/texmf/fo
-nts/type1/arphic/gbsnu/gbsnu62.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/g
-bsnu63.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu64.pfb></usr/share/t
-exmf/fonts/type1/arphic/gbsnu/gbsnu65.pfb></usr/share/texmf/fonts/type1/arphic/
-gbsnu/gbsnu66.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu67.pfb></usr/
-share/texmf/fonts/type1/arphic/gbsnu/gbsnu68.pfb></usr/share/texmf/fonts/type1/
-arphic/gbsnu/gbsnu69.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6b.pfb
-></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6c.pfb></usr/share/texmf/fonts
-/type1/arphic/gbsnu/gbsnu6d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsn
-u6e.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu70.pfb></usr/share/texm
-f/fonts/type1/arphic/gbsnu/gbsnu71.pfb></usr/share/texmf/fonts/type1/arphic/gbs
-nu/gbsnu72.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu73.pfb></usr/sha
-re/texmf/fonts/type1/arphic/gbsnu/gbsnu74.pfb></usr/share/texmf/fonts/type1/arp
-hic/gbsnu/gbsnu75.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu76.pfb></
-usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu78.pfb></usr/share/texmf/fonts/ty
-pe1/arphic/gbsnu/gbsnu79.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7a
-.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7b.pfb></usr/share/texmf/f
-onts/type1/arphic/gbsnu/gbsnu7c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/
-gbsnu7e.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7f.pfb></usr/share/
-texmf/fonts/type1/arphic/gbsnu/gbsnu80.pfb></usr/share/texmf/fonts/type1/arphic
-/gbsnu/gbsnu82.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu86.pfb></usr
-/share/texmf/fonts/type1/arphic/gbsnu/gbsnu88.pfb></usr/share/texmf/fonts/type1
-/arphic/gbsnu/gbsnu89.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8b.pf
-b></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8c.pfb></usr/share/texmf/font
-s/type1/arphic/gbsnu/gbsnu8d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbs
-nu8f.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu90.pfb></usr/share/tex
-mf/fonts/type1/arphic/gbsnu/gbsnu91.pfb></usr/share/texmf/fonts/type1/arphic/gb
-snu/gbsnu94.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu95.pfb></usr/sh
-are/texmf/fonts/type1/arphic/gbsnu/gbsnu96.pfb></usr/share/texmf/fonts/type1/ar
-phic/gbsnu/gbsnu97.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu98.pfb><
-/usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnuff.pfb></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts
-/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier
-/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on 1_linux.pdf (37 pages, 602014 bytes).
+u/gbsnu57.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu59.pfb></usr/shar
+e/texmf/fonts/type1/arphic/gbsnu/gbsnu5b.pfb></usr/share/texmf/fonts/type1/arph
+ic/gbsnu/gbsnu5c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5e.pfb></u
+sr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5f.pfb></usr/share/texmf/fonts/typ
+e1/arphic/gbsnu/gbsnu60.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu62.
+pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu63.pfb></usr/share/texmf/fo
+nts/type1/arphic/gbsnu/gbsnu64.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/g
+bsnu65.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu66.pfb></usr/share/t
+exmf/fonts/type1/arphic/gbsnu/gbsnu67.pfb></usr/share/texmf/fonts/type1/arphic/
+gbsnu/gbsnu68.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu69.pfb></usr/
+share/texmf/fonts/type1/arphic/gbsnu/gbsnu6b.pfb></usr/share/texmf/fonts/type1/
+arphic/gbsnu/gbsnu6c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6d.pfb
+></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6e.pfb></usr/share/texmf/fonts
+/type1/arphic/gbsnu/gbsnu70.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsn
+u72.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu73.pfb></usr/share/texm
+f/fonts/type1/arphic/gbsnu/gbsnu74.pfb></usr/share/texmf/fonts/type1/arphic/gbs
+nu/gbsnu75.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu76.pfb></usr/sha
+re/texmf/fonts/type1/arphic/gbsnu/gbsnu77.pfb></usr/share/texmf/fonts/type1/arp
+hic/gbsnu/gbsnu78.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu79.pfb></
+usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7a.pfb></usr/share/texmf/fonts/ty
+pe1/arphic/gbsnu/gbsnu7b.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7c
+.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7e.pfb></usr/share/texmf/f
+onts/type1/arphic/gbsnu/gbsnu7f.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/
+gbsnu80.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu88.pfb></usr/share/
+texmf/fonts/type1/arphic/gbsnu/gbsnu89.pfb></usr/share/texmf/fonts/type1/arphic
+/gbsnu/gbsnu8b.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8c.pfb></usr
+/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8d.pfb></usr/share/texmf/fonts/type1
+/arphic/gbsnu/gbsnu8f.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu90.pf
+b></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu91.pfb></usr/share/texmf/font
+s/type1/arphic/gbsnu/gbsnu94.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbs
+nu95.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu96.pfb></usr/share/tex
+mf/fonts/type1/arphic/gbsnu/gbsnu97.pfb></usr/share/texmf/fonts/type1/arphic/gb
+snu/gbsnu98.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu9a.pfb></usr/sh
+are/texmf/fonts/type1/arphic/gbsnu/gbsnuff.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/
+urw/courier/ucrb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a
+.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/
+texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on 1_linux.pdf (39 pages, 906811 bytes).
 PDF statistics:
  554 PDF objects out of 1000 (max. 8388607)
- 75 named destinations out of 1000 (max. 500000)
- 303 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 79 named destinations out of 1000 (max. 500000)
+ 291 words of extra memory for PDF output out of 10000 (max. 10000000)
 
