@@ -28,7 +28,10 @@ extendedchars=true}
 \begin{CJK*}{UTF8}{gbsn}
 
 
-\title{OS概念与Linux内核源代码分析之1}
+\title{OS概念与Linux内核代码分析之一：进程管理}
+\author{李中国}
+\institute{苏州大学计算机科学与技术学院} %\\ 18862301730 \\ 理工楼409}
+%\date{2012年5月22日}
 
 \begin{frame}
 \maketitle
@@ -49,7 +52,7 @@ extendedchars=true}
 \frametitle{本课程Linux内核版本}
 \begin{itemize}
 \item linux kernel: 2.6.11.12 
-\item 为什么使用这个版本的内核？
+\item 为什么使用这个版本的内核?
 \item 下载地址: \url{http://www.kernel.org/pub/linux/kernel/v2.6}
 \end{itemize}
 \end{frame}
@@ -61,6 +64,10 @@ extendedchars=true}
 \item 了解OS的概念如何应用于实际操作系统
 \item 学习顶尖高手写程序的思路与方法
 \item 学习数据结构与算法如何用于解决实际问题
+\item 学习大规模工程的设计与实施
+\begin{itemize}
+\item 2.6.x内核开发成本: \$1.14 billion USD (欧盟)
+\end{itemize}
 \item (possibly)成为一名内核开发人员
 \end{itemize}
 \end{frame}
@@ -82,7 +89,7 @@ struct fox {
 \end{lstlisting}
 }
 \begin{frame}[fragile]%{Linux内核关键数据结构：list}
-\frametitle{Linux内核关键数据结构：list}
+\frametitle{Linux内核关键数据结构：双向循环链表(list)}
 \lstfox
 \begin{block}{思考：}
 这样定义链表有什么主要缺点?
@@ -106,12 +113,27 @@ struct task_struct {
 \end{lstlisting}
 }
 \begin{frame}[fragile]%{Linux内核关键数据结构：list}
-\frametitle{Linux内核关键数据结构：list}
+\frametitle{Linux内核关键数据结构}
 \begin{block}{list\_head的定义: include/linux/list.h}
 \lstlisthead
 \end{block}
-\begin{block}{list\_head的使用方法: include/linux/sched.h}
+\begin{block}{思考}
+%\begin{block}{list\_head的使用方法: include/linux/sched.h}
+%\lstlistheadusage
+与上页中的fox结构相比，这样定义的list\_head能有什么用处?
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{Linux内核关键数据结构}
+\begin{block}{list\_head的使用方法举例: include/linux/sched.h}
 \lstlistheadusage
+\end{block}
+\begin{block}{思考}
+%\begin{itemize}
+%\item 
+仍与fox结构相比，这样使用list\_head构造链表有什么好处?
+%\end{itemize}
 \end{block}
 \end{frame}
 
@@ -139,6 +161,30 @@ struct task_struct {
 \includegraphics[width=1.0\textwidth]{listhead.png}
 \end{frame}
 
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{Linux内核关键数据结构：list}
+\begin{block}{list\_head的定义: include/linux/list.h}
+\lstlisthead
+\end{block}
+\begin{block}{关键问题}
+如何根据list\_head的地址确定包含它的数据结构的地址？
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]%{Linux内核关键数据结构：list}
+\frametitle{Linux内核关键数据结构：list}
+\begin{block}{宏list\_entry(ptr, type, member)}
+计算包含ptr的结构体的地址
+\end{block}
+\begin{block}{例子: 结合上述task\_struct结构}
+list\_entry(ptrlst, struct task\_struct, run\_list)
+\end{block}
+
+\begin{block}{思考}
+宏list\_entry的实现原理是什么？
+\end{block}
+
+\end{frame}
 
 \defverbatim[colored]\lstinit{
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
@@ -163,7 +209,7 @@ struct task_struct {
 \item \alert{list\_del}(entry) 把entry从链表中删除
 \item \alert{list\_empty}(head) 判断链表head是否为空
 \item \alert{list\_splice}(list, head) 合并list和head
-\item \alert{list\_entry}(ptr, type, member) 计算包含ptr的结构体的地址
+%\item \alert{list\_entry}(ptr, type, member) 计算包含ptr的结构体的地址
 \item \alert{list\_for\_each}(pos, head) 遍历以head为头的链表
 \end{itemize}
 \end{frame}
@@ -257,6 +303,93 @@ struct hlist_node {
 \end{block}
 \end{frame}
 
+\begin{frame}{进程控制块(PCB)}
+\begin{columns}%[t]
+\column{.5\textwidth}
+用于存放与每个进程相关的信息
+\begin{itemize}
+\item 进程状态
+\item 程序计数器PC
+\item CPU寄存器
+\item CPU调度信息
+\item 内存管理信息
+\item I/O状态信息
+\item 记账信息
+\end{itemize}
+\column{.5\textwidth}
+\includegraphics[width=0.6\textwidth]{PCB.png}
+\end{columns}%[t]
+\end{frame}
+
+\begin{frame}{Linux进程描述符: Process Descriptor}
+\begin{itemize}
+\item 进程控制块在Linux内核中被成为进程描述符(Process Descriptor)
+\item 结构名字: struct task\_struct;
+\item 这是一个非常大的数据结构，其中包含：
+\begin{itemize}
+\item 94行成员字段
+\item 其中36行成员本身又是struct或者指向struct的指针
+\end{itemize}
+\item 后面我们将对task\_struct结构进行逐行分析
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Linux进程描述符: Process Descriptor}
+\includegraphics[width=0.7\textwidth]{taskstruct.png}
+\end{frame}
+
+\defverbatim[colored]\lstpidmax{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+/*
+ * This controls the default maximum pid 
+ *   allocated to a process
+ */
+#define PID_MAX_DEFAULT 0x8000
+\end{lstlisting}
+}
+\begin{frame}{Linux区别不同进程的方式}
+%\includegraphics[width=0.7\textwidth]{taskstruct.png}
+\begin{itemize}
+\item 在内核中，对进程的各种操作均通过task\_struct实现
+\item 用户角度，每个进程有唯一编号(PID). 进程的PID保存于task\_struct的pid字段中。
+\begin{itemize}
+\item 例如：kill()系统调用的参数为PID
+\item 内核需要快速从PID找到对应的task\_struct进行操作(后面讲具体方法)
+\end{itemize}
+\end{itemize}
+\begin{block}{PID可取的最大值: include/linux/threads.h}
+\lstpidmax
+\end{block}
+\end{frame}
+
+\begin{frame}{Linux区别不同进程的方式}
+\begin{block}{思考}
+\begin{enumerate}
+\item 为什么要限制PID可取的最大值？
+\item[]
+\item 如果系统中进程个数超过这个最大值怎么办？
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\defverbatim[colored]\lstpidmaparray{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+typedef struct pidmap {
+    atomic_t nr_free;
+    void *page;
+} pidmap_t;
+
+static pidmap_t pidmap_array[PIDMAP_ENTRIES] =
+     { [ 0 ... PIDMAP_ENTRIES-1 ] = 
+       { ATOMIC_INIT(BITS_PER_PAGE), NULL } };
+\end{lstlisting}
+}
+\begin{frame}{Linux区别不同进程的方式}
+\begin{block}{pidmap\_array用于管理pid值的回收利用: kernel/pid.c}
+\lstpidmaparray
+\end{block}
+\end{frame}
+
 \defverbatim[colored]\lsttasks{
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
 struct task_struct {
@@ -266,8 +399,17 @@ struct task_struct {
 };
 \end{lstlisting}
 }
+
 \begin{frame}{Linux进程描述符: Process Descriptor}
-\begin{block}{task\_struct结构: include/linux/sched.h}
+OS有时需要遍历系统中全部进程，所以进程描述符中需要相应字段，用于连接系统中的各个进程。
+\begin{itemize}
+\item 这就用到前面所说的list\_head这个关键结构
+\item 回想一下list\_head中包含的两个字段
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Linux进程描述符: Process Descriptor}
+\begin{block}{task\_struct中的tasks字段：将系统中所有进程连接起来} 
 \lsttasks
 \end{block}
 \begin{block}{系统中所有进程组成的链表}
@@ -277,6 +419,15 @@ struct task_struct {
 \begin{block}{遍历系统中所有进程的宏: for\_each\_process}
 阅读并理解include/linux/sched.h中for\_each\_process的实现。
 \end{block}
+\end{frame}
+
+\begin{frame}{Linux进程描述符: Process Descriptor}
+OS在进程调度时，需要从全部处于TASK\_RUNNING（可运行）状态的进程中选择一个进程，让它占有CPU并运行。
+为此我们需要：
+\begin{itemize}
+\item 在进程描述符中记录每个进程的优先级
+\item 以有效的数据结构按照优先级组织所有进程
+\end{itemize}
 \end{frame}
 
 \defverbatim[colored]\lstrunning{
@@ -317,7 +468,7 @@ struct prio_array {
 \begin{block}{各成员字段的含义}
 \begin{itemize}
 \item nr\_active: 当前列表中进程总数
-\item bitmap 用于记录哪个队列为非空
+\item bitmap 用于记录哪个队列为非空(后面分析调度算法时用到)
 \item queue用于存储140个队列的表头
 \end{itemize}
 \end{block}
@@ -440,6 +591,8 @@ struct task_struct {
 }
 \begin{frame}[fragile]
 \frametitle{Linux进程表示：task\_struct结构}
+进程管理中需要记录进程之间的层次关系(父母、兄弟姐妹)：
+
 \lstparents
 \end{frame}
 \begin{frame}[fragile]
@@ -447,11 +600,23 @@ struct task_struct {
 %\lstparents
 \includegraphics[width=0.8\textwidth]{parent2.png}
 \end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Linux进程表示：task\_struct结构}
-%\lstparents
-%\includegraphics[width=0.8\textwidth]{parent2.png}
 查看进程结构树的命令：pstree
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux进程表示：task\_struct结构}
+除了上述关系外，进程之间还存在如下关系:
+\begin{itemize}
+\item 多个进程可以形成一个组(group)，每个组都有唯一的leader.
+\begin{itemize}
+\item 例如： \verb=cat file | grep 'abc' | wc -l=，其中三个进程形成一个组
+\end{itemize}
+\item 类似，进程间可以形成一个会话(session)，每个会话中指定唯一的leader
+\item 同一进程创建的多个线程组成线程组(thread group)，每组也有唯一leader
+\end{itemize}
 \end{frame}
 
 \defverbatim[colored]\lstotherrelations{
@@ -460,8 +625,7 @@ struct task_struct {
     ...
     struct task_struct *group_leader;
     pid_t tgid;
-    struct list_head ptrace_children;
-    struct list_head ptrace_list;
+    pid_t pid;
     struct signal_struct *signal;
     ...
 };
@@ -469,6 +633,8 @@ struct task_struct {
 }
 \begin{frame}[fragile]
 \frametitle{Linux进程表示：task\_struct结构}
+task\_struct中的group\_leader和tgid分别表示进程组的leader、线程组的leader:
+
 \lstotherrelations
 %\includegraphics[width=0.8\textwidth]{parent2.png}
 \end{frame}
@@ -486,8 +652,33 @@ struct signal_struct {
 }
 \begin{frame}[fragile]
 \frametitle{Linux进程表示：task\_struct结构}
+pgrp和session字段分别表示进程组leader的PID、会话组leader的PID：
+\begin{block}{include/linux/sched.h}
 \lstsignalstruct
+\end{block}
 %\includegraphics[width=0.8\textwidth]{parent2.png}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux进程表示：task\_struct结构}
+进程标识：
+
+\begin{itemize}
+\item 从内核角度，一律通过task\_struct操作进程
+\item 从用户角度可能需要通过PID操作进程，如kill(pid)
+\end{itemize}
+
+所以需要做到从pid到task\_struct的快速转换：
+
+\begin{itemize}
+\item task\_struct到pid: \verb|p->pid|
+\item pid到task\_struct的快速转换：
+\begin{itemize}
+\item 遍历所有进程，逐一检查其pid字段的值？
+\item 通过散列表结构做到快速转换
+\end{itemize}
+\end{itemize}
+
 \end{frame}
 
 \defverbatim[colored]\lstpidtype{
@@ -502,9 +693,20 @@ enum pid_type
 };
 \end{lstlisting}
 }
+\defverbatim[colored]\lstpidhashhaha{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+static struct hlist_head *pid_hash[PIDTYPE_MAX];
+\end{lstlisting}
+}
 \begin{frame}[fragile]
 \frametitle{Linux进程表示：task\_struct结构}
+共有四种类型的PID：进程本身PID、线程组leader的PID、进程组leader的PID以及会话组leader的PID:
+\begin{block}{include/linux/pid.h}
 \lstpidtype
+\end{block}
+\begin{block}{依据PID类型不同，共定义四个散列表：kernel/pid.c}
+\lstpidhashhaha
+\end{block}
 %\includegraphics[width=0.8\textwidth]{parent2.png}
 \end{frame}
 
@@ -518,9 +720,25 @@ struct pid
 };
 \end{lstlisting}
 }
+\defverbatim[colored]\lstpidsintaskstruct{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+struct pid
+{
+    ...
+    /* PID/PID hash table linkage. */
+    struct pid pids[PIDTYPE_MAX];
+    ...
+};
+\end{lstlisting}
+}
 \begin{frame}[fragile]
 \frametitle{Linux进程表示：task\_struct结构}
+\begin{block}{散列表中元素struct pid: include/linux/pid.h }
 \lstpidstruct
+\end{block}
+\begin{block}{task\_struct中相应字段}
+\lstpidsintaskstruct
+\end{block}
 %\includegraphics[width=0.8\textwidth]{parent2.png}
 \end{frame}
 
@@ -641,6 +859,42 @@ int setrlimit(int res, const struct rlimit *rlim);
 \end{block}
 \begin{block}{相关命令}
 cat /proc/self/limits
+\end{block}
+\end{frame}
+
+\defverbatim[colored]\lstthreadintask{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+struct task_struct {
+    ...
+    struct user_struct thread;
+    ...
+};
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{Linux进程表示：task\_struct结构}
+\lstthreadintask
+\end{frame}
+
+\defverbatim[colored]\lstthreadstruct{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+struct thread_struct {
+    unsigned long   rsp0;
+    unsigned long   rsp;
+    unsigned long   fs;
+    unsigned long   gs;
+    unsigned short  es, ds, fsindex, gsindex;
+    ...
+};
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{Linux进程表示：task\_struct结构}
+\begin{block}{include/asm-x86\_64/processor.h}
+\lstthreadstruct
+\end{block}
+\begin{block}{通用寄存器的值保存在哪里?}
+\alert{eax}, \alert{ebx}等通用寄存器在上下文切换时保存在kernel mode stack (核心态下的栈中)
 \end{block}
 \end{frame}
 
