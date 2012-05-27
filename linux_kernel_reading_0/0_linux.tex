@@ -1,0 +1,148 @@
+\documentclass[xcolor=svgnames]{beamer}
+\mode<presentation>
+{
+      \setbeamertemplate{footline}[page number]
+      \setbeamercovered{transparent}
+      \setbeamertemplate{navigation symbols}{}
+      \usecolortheme[named=DarkGreen]{structure}
+}
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{url}
+\usepackage{CJKutf8}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{listings}
+\lstset{breakatwhitespace,
+language=C++,
+columns=fullflexible,
+keepspaces,
+breaklines,
+tabsize=3,
+showstringspaces=false,
+extendedchars=true}
+
+
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+
+
+\title{Linux内核代码：简介}
+\author{李中国}
+\institute{苏州大学计算机科学与技术学院} %\\ 18862301730 \\ 理工楼409}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux内核源代码目录树}
+\begin{tabular}{|r l|} 
+\hline 
+目录 & 描述 \\
+\hline 
+arch & 硬件体系结构相关的代码 \\
+Documentation & 内核源代码文档 \\
+drivers & 设备驱动程序 \\
+fs & 文件系统 \\
+include & 内核头文件 \\
+ipc & 进程间通讯代码\\
+init & 系统启动及初始化代码 \\
+kernel & 核心代码（如进程调度器等）\\
+mm & 内存管理系统、虚拟内存系统 \\
+net & 网络系统代码（如TCP/IP协议栈）\\
+lib & 辅助函数库 \\
+\hline 
+\end{tabular} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux内核与普通应用程序的区别}
+\begin{itemize}
+\item 内核不能使用C语言标注库函数（及C标准头文件）
+\item Linux内核编程使用的是GNU C而不是标准C语言
+\item 内核代码缺乏内存保护机制（应用程序则有）
+%\item 内核无法方便地使用浮点数操作指令
+\item 与应用程序比，内核运行时的栈非常小
+\item 内核代码必须正确处理同步与并发问题
+\item 可移植性对内核而言非常重要
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{为什么内核不能使用C语言库函数及头文件?}
+\begin{block}{原因}
+\begin{itemize}
+\item chicken-and-egg问题
+\item C标准库对内核而言太庞大、低效
+\end{itemize}
+\end{block}
+\begin{block}{Linux内核的应对策略}
+\begin{itemize}
+\item 自己实现部分库函数功能：\verb|lib/string.c|，对应头文件\verb|<linux/string.h>|
+\item 标准库中printf函数在内核中对应的是printk
+\begin{itemize}
+\item 例如 \verb|printk(KERN_ERR "this is an error!\n")|
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linux内核使用GNU C编程}
+\begin{itemize}
+\item GNU C支持内联函数(与宏相比有什么有点?)
+\begin{itemize}
+\item 内联函数在使用前需先定义；一般置于头文件中
+\item 例：\verb|static inline void wolf(unsigned long t)|
+\end{itemize}
+\item 内联汇编语言: 可以在C程序中直接使用汇编语句
+\begin{itemize}
+\item 例：\verb|asm volatile("rdtsc":"=a"(l), "=d"(h));|
+\end{itemize}
+\item GNU C支持条件分支优化，例如：
+\begin{verbatim}
+/* 'error' is nearly always zero */
+if (unlikely(error)) {
+    ... 
+}
+
+/* 'success' is nearly always nonzero */
+if (likely(success)) {
+    ... 
+}
+
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{内核中没有内存保护机制}
+\begin{itemize}
+\item 应用程序访问非法内存地址?
+\begin{itemize}
+\item 操作系统会给该进程发送\verb|SIGSEGV|信号并将其杀死
+\end{itemize}
+\item 谁来阻止操作系统访问非法地址?
+\item 内核所占的物理内存无法进行分页
+\begin{itemize}
+\item 所以内核在使用物理内存时必须特别节俭
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{核心态下的栈空间}
+\begin{itemize}
+\item 应用程序可以使用的栈是动态增长的、具体大小仅由地址空间限制
+\item 内核可以利用的栈大小是固定的(2 pages):
+\begin{itemize}
+\item 32位x86平台上，固定为8K
+\item 64位平台上固定为16K
+\end{itemize}
+\item 内核在编译前可以配置其所利用的栈为4K
+\end{itemize}
+\end{frame}
+\end{CJK*}
+\end{document}

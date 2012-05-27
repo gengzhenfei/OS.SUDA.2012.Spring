@@ -1,0 +1,10 @@
+\frametitle {核心态下的栈空间}
+\begin{itemize}
+\item 应用程序可以使用的栈是动态增长的、具体大小仅由地址空间限制
+\item 内核可以利用的栈大小是固定的(2 pages):
+\begin{itemize}
+\item 32位x86平台上，固定为8K
+\item 64位平台上固定为16K
+\end{itemize}
+\item 内核在编译前可以配置其所利用的栈为4K
+\end{itemize}
