@@ -15,7 +15,7 @@
 \usepackage{amsmath}
 \usepackage{listings}
 \lstset{breakatwhitespace,
-language=C++,
+language=C,
 columns=fullflexible,
 keepspaces,
 breaklines,
@@ -177,7 +177,7 @@ struct task_struct {
 计算包含ptr的结构体的地址
 \end{block}
 \begin{block}{例子: 结合上述task\_struct结构}
-list\_entry(ptrlst, struct task\_struct, run\_list)
+list\_entry(ptr, struct task\_struct, run\_list)
 \end{block}
 
 \begin{block}{思考}
@@ -185,6 +185,30 @@ list\_entry(ptrlst, struct task\_struct, run\_list)
 \end{block}
 
 \end{frame}
+
+%\defverbatim[colored]\lstcontainerof{
+%\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+%#define container_of(ptr, type, member) ({  \
+%const typeof( ((type *)0)->member ) *__mptr = (ptr);\
+%(type *)( (char *)__mptr - offsetof(type,member) );})
+%\end{lstlisting}
+%}
+\defverbatim[colored]\lstcontainerof{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+#define list_entry(ptr, type, member) \
+    container_of(ptr, type, member)
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{Linux内核关键数据结构：list}
+\begin{block}{list\_entry的定义: include/linux/list.h}
+\lstcontainerof
+\end{block}
+\begin{block}{container\_of的定义: include/linux/kernel.h}
+请在该头文件中找到container\_of的定义并试着理解它。
+\end{block}
+\end{frame}
+
 
 \defverbatim[colored]\lstinit{
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
@@ -218,20 +242,20 @@ list\_entry(ptrlst, struct task\_struct, run\_list)
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
 typedef struct list_head list_head;
 
-static inline void list_add(list_head *newn, 
+static inline void list_add(list_head *new, 
                             list_head *head)
 {
-    __list_add(newn, head, head->next);
+    __list_add(new, head, head->next);
 }
 
-static inline void __list_add(list_head *newn,
+static inline void __list_add(list_head *new,
                   list_head *prev,
                   list_head *next)
 {
-    next->prev = newn;
-    newn->next = next;
-    newn->prev = prev;
-    prev->next = newn;
+    next->prev = new;
+    new->next  = next;
+    new->prev  = prev;
+    prev->next = new;
 }
 \end{lstlisting}
 }
@@ -423,11 +447,17 @@ OS有时需要遍历系统中全部进程，所以进程描述符中需要相应
 
 \begin{frame}{Linux进程描述符: Process Descriptor}
 OS在进程调度时，需要从全部处于TASK\_RUNNING（可运行）状态的进程中选择一个进程，让它占有CPU并运行。
-为此我们需要：
+\begin{block}{2.6.x之前的Linux内核}
+将所有处于TASK\_RUNNING状态的进程放到一个链表中，每次需要遍历整个链表，并从中选择优先级最高的进程。
+进程调度时间复杂度为$O(n)$.
+\end{block}
+\begin{block}{Linux 2.6.x内核的$O(1)$调度算法}
 \begin{itemize}
 \item 在进程描述符中记录每个进程的优先级
 \item 以有效的数据结构按照优先级组织所有进程
+\item 调度算法时间复杂度为$O(1)$, 与进程数$n$没有直接关系
 \end{itemize}
+\end{block}
 \end{frame}
 
 \defverbatim[colored]\lstrunning{
@@ -461,9 +491,17 @@ struct prio_array {
 };
 \end{lstlisting}
 }
+\defverbatim[colored]\lstprioarrayt{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+typedef struct prio_array prio_array_t;
+\end{lstlisting}
+}
 \begin{frame}{Linux进程描述符: Process Descriptor}
 \begin{block}{kernel/sched.c}
 \lstprio
+\end{block}
+\begin{block}{include/linux/sched.h}
+\lstprioarrayt
 \end{block}
 \begin{block}{各成员字段的含义}
 \begin{itemize}
@@ -488,10 +526,14 @@ void enqueue_task(struct task_struct *p,
 }
 \end{lstlisting}
 }
-\begin{frame}{Linux进程描述符: Process Descriptor}
+\begin{frame}{fragile}
+\frametitle{Linux进程描述符: Process Descriptor}
 \lstenqueue
-\end{frame}
+\begin{block}{特别注意}
+list\_add\_tail的第一个参数.
+\end{block}
 
+\end{frame}
 
 \begin{frame}{课外练习}
 \begin{enumerate}
@@ -522,15 +564,6 @@ void enqueue_task(struct task_struct *p,
 阅读以上两个函数的源代码(位于文件include/linux/sched.h)，并思考为什么要这样写。
 \end{block}
 \end{frame}
-
-%\begin{frame}[fragile]%{Linux内核关键数据结构：list}
-%\frametitle{进程与线程的区别与联系}
-%\includegraphics[width=1.0\textwidth]{proc_thread.png}
-%\begin{itemize}
-%\item 进程是资源分配单位（地址空间、I/O等资源）
-%\item 线程是执行单位
-%\end{itemize}
-%\end{frame}
 
 %\begin{frame}[fragile]%{Linux内核关键数据结构：list}
 %\frametitle{Linux中的内核地址空间与用户地址空间}
@@ -616,6 +649,9 @@ struct task_struct {
 \end{itemize}
 \item 类似，进程间可以形成一个会话(session)，每个会话中指定唯一的leader
 \item 同一进程创建的多个线程组成线程组(thread group)，每组也有唯一leader
+\begin{itemize}
+\item 线程组对应多线程程序里的所有线程
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -677,6 +713,7 @@ pgrp和session字段分别表示进程组leader的PID、会话组leader的PID：
 \item 遍历所有进程，逐一检查其pid字段的值？
 \item 通过散列表结构做到快速转换
 \end{itemize}
+\item 给定进程组、会话组或者线程组的leader ID, 如何快速找出该组中所有进程(线程)?
 \end{itemize}
 
 \end{frame}
