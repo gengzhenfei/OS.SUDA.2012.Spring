@@ -26,9 +26,9 @@ extendedchars=true}
 
 \AtBeginSubsection[]
 {
-      \begin{frame}<beamer>{Outline}
-          \tableofcontents[currentsection,currentsubsection]
-            \end{frame}
+    \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
 }
 
 
@@ -44,7 +44,11 @@ extendedchars=true}
 \maketitle
 \end{frame}
 
-\section{Outline}
+\begin{frame}{内容提要}
+\tableofcontents[pausesections]
+\end{frame}
+
+\section{本部分课程简介}
 
 \begin{frame}[fragile]
 \frametitle{本课程Linux内核版本}
@@ -57,7 +61,6 @@ extendedchars=true}
 
 \begin{frame}[fragile]%{Linux内核关键数据结构：list}
 \frametitle{为什么研究Linux内核代码}
-%\includegraphics[width=1.0\textwidth]{kernel.png}
 \begin{itemize}
 \item 了解OS的概念如何应用于实际操作系统
 \item 学习顶尖高手写程序的思路与方法
@@ -65,8 +68,9 @@ extendedchars=true}
 \item 学习大规模工程的设计与实施
 \begin{itemize}
 \item 2.6.x内核开发成本: \$1.14 billion USD (欧盟)
+\item 最新内核开发成本: \$3.0 billion USD (Wikipedia)
 \end{itemize}
-\item (possibly)成为一名内核开发人员
+\item 成为一名内核开发人员
 \end{itemize}
 \end{frame}
 
@@ -75,12 +79,10 @@ extendedchars=true}
 \includegraphics[width=1.0\textwidth]{kernel.png}
 \end{frame}
 
-\begin{frame}{Outline}
-  \tableofcontents[pausesections]
-  \end{frame}
 
+\section{Linux内核关键数据结构}
 
-\section{Linux内核关键数据结构: 链表}
+\subsection{双向循环链表: list\_head}
 
 \defverbatim[colored]\lstfox{
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
@@ -93,8 +95,8 @@ struct fox {
 };
 \end{lstlisting}
 }
-\begin{frame}[fragile]%{Linux内核关键数据结构：list}
-\frametitle{Linux内核关键数据结构：双向循环链表(list)}
+\begin{frame}[fragile]
+\frametitle{双向链表的常见实现方式}
 \lstfox
 \begin{block}{思考：}
 这样定义链表有什么主要缺点?
@@ -117,28 +119,23 @@ struct task_struct {
 };
 \end{lstlisting}
 }
-\begin{frame}[fragile]%{Linux内核关键数据结构：list}
-\frametitle{Linux内核关键数据结构}
-\begin{block}{list\_head的定义: include/linux/list.h}
+\begin{frame}[fragile]
+\frametitle{list\_head的定义}
+\begin{block}{include/linux/list.h}
 \lstlisthead
 \end{block}
 \begin{block}{思考}
-%\begin{block}{list\_head的使用方法: include/linux/sched.h}
-%\lstlistheadusage
-与上页中的fox结构相比，这样定义的list\_head能有什么用处?
+这种只有指针而没有数据的list\_head能有什么用处?
 \end{block}
 \end{frame}
 
-\begin{frame}[fragile]%{Linux内核关键数据结构：list}
-\frametitle{Linux内核关键数据结构}
-\begin{block}{list\_head的使用方法举例: include/linux/sched.h}
+\begin{frame}[fragile]
+\frametitle{list\_head的使用方法举例}
+\begin{block}{include/linux/sched.h}
 \lstlistheadusage
 \end{block}
 \begin{block}{思考}
-%\begin{itemize}
-%\item 
-仍与fox结构相比，使用list\_head构造链表有什么好处?
-%\end{itemize}
+与fox结构相比，使用list\_head构造链表有什么好处?
 \end{block}
 \end{frame}
 
@@ -162,23 +159,26 @@ struct task_struct {
 \end{lstlisting}
 }
 
-\begin{frame}[fragile]%{Linux内核关键数据结构：list}
-\frametitle{Linux内核关键数据结构：list}
+\begin{frame}[fragile]
+\frametitle{用list\_head实现双向循环链表: 示意图}
 \includegraphics[width=1.0\textwidth]{listhead.png}
 \end{frame}
 
-\begin{frame}[fragile]%{Linux内核关键数据结构：list}
-\frametitle{Linux内核关键数据结构：list}
-\begin{block}{list\_head的定义: include/linux/list.h}
+\begin{frame}[fragile]
+\frametitle{用list\_head实现双向链表: 关键问题}
+\begin{block}{include/linux/list.h}
 \lstlisthead
+\end{block}
+\begin{block}{include/linux/sched.h}
+\lstlistheadusage
 \end{block}
 \begin{block}{关键问题}
 如何根据list\_head的地址确定包含它的数据结构的地址？
 \end{block}
 \end{frame}
 
-\begin{frame}[fragile]%{Linux内核关键数据结构：list}
-\frametitle{Linux内核关键数据结构：list}
+\begin{frame}[fragile]
+\frametitle{如何计算包含list\_head的结构体地址?}
 \begin{block}{宏list\_entry(ptr, type, member)}
 计算包含ptr(指向list\_head结构的指针)的结构体的地址
 \end{block}
@@ -206,12 +206,12 @@ list\_entry(ptr, struct task\_struct, run\_list)
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{Linux内核关键数据结构：list}
-\begin{block}{list\_entry的定义: include/linux/list.h}
+\frametitle{如何计算包含list\_head的结构体地址?}
+\begin{block}{include/linux/list.h}
 \lstcontainerof
 \end{block}
-\begin{block}{container\_of的定义: include/linux/kernel.h}
-练习：请在该头文件中找到container\_of的定义并试着理解它。
+\begin{block}{container\_of的定义}
+请在include/linux/kernel.h中找到container\_of的定义并试着理解它。
 \end{block}
 \end{frame}
 
@@ -226,21 +226,26 @@ list\_entry(ptr, struct task\_struct, run\_list)
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{Linux内核关键数据结构：list}
-\begin{block}{list\_head结构的静态初始化: include/linux/list.h}
+\frametitle{list\_head结构的静态初始化}
+\begin{block}{include/linux/list.h}
 \lstinit
+\end{block}
+\begin{block}{LIST\_HEAD的使用方法}
+%\lstinit
+例: \verb|LIST_HEAD(packet_list)|声明一个名为\verb|packet_list|的表头变量并将其初始化为空表。
 \end{block}
 \end{frame}
 
-\begin{frame}{针对list结构的操作}
+\begin{frame}[fragile]
+\frametitle{针对list结构的操作}
 \begin{itemize}
-\item \alert{list\_add}(new, head) 把new插入head后面
-\item \alert{list\_add\_tail}(new, head) 把new插入head前面
-\item \alert{list\_del}(entry) 把entry从链表中删除
-\item \alert{list\_empty}(head) 判断链表head是否为空
-\item \alert{list\_splice}(list, head) 合并list和head
-\item \alert{list\_for\_each}(pos, head) 遍历以head为头的链表
-\item \alert{list\_for\_each\_entry}(pos, head) 
+\item \verb|list_add(new, head)| 把new插入head后面
+\item \verb|list_add_tail(new, head)| 把new插入head前面
+\item \verb|list_del(entry)| 把entry从链表中删除
+\item \verb|list_empty(head)| 判断链表head是否为空
+\item \verb|list_splice(list, head)| 合并list和head
+\item \verb|list_for_each(pos, head)| 遍历以head为头的链表
+\item \verb|list_for_each_entry(pos, head)|
 \end{itemize}
 \end{frame}
 
@@ -266,7 +271,7 @@ static inline void __list_add(list_head *new,
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{针对list结构的操作: 代码分析举例}
+\frametitle{针对list结构的操作举例: list\_add}
 \lstadd
 \end{frame}
 
@@ -284,19 +289,18 @@ return NULL;
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{针对list结构的操作: 代码分析举例}
+\frametitle{针对list结构的操作举例: list\_for\_each}
 \lstforeach
-%\begin{block}{练习}
-%从源文件include/linux/list.h中找出并理解上述针对list的各种操作函数的定义。
-%\end{block}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{针对list结构的操作: 代码分析举例}
+\frametitle{针对list结构的操作: 其它}
 \begin{block}{课外练习}
 从源文件include/linux/list.h中找出上述list操作的函数代码，阅读并理解其实现。
 \end{block}
 \end{frame}
+
+\subsection{哈希表: hlist\_head与hlist\_node}
 
 \defverbatim[colored]\lsthlist{
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
@@ -310,30 +314,65 @@ struct hlist_node {
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{Linux内核关键数据结构：hlist\_head与hlist\_node}
+\frametitle{实现哈希表: hlist\_head与hlist\_node}
 \includegraphics[width=0.9\textwidth]{hlist.jpeg}
-\begin{block}{用于实现散列表：include/linux/list.h}
+\begin{block}{include/linux/list.h}
 \lsthlist
 \end{block}
 \end{frame}
 
-\begin{frame}%{Linux进程描述符: Process Descriptor}
+\begin{frame}[fragile]
+\frametitle{针对hlist\_head与hlist\_node的操作}
+\begin{itemize}
+\item \verb|hlist_add_head|
+\item \verb|hlist_add_before|
+\item \verb|hlist_del(entry)|
+\item \verb|hlist_empty(head)| 
+\item \verb|hlist_entry(head)| 
+\item \verb|hlist_for_each_entry(pos, head)|
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
 \frametitle{Linux内核关键数据结构：hlist\_head与hlist\_node}
 \begin{block}{思考及课外练习}
-阅读include/linux/list.h中\alert{hlist\_add\_head}(), \alert{hlist\_del}(), \alert{hlist\_empty}(),
-\alert{hlist\_add\_before}()等函数的实现，思考：
+阅读include/linux/list.h中
+\verb|hlist_add_head()|, \verb|hlist_del()|, \verb|hlist_empty()|, \verb|hlist_add_before()|等函数的实现，思考：
 
 \begin{enumerate}
-\item hlist\_node中的pprev字段指向什么内容?
-\item[]
-\item 为什么pprev采用二重指针?
-\item[]
-\item 为什么hlist\_head中只有一个成员first?
+\item \verb|hlist_node|中的\verb|pprev|字段指向什么内容?
+\item 为什么\verb|pprev|采用二重指针?
+\item 为什么\verb|hlist_head|中只有一个成员\verb|first|?
+\item \verb|hlist_head|可否直接用\verb|hlist_node|代替?
 \end{enumerate}
 \end{block}
 \end{frame}
 
-\section{Linux进程描述符: task\_struct}
+\defverbatim[colored]\lstaddbefore{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+static inline void hlist_add_before(
+                   struct hlist_node *n,
+                   struct hlist_node *next)
+{
+    n->pprev = next->pprev;
+    n->next = next;
+    next->pprev = &n->next;
+    *(n->pprev) = n;
+}
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{实现哈希表: hlist\_head与hlist\_node}
+\begin{block}{include/linux/list.h}
+\lstaddbefore
+\end{block}
+要理解这其中四条语句特别是最后一条的含义。
+\end{frame}
+
+
+\section{Linux进程描述符task\_struct}
+
+\subsection{进程控制块, 进程描述符}
 
 \begin{frame}{进程控制块(PCB)}
 \begin{columns}%[t]
@@ -353,7 +392,7 @@ struct hlist_node {
 \end{columns}%[t]
 \end{frame}
 
-\begin{frame}{Linux进程描述符: Process Descriptor}
+\begin{frame}{Linux进程描述符}
 \begin{itemize}
 \item 进程控制块在Linux内核中被成为进程描述符(Process Descriptor)
 \item 结构名字: struct task\_struct;
@@ -366,9 +405,11 @@ struct hlist_node {
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Linux进程描述符: Process Descriptor}
+\begin{frame}{Linux进程描述符}
 \includegraphics[width=0.7\textwidth]{taskstruct.png}
 \end{frame}
+
+\subsection{进程描述符各字段分析}
 
 \defverbatim[colored]\lstpidmax{
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
@@ -379,7 +420,7 @@ struct hlist_node {
 #define PID_MAX_DEFAULT 0x8000
 \end{lstlisting}
 }
-\begin{frame}{Linux区别不同进程的方式}
+\begin{frame}{Linux区别进程的方式: pid字段}
 %\includegraphics[width=0.7\textwidth]{taskstruct.png}
 \begin{itemize}
 \item 在内核中，对进程的各种操作均通过task\_struct实现
@@ -394,7 +435,7 @@ struct hlist_node {
 \end{block}
 \end{frame}
 
-\begin{frame}{Linux区别不同进程的方式}
+\begin{frame}{Linux区别进程的方式: pid字段}
 \begin{block}{思考}
 \begin{enumerate}
 \item 为什么要限制PID可取的最大值？
@@ -416,9 +457,13 @@ static pidmap_t pidmap_array[PIDMAP_ENTRIES] =
        { ATOMIC_INIT(BITS_PER_PAGE), NULL } };
 \end{lstlisting}
 }
-\begin{frame}{Linux区别不同进程的方式}
+\begin{frame}[fragile]
+\frametitle{Linux区别进程的方式: pid字段}
 \begin{block}{pidmap\_array用于管理pid值的回收利用: kernel/pid.c}
 \lstpidmaparray
+\end{block}
+\begin{block}{思考}
+\verb|pidmap_array|的必要性? (从pid分配的角度考虑)
 \end{block}
 \end{frame}
 
@@ -432,7 +477,7 @@ struct task_struct {
 \end{lstlisting}
 }
 
-\begin{frame}{Linux进程描述符: Process Descriptor}
+\begin{frame}{内核遍历所有进程的方式: tasks字段}
 OS有时需要遍历系统中全部进程，所以进程描述符中需要相应字段，用于连接系统中的各个进程。
 \begin{itemize}
 \item 这就用到前面所说的list\_head这个关键结构
@@ -440,7 +485,7 @@ OS有时需要遍历系统中全部进程，所以进程描述符中需要相应
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Linux进程描述符: Process Descriptor}
+\begin{frame}{内核遍历所有进程的方式: tasks字段}
 \begin{block}{task\_struct中的tasks字段：将系统中所有进程连接起来} 
 \lsttasks
 \end{block}
@@ -453,11 +498,12 @@ OS有时需要遍历系统中全部进程，所以进程描述符中需要相应
 \end{block}
 \end{frame}
 
-\begin{frame}{Linux进程描述符: Process Descriptor}
-OS在进程调度时，需要从全部处于TASK\_RUNNING（可运行）状态的进程中选择一个进程，让它占有CPU并运行。
+\begin{frame}[fragile]
+\frametitle{与进程调度相关的字段}
+在进程调度时，需要从处于\verb|TASK_RUNNING|(可运行)状态的进程中选择一个，让它占有CPU并运行。
 \begin{block}{2.6.x之前的Linux内核}
-将所有处于TASK\_RUNNING状态的进程放到一个链表中，每次需要遍历整个链表，并从中选择优先级最高的进程。
-进程调度时间复杂度为$O(n)$.
+将所有处于\verb|TASK_RUNNING|状态的进程放到一个链表，需要遍历整个链表，从中选择优先级最高的进程。
+调度的时间复杂度为$O(n)$.
 \end{block}
 \begin{block}{Linux 2.6.x内核的$O(1)$调度算法}
 \begin{itemize}
@@ -479,7 +525,8 @@ struct task_struct {
 };
 \end{lstlisting}
 }
-\begin{frame}{Linux进程描述符: Process Descriptor}
+\begin{frame}%{Linux进程描述符: Process Descriptor}
+\frametitle{与进程调度相关的字段}
 \lstrunning
 \begin{block}{各字段的含义}
 \begin{itemize}
@@ -504,7 +551,8 @@ struct prio_array {
 typedef struct prio_array prio_array_t;
 \end{lstlisting}
 }
-\begin{frame}{Linux进程描述符: Process Descriptor}
+\begin{frame}%{Linux进程描述符: Process Descriptor}
+\frametitle{与进程调度相关的字段}
 \begin{block}{kernel/sched.c}
 \lstprio
 \end{block}
@@ -535,7 +583,7 @@ void enqueue_task(struct task_struct *p,
 \end{lstlisting}
 }
 \begin{frame}{fragile}
-\frametitle{Linux进程描述符: Process Descriptor}
+\frametitle{与进程调度相关的字段}
 \lstenqueue
 \begin{block}{特别注意}
 list\_add\_tail的第一个参数.
@@ -543,17 +591,18 @@ list\_add\_tail的第一个参数.
 
 \end{frame}
 
-\begin{frame}{课外练习}
+\begin{frame}[fragile]
+\frametitle{课外练习}
 \begin{enumerate}
-\item 上页中，\alert{BITMAP\_SIZE}和\alert{MAX\_PRIO}两个宏分别在文件kernel/sched.c和include/linux/sched.h中定义，请确定这两个宏
-的具体数值。
+\item 上页中，\verb|BITMAP_SIZE|和\verb|MAX_PRIO|两个宏分别在文件kernel/sched.c和include/linux/sched.h中定义，
+请确定这两个宏的具体数值。
 \item[]
-\item 在文件kernel/sched.c找出dequeue\_task的定义并理解它。
+\item 在文件kernel/sched.c找出\verb|dequeue_task|的定义并理解它。
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Linux进程描述符: Process Descriptor}
-\begin{block}{task\_struct结构: include/linux/sched.h}
+\begin{frame}{表示进程状态的字段: state}
+\begin{block}{include/linux/sched.h}
 \lstPCBstate
 \end{block}
 \begin{block}{进程可能的状态: include/linux/sched.h}
@@ -561,11 +610,12 @@ list\_add\_tail的第一个参数.
 \end{block}
 \end{frame}
 
-\begin{frame}{Linux进程描述符: Process Descriptor}
+\begin{frame}[fragile]
+\frametitle{表示进程状态的字段: state}
 \begin{block}{改变进程状态的函数/宏}
 \begin{itemize}
-\item set\_task\_state 改变指定进程的状态
-\item set\_current\_state 改变当前执行的进程的状态
+\item \verb|set_task_state| 改变指定进程的状态
+\item \verb|set_current_state| 改变当前执行的进程的状态
 \end{itemize}
 \end{block}
 \begin{block}{课外练习}
@@ -631,24 +681,24 @@ struct task_struct {
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
-进程管理中需要记录进程之间的层次关系(父母、兄弟姐妹)：
+\frametitle{记录进程之间层次关系的字段}
+进程管理中需要记录进程之间的层次关系(父母、兄弟姐妹).
 
 \lstparents
 \end{frame}
+
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
-%\lstparents
+\frametitle{记录进程之间层次关系的字段}
 \includegraphics[width=0.8\textwidth]{parent2.png}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{记录进程之间层次关系的字段}
 查看进程结构树的命令：pstree
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{表示进程其他关系的字段}
 除了上述关系外，进程之间还存在如下关系:
 \begin{itemize}
 \item 多个进程可以形成一个组(group)，每个组都有唯一的leader.
@@ -676,11 +726,10 @@ struct task_struct {
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
-task\_struct中的group\_leader和tgid分别表示进程组的leader、线程组的leader:
+\frametitle{表示进程其他关系的字段}
+task\_struct中的group\_leader和tgid分别表示该进程所在的进程组的leader、线程组的leader:
 
 \lstotherrelations
-%\includegraphics[width=0.8\textwidth]{parent2.png}
 \end{frame}
 
 \defverbatim[colored]\lstsignalstruct{
@@ -695,16 +744,16 @@ struct signal_struct {
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{表示进程其他关系的字段}
 pgrp和session字段分别表示进程组leader的PID、会话组leader的PID：
 \begin{block}{include/linux/sched.h}
 \lstsignalstruct
 \end{block}
-%\includegraphics[width=0.8\textwidth]{parent2.png}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
+%\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{表示进程其他关系的字段}
 进程标识：
 
 \begin{itemize}
@@ -721,7 +770,7 @@ pgrp和session字段分别表示进程组leader的PID、会话组leader的PID：
 \item 遍历所有进程，逐一检查其pid字段的值？
 \item 通过散列表结构做到快速转换
 \end{itemize}
-\item 给定进程组、会话组或者线程组的leader ID, 如何快速找出该组中所有进程(线程)?
+\item (重要)给定进程组、会话组或者线程组的leader ID, 如何快速找出该组中所有进程(线程)?
 \end{itemize}
 
 \end{frame}
@@ -744,7 +793,8 @@ static struct hlist_head *pid_hash[PIDTYPE_MAX];
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
+%\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{表示进程其他关系的字段}
 共有四种类型的PID：进程本身PID、线程组leader的PID、进程组leader的PID以及会话组leader的PID:
 \begin{block}{include/linux/pid.h}
 \lstpidtype
@@ -767,7 +817,7 @@ struct pid
 }
 \defverbatim[colored]\lstpidsintaskstruct{
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
-struct pid
+struct task_struct
 {
     ...
     /* PID/PID hash table linkage. */
@@ -777,28 +827,43 @@ struct pid
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{表示进程其他关系的字段}
 \begin{block}{散列表中元素struct pid: include/linux/pid.h }
 \lstpidstruct
 \end{block}
 \begin{block}{task\_struct中相应字段}
 \lstpidsintaskstruct
 \end{block}
-%\includegraphics[width=0.8\textwidth]{parent2.png}
+\end{frame}
+
+\defverbatim[colored]\lsthashfunction{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+unsigned long hash_long(unsigned long val, unsigned int bits)
+{
+    unsigned long hash = val * 0x9e370001UL;
+    return hash >> (32 - bits);
+}
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{表示进程其他关系的字段}
+\begin{block}{哈希函数的定义}
+\lsthashfunction
+\end{block}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{表示进程其他关系的字段: 简单哈希表示意图}
 \includegraphics[width=0.8\textwidth]{pidhash.png}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{表示进程其他关系的字段: pid\_hash结构图} 
 \includegraphics[width=0.8\textwidth]{pidhashes.png}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{进程管理: 处于等待态的进程如何组织}
+\frametitle{处于等待态的进程如何组织}
 \begin{block}{Linux中等待态进程的表示}
 \begin{itemize}
 \item \verb|TASK_INTERRUPTIBLE|
@@ -811,6 +876,7 @@ struct pid
 \item 等待固定时间（如1秒）
 \item 等待互斥锁的释放
 \item 等待其他临界资源
+\item ...
 \end{itemize}
 \end{block}
 \end{frame}
@@ -823,9 +889,8 @@ struct __wait_queue_head {
 };
 \end{lstlisting}
 }
-%typedef struct __wait_queue_head wait_queue_head_t;
 \begin{frame}[fragile]
-\frametitle{进程管理: 处于等待态的进程如何组织}
+\frametitle{处于等待态的进程如何组织: 等待队列}
 \begin{block}{等待队列(wait queue)}
 把等待同一事件的进程放到一个等待队列中去。一旦所等待的事件发生，则可以唤醒该队列中的进程。
 \end{block}
@@ -847,12 +912,10 @@ struct __wait_queue {
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{进程管理: 处于等待态的进程如何组织}
-\begin{block}{等待队列中的元素： include/linux/wait.h}
+\frametitle{处于等待态的进程如何组织: 等待队列中的元素}
+\begin{block}{include/linux/wait.h}
 \lstwaitqueue
 \end{block}
-%\begin{block}{}
-%\end{block}
 \begin{itemize}
 \item flags表示该进程等待的事件是否为exclusive
 \item task为进入等待队列的进程
@@ -862,7 +925,7 @@ struct __wait_queue {
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{进程管理: 处于等待态的进程如何组织}
+\frametitle{处于等待态的进程如何组织}
 \begin{block}{exlusive进程和non-exlusive进程}
 \begin{itemize}
 \item exlusive进程: 该进程等待的资源不能共享, flags设为1
@@ -928,7 +991,7 @@ void sleep_on(wait_queue_head_t *wq)
 {
     wait_queue_t wait;
     init_waitqueue_entry(&wait, current);
-    current->state = TASK_INTERRUPTIBLE;
+    current->state = TASK_UNINTERRUPTIBLE;
     add_wait_queue(wq, &wait);
     schedule();
     remove_wait_queue(wq, &wait);
@@ -979,7 +1042,7 @@ finish_wait(&wq, &wait);
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{对等待队列的操作: 进程如何将自己放入等待队列?}
+\frametitle{对等待队列的操作: wait\_event(condtion)}
 \lstwaitevent
 \end{frame}
 
@@ -1028,10 +1091,10 @@ void wake_up(wait_queue_head_t *q)
 }
 \end{lstlisting}
 }
-\begin{frame}[fragile]
-\frametitle{对等待队列的操作: 如何把队列中的进程唤醒?}
+%\begin{frame}[fragile]
+%\frametitle{对等待队列的操作: 如何把队列中的进程唤醒?}
 %\lstwakeupimple
-\end{frame}
+%\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Linux进程表示：task\_struct结构}

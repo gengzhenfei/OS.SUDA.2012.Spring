@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  29 MAY 2012 11:29
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  29 MAY 2012 19:19
 entering extended mode
  %&-line parsing enabled.
 **1_linux.tex
@@ -1284,7 +1284,14 @@ File: c70gkai.fd 2008/10/03 4.8.1
 File: c70gbsn.fdx 2008/12/29 4.8.2
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./1_linux.toc) [2
+
+] (./1_linux.toc) [3
+
+]
+(./1_linux.toc) [4
+
+]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb
@@ -1311,264 +1318,259 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 5.
-) [2
+) [5
 
 ]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb)
-[3
+[6
 
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb <kernel.png, id=133, 764.8575pt x 309.155pt>
+ (./1_linux.vrb <kernel.png, id=197, 764.8575pt x 309.155pt>
 File: kernel.png Graphic file (type png)
 
-<use kernel.png>) [4
+<use kernel.png>) [7
 
- <./kernel.png>] (./1_linux.toc) [5
-
-] (./1_linux.toc)
-[6
-
-] (./1_linux.toc) [7
+ <./kernel.png>] (./1_linux.toc) [8
 
 ]
 \@verb\lstfox=\box58
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 89.
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [8
+ (./1_linux.vrb)
+[9
 
 ]
 \@verb\lstlisthead=\box59
 \@verb\lstlistheadusage=\box60
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [9
+ (./1_linux.vrb) [10
 
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [10
+ (./1_linux.vrb) [11
 
 ]
 \@verb\lstPCBstate=\box61
 \@verb\lststates=\box62
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb <listhead.png, id=197, 826.08624pt x 630.355pt>
+ (./1_linux.vrb
+<listhead.png, id=239, 826.08624pt x 630.355pt>
 File: listhead.png Graphic file (type png)
-
-<use listhead.png>) [11
+ <use listhead.png>) [12
 
  <./listhead.png>]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [12
+ (./1_linux.vrb) [13
 
 ]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb)
-[13
-
-]
-\@verb\lstcontainerof=\box63
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [14
 
 ]
-\@verb\lstinit=\box64
+\@verb\lstcontainerof=\box63
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [15
 
-] [16
+]
+\@verb\lstinit=\box64
+\openout4 = `1_linux.vrb'.
+
+
+(./1_linux.vrb) [16
 
 ]
-\@verb\lstadd=\box65
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [17
 
 ]
+\@verb\lstadd=\box65
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [18
+
+]
 \@verb\lstforeach=\box66
 \openout4 = `1_linux.vrb'.
 
-
-(./1_linux.vrb) [18
+ (./1_linux.vrb)
+[19
 
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [19
+ (./1_linux.vrb) [20
+
+] (./1_linux.toc) [21
 
 ]
 \@verb\lsthlist=\box67
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb
-<hlist.jpeg, id=256, 467.49657pt x 189.70876pt>
+<hlist.jpeg, id=315, 467.49657pt x 189.70876pt>
 File: hlist.jpeg Graphic file (type jpg)
- <use hlist.jpeg>) [20
+ <use hlist.jpeg>) [22
 
- <./hlist.jpeg>] [21
-
-] <PCB.png, id=270, 339.51843pt x 545.03625pt>
-File: PCB.png Graphic file (type png)
- <use PCB.png> [22
-
- <./PCB.png (PNG copy)>] [23
-
-] <taskstruct.png, id=283, 548.0475pt x 590.205pt>
-File: taskstruct.png Graphic file (type png)
-
-<use taskstruct.png> [24
-
- <./taskstruct.png>]
-\@verb\lstpidmax=\box68
-LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 375.
- [25
-
-] [26
-
-]
-\@verb\lstpidmaparray=\box69
- [27
-
-]
-\@verb\lsttasks=\box70
- [28
-
-] [29
-
-]
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 469.
- [30
-
-]
-\@verb\lstrunning=\box71
-
-[31
-
-]
-\@verb\lstprio=\box72
-\@verb\lstprioarrayt=\box73
- [32
-
-]
-\@verb\lstenqueue=\box74
- [33
-
-] [34
-
-] [35
-
-] [36
-
-]
-\@verb\lstparents=\box75
+ <./hlist.jpeg>]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [37
+ (./1_linux.vrb) [23
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [24
+
+]
+\@verb\lstaddbefore=\box68
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [25
+
+]
+(./1_linux.toc) [26
+
+] <PCB.png, id=349, 339.51843pt x 545.03625pt>
+File: PCB.png Graphic file (type png)
+
+<use PCB.png> [27
+
+ <./PCB.png (PNG copy)>] [28
+
+]
+<taskstruct.png, id=363, 548.0475pt x 590.205pt>
+File: taskstruct.png Graphic file (type png)
+ <use taskstruct.png> [29
+
+ <./taskstruct.png>] (./1_linux.toc) [30
+
+]
+\@verb\lstpidmax=\box69
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 416.
+ [31
+
+] [32
+
+]
+\@verb\lstpidmaparray=\box70
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [33
+
+]
+\@verb\lsttasks=\box71
+ [34
+
+]
+[35
 
 ]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb
-<parent2.png, id=370, 556.0775pt x 445.665pt>
-File: parent2.png Graphic file (type png)
- <use parent2.png>) [38
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 7.
+) [36
 
- <./parent2.png>]
-\openout4 = `1_linux.vrb'.
+]
+\@verb\lstrunning=\box72
+ [37
 
- (./1_linux.vrb) [39
+]
+\@verb\lstprio=\box73
+\@verb\lstprioarrayt=\box74
+ [38
+
+]
+\@verb\lstenqueue=\box75
+ [39
 
 ]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [40
 
-]
-\@verb\lstotherrelations=\box76
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [41
+] [41
 
 ]
-\@verb\lstsignalstruct=\box77
 \openout4 = `1_linux.vrb'.
 
 
 (./1_linux.vrb) [42
 
 ]
+\@verb\lstparents=\box76
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [43
 
 ]
-\@verb\lstpidtype=\box78
-\@verb\lstpidhashhaha=\box79
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [44
-
-]
-\@verb\lstpidstruct=\box80
-\@verb\lstpidsintaskstruct=\box81
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb)
-[45
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb <pidhash.png, id=415, 755.82375pt x 380.42125pt>
-File: pidhash.png Graphic file (type png)
-
-<use pidhash.png>) [46
-
- <./pidhash.png>]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb
-<pidhashes.png, id=422, 678.535pt x 621.32124pt>
-File: pidhashes.png Graphic file (type png)
- <use pidhashes.png>) [47
+<parent2.png, id=461, 556.0775pt x 445.665pt>
+File: parent2.png Graphic file (type png)
+ <use parent2.png>) [44
 
- <./pidhashes.png>]
+ <./parent2.png>]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [48
+ (./1_linux.vrb) [45
 
 ]
-\@verb\lstwaitqueuehead=\box82
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [46
+
+]
+\@verb\lstotherrelations=\box77
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [47
+
+]
+\@verb\lstsignalstruct=\box78
+\openout4 = `1_linux.vrb'.
+
+
+(./1_linux.vrb) [48
+
+]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [49
 
 ]
-\@verb\lstwaitqueue=\box83
+\@verb\lstpidtype=\box79
+\@verb\lstpidhashhaha=\box80
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [50
+
+]
+\@verb\lstpidstruct=\box81
+\@verb\lstpidsintaskstruct=\box82
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb)
-[50
+[51
 
 ]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [51
-
-]
+\@verb\lsthashfunction=\box83
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [52
@@ -1576,34 +1578,37 @@ File: pidhashes.png Graphic file (type png)
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [53
+ (./1_linux.vrb
+<pidhash.png, id=511, 755.82375pt x 380.42125pt>
+File: pidhash.png Graphic file (type png)
+ <use pidhash.png>) [53
 
-]
+ <./pidhash.png>]
 \openout4 = `1_linux.vrb'.
 
+ (./1_linux.vrb <pidhashes.png, id=518, 678.535pt x 621.32124pt>
+File: pidhashes.png Graphic file (type png)
 
-(./1_linux.vrb) [54
+<use pidhashes.png>) [54
 
-]
-\@verb\lstsleepon=\box84
+ <./pidhashes.png>]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [55
 
 ]
+\@verb\lstwaitqueuehead=\box84
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [56
 
 ]
-\@verb\lstspreparetowait=\box85
+\@verb\lstwaitqueue=\box85
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb)
-[57
+ (./1_linux.vrb) [57
 
 ]
-\@verb\lstwaitevent=\box86
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [58
@@ -1616,16 +1621,51 @@ File: pidhashes.png Graphic file (type png)
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [60
+
+(./1_linux.vrb) [60
 
 ]
-\@verb\lstwakeupimple=\box87
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [61
+
+]
+\@verb\lstsleepon=\box86
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [62
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb)
+[63
+
+]
+\@verb\lstspreparetowait=\box87
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [64
+
+]
+\@verb\lstwaitevent=\box88
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [65
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [66
+
+]
 \openout4 = `1_linux.vrb'.
 
 
-(./1_linux.vrb) [61
+(./1_linux.vrb) [67
 
 ]
+\@verb\lstwakeupimple=\box89
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb
@@ -1634,42 +1674,42 @@ Overfull \hbox (21.20973pt too wide) in paragraph at lines 20--20
  []
 
 )
-Overfull \vbox (12.1641pt too high) detected at line 1058
+Overfull \vbox (12.1641pt too high) detected at line 1121
  []
 
-[62
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [63
-
-]
-\@verb\lstthreadintask=\box88
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [64
-
-]
-\@verb\lstthreadstruct=\box89
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [65
-
-] [66
-
-]
-[67
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [68
+[68
 
 ]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [69
+
+]
+\@verb\lstthreadintask=\box90
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [70
+
+]
+\@verb\lstthreadstruct=\box91
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [71
+
+] [72
+
+]
+[73
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [74
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [75
 
 ]
 \openout4 = `1_linux.vrb'.
@@ -1680,10 +1720,10 @@ Overfull \hbox (27.77972pt too wide) in paragraph at lines 19--19
  []
 
 )
-Overfull \vbox (7.78215pt too high) detected at line 1371
+Overfull \vbox (7.78215pt too high) detected at line 1434
  []
 
-[70
+[76
 
 ]
 \tf@nav=\write6
@@ -1697,13 +1737,13 @@ Overfull \vbox (7.78215pt too high) detected at line 1371
 
  (./1_linux.aux) ) 
 Here is how much of TeX's memory you used:
- 20262 strings out of 495046
- 345469 string characters out of 1181937
- 729646 words of memory out of 3000000
- 22400 multiletter control sequences out of 15000+50000
- 88458 words of font info for 280 fonts, out of 3000000 for 9000
+ 20419 strings out of 495046
+ 348151 string characters out of 1181937
+ 756646 words of memory out of 3000000
+ 22509 multiletter control sequences out of 15000+50000
+ 90357 words of font info for 287 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 49i,11n,53p,415b,2543s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,11n,53p,415b,2649s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/s
 hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-
 texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf/fonts/type1
@@ -1743,26 +1783,27 @@ e1/arphic/gbsnu/gbsnu7d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7e.
 pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7f.pfb></usr/share/texmf/fo
 nts/type1/arphic/gbsnu/gbsnu80.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/g
 bsnu81.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu82.pfb></usr/share/t
-exmf/fonts/type1/arphic/gbsnu/gbsnu88.pfb></usr/share/texmf/fonts/type1/arphic/
-gbsnu/gbsnu89.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8b.pfb></usr/
-share/texmf/fonts/type1/arphic/gbsnu/gbsnu8c.pfb></usr/share/texmf/fonts/type1/
-arphic/gbsnu/gbsnu8d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8e.pfb
-></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8f.pfb></usr/share/texmf/fonts
-/type1/arphic/gbsnu/gbsnu90.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsn
-u91.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu94.pfb></usr/share/texm
-f/fonts/type1/arphic/gbsnu/gbsnu95.pfb></usr/share/texmf/fonts/type1/arphic/gbs
-nu/gbsnu96.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu97.pfb></usr/sha
-re/texmf/fonts/type1/arphic/gbsnu/gbsnu98.pfb></usr/share/texmf/fonts/type1/arp
-hic/gbsnu/gbsnu9a.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnuff.pfb></
-usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/tex
-mf-texlive/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-texlive/fonts/t
-ype1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/u
-crro8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/
-share/texmf-texlive/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on 1_linux.pdf (70 pages, 1396963 bytes).
+exmf/fonts/type1/arphic/gbsnu/gbsnu86.pfb></usr/share/texmf/fonts/type1/arphic/
+gbsnu/gbsnu88.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu89.pfb></usr/
+share/texmf/fonts/type1/arphic/gbsnu/gbsnu8b.pfb></usr/share/texmf/fonts/type1/
+arphic/gbsnu/gbsnu8c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8d.pfb
+></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8e.pfb></usr/share/texmf/fonts
+/type1/arphic/gbsnu/gbsnu8f.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsn
+u90.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu91.pfb></usr/share/texm
+f/fonts/type1/arphic/gbsnu/gbsnu94.pfb></usr/share/texmf/fonts/type1/arphic/gbs
+nu/gbsnu95.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu96.pfb></usr/sha
+re/texmf/fonts/type1/arphic/gbsnu/gbsnu97.pfb></usr/share/texmf/fonts/type1/arp
+hic/gbsnu/gbsnu98.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu9a.pfb></
+usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnuff.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/symbols/msam7.pfb></usr/share/texmf-texlive/fonts/type1/u
+rw/courier/ucrb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.
+pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/t
+exmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/font
+s/type1/urw/helvetic/uhvro8a.pfb>
+Output written on 1_linux.pdf (76 pages, 1427974 bytes).
 PDF statistics:
- 821 PDF objects out of 1000 (max. 8388607)
- 144 named destinations out of 1000 (max. 500000)
- 369 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 918 PDF objects out of 1000 (max. 8388607)
+ 160 named destinations out of 1000 (max. 500000)
+ 405 words of extra memory for PDF output out of 10000 (max. 10000000)
 
