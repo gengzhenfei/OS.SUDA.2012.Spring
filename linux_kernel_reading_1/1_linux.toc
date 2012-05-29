@@ -1,2 +1,5 @@
 \beamer@endinputifotherversion {3.10pt}
 \select@language {english}
+\beamer@sectionintoc {1}{Outline}{2}{0}{1}
+\beamer@sectionintoc {2}{Linux内核关键数据结构: 链表}{8}{0}{2}
+\beamer@sectionintoc {3}{Linux进程描述符: task\_struct}{22}{0}{3}

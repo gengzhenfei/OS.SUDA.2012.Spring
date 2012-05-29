@@ -24,29 +24,27 @@ showstringspaces=false,
 extendedchars=true}
 
 
+\AtBeginSubsection[]
+{
+      \begin{frame}<beamer>{Outline}
+          \tableofcontents[currentsection,currentsubsection]
+            \end{frame}
+}
+
+
 \begin{document}
 \begin{CJK*}{UTF8}{gbsn}
 
 
 \title{OS概念与Linux内核代码分析之一：进程管理}
 \author{李中国}
-\institute{苏州大学计算机科学与技术学院} %\\ 18862301730 \\ 理工楼409}
-%\date{2012年5月22日}
+\institute{苏州大学计算机科学与技术学院} 
 
 \begin{frame}
 \maketitle
 \end{frame}
 
-%\defverbatim[colored]\lstdemo{
-%\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
-%const char *processing() const{
-%            somestring = "-1";
-%}
-%\end{lstlisting}
-%}
-%\begin{frame}{test}
-%\lstdemo
-%\end{frame}
+\section{Outline}
 
 \begin{frame}[fragile]
 \frametitle{本课程Linux内核版本}
@@ -76,6 +74,13 @@ extendedchars=true}
 \frametitle{Linux内核整体架构}
 \includegraphics[width=1.0\textwidth]{kernel.png}
 \end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents[pausesections]
+  \end{frame}
+
+
+\section{Linux内核关键数据结构: 链表}
 
 \defverbatim[colored]\lstfox{
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
@@ -132,10 +137,11 @@ struct task_struct {
 \begin{block}{思考}
 %\begin{itemize}
 %\item 
-仍与fox结构相比，这样使用list\_head构造链表有什么好处?
+仍与fox结构相比，使用list\_head构造链表有什么好处?
 %\end{itemize}
 \end{block}
 \end{frame}
+
 
 \defverbatim[colored]\lstPCBstate{
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
@@ -174,7 +180,7 @@ struct task_struct {
 \begin{frame}[fragile]%{Linux内核关键数据结构：list}
 \frametitle{Linux内核关键数据结构：list}
 \begin{block}{宏list\_entry(ptr, type, member)}
-计算包含ptr的结构体的地址
+计算包含ptr(指向list\_head结构的指针)的结构体的地址
 \end{block}
 \begin{block}{例子: 结合上述task\_struct结构}
 list\_entry(ptr, struct task\_struct, run\_list)
@@ -205,7 +211,7 @@ list\_entry(ptr, struct task\_struct, run\_list)
 \lstcontainerof
 \end{block}
 \begin{block}{container\_of的定义: include/linux/kernel.h}
-请在该头文件中找到container\_of的定义并试着理解它。
+练习：请在该头文件中找到container\_of的定义并试着理解它。
 \end{block}
 \end{frame}
 
@@ -233,8 +239,8 @@ list\_entry(ptr, struct task\_struct, run\_list)
 \item \alert{list\_del}(entry) 把entry从链表中删除
 \item \alert{list\_empty}(head) 判断链表head是否为空
 \item \alert{list\_splice}(list, head) 合并list和head
-%\item \alert{list\_entry}(ptr, type, member) 计算包含ptr的结构体的地址
 \item \alert{list\_for\_each}(pos, head) 遍历以head为头的链表
+\item \alert{list\_for\_each\_entry}(pos, head) 
 \end{itemize}
 \end{frame}
 
@@ -326,6 +332,8 @@ struct hlist_node {
 \end{enumerate}
 \end{block}
 \end{frame}
+
+\section{Linux进程描述符: task\_struct}
 
 \begin{frame}{进程控制块(PCB)}
 \begin{columns}%[t]
@@ -789,19 +797,42 @@ struct pid
 \includegraphics[width=0.8\textwidth]{pidhashes.png}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{进程管理: 处于等待态的进程如何组织}
+\begin{block}{Linux中等待态进程的表示}
+\begin{itemize}
+\item \verb|TASK_INTERRUPTIBLE|
+\item \verb|TASK_UNINTERRUPTIBLE|
+\end{itemize}
+\end{block}
+\begin{block}{进入等待态的原因(所要等待的事件)}
+\begin{itemize}
+\item 等待磁盘操作结束
+\item 等待固定时间（如1秒）
+\item 等待互斥锁的释放
+\item 等待其他临界资源
+\end{itemize}
+\end{block}
+\end{frame}
+
 \defverbatim[colored]\lstwaitqueuehead{
 \begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
 struct __wait_queue_head {
     spinlock_t lock;
     struct list_head task_list;
 };
-typedef struct __wait_queue_head wait_queue_head_t;
 \end{lstlisting}
 }
+%typedef struct __wait_queue_head wait_queue_head_t;
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{进程管理: 处于等待态的进程如何组织}
+\begin{block}{等待队列(wait queue)}
+把等待同一事件的进程放到一个等待队列中去。一旦所等待的事件发生，则可以唤醒该队列中的进程。
+\end{block}
+\begin{block}{wait queue表头的定义: include/linux/wait.h}
 \lstwaitqueuehead
-%\includegraphics[width=0.8\textwidth]{parent2.png}
+\end{block}
+其中，字段\verb|lock|用来实现对等待队列的互斥访问（因为内核中有多个地方可能需要对该队列进程操作）。
 \end{frame}
 
 
@@ -816,45 +847,191 @@ struct __wait_queue {
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{进程管理: 处于等待态的进程如何组织}
+\begin{block}{等待队列中的元素： include/linux/wait.h}
 \lstwaitqueue
-%\includegraphics[width=0.8\textwidth]{parent2.png}
+\end{block}
+%\begin{block}{}
+%\end{block}
+\begin{itemize}
+\item flags表示该进程等待的事件是否为exclusive
+\item task为进入等待队列的进程
+\item func为唤醒该进程的方式（函数）
+\item task\_list用于将所有进程连接成队列
+\end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{进程管理: 处于等待态的进程如何组织}
+\begin{block}{exlusive进程和non-exlusive进程}
+\begin{itemize}
+\item exlusive进程: 该进程等待的资源不能共享, flags设为1
+\begin{itemize}
+\item 例如该进程等待的是进入临界区的机会
+\end{itemize}
+\item non-exclusive进程: 该进程等待的事件/资源可以共享, flags设为0
+\begin{itemize}
+\item 例如该进程等待的是磁盘数据传输
+\end{itemize}
+\end{itemize}
+\end{block}
+\begin{block}{思考}
+为什么将flags放到\verb|__wait_queue|而不是放到\verb|__wait_queue_head|中去?
+\end{block}
+\end{frame}
 
-%\begin{frame}[fragile]
-%\frametitle{Linux进程表示：task\_struct结构}
-%\begin{block}{include/linux/sched.h}
-%\begin{verbatim}
-%struct task_struct {
-%    volatile long state;    /* -1 unrunnable */
-%    void *stack;
-%    atomic_t usage;
-%    unsigned int flags; /* per process flags */
-%    unsigned int ptrace;
-%
-%    int lock_depth;     /* BKL lock depth */
-%
-%#ifdef CONFIG_SMP
-%#ifdef __ARCH_WANT_UNLOCKED_CTXSW
-%    int oncpu;
-%#endif
-%#endif
-%    ...
-%};
-%
-%
-%\end{verbatim}
-%\end{block}
-%\end{frame}
+\begin{frame}[fragile]
+\frametitle{对等待队列(wait queue)的操作: 初始化}
+\begin{block}{include/linux/wait.h}
+\begin{itemize}
+\item \verb|DECLARE_WAIT_QUEUE_HEAD(name)|声明名为name的队头并初始化
+\item \verb|init_waitqueue_head(q)| 对动态分配的队头q初始化
+\item \verb|init_waitqueue_entry(p,q)|对队列元素q初始化:
+\begin{verbatim}
+q->flags = 0;
+q->task = p;
+q->func = default_wake_function;
+\end{verbatim}
+\item \verb|DEFINE_WAIT(name)|将当前占有CPU的进程封装为名为name的队列元素
+\end{itemize}
+\end{block}
+\begin{block}{课外练习}
+阅读并理解上述对队列头和队列元素初始化的函数或者宏。
+\end{block}
+\end{frame}
 
-%\begin{frame}[fragile]
-%\frametitle{Linux进程表示：task\_struct结构}
-%\begin{block}{task\_struct结构的state字段}
-%\begin{verbatim}
-%\end{verbatim}
-%\end{block}
-%\end{frame}
+\begin{frame}[fragile]
+\frametitle{对等待队列的操作: 队列元素的插入和删除}
+\begin{block}{kernel/wait.c}
+\begin{itemize}
+\item \verb|add_wait_queue(q, wait)|
+\item \verb|add_wait_queue_exclusive(q, wait)|
+\item \verb|remove_wait_queue(q, wait)|
+\item \verb|waitqueue_active(q)| 功能是什么？(include/linux/wait.h)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{对等待队列的操作: 进程如何将自己放入等待队列?}
+\begin{itemize}
+\item \verb|sleep_on|
+\item \verb|interruptible_sleep_on|
+\item \verb|sleep_on_timeout|
+\item \verb|interruptible_sleep_on_timeout|
+\end{itemize}
+\end{frame}
+
+\defverbatim[colored]\lstsleepon{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+void sleep_on(wait_queue_head_t *wq)
+{
+    wait_queue_t wait;
+    init_waitqueue_entry(&wait, current);
+    current->state = TASK_INTERRUPTIBLE;
+    add_wait_queue(wq, &wait);
+    schedule();
+    remove_wait_queue(wq, &wait);
+}
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{对等待队列的操作: 进程如何将自己放入等待队列?}
+\lstsleepon
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{对等待队列的操作: 进程如何将自己放入等待队列?}
+%\lstsleepon
+\begin{itemize}
+\item \verb|prepare_to_wait|
+\item \verb|prepare_to_wait_exclusive|
+\item \verb|finish_wait|
+\end{itemize}
+\end{frame}
+
+\defverbatim[colored]\lstspreparetowait{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+DEFINE_WAIT(wait);
+prepare_to_wait(&wq,&wait,TASK_INTERRUPTIBLE);
+...
+if (!condition)
+    schedule();
+finish_wait(&wq, &wait);
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{对等待队列的操作: 进程如何将自己放入等待队列?}
+\lstspreparetowait
+\end{frame}
+
+\defverbatim[colored]\lstwaitevent{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+DEFINE_WAIT(wait);
+for (;;) {
+    prepare_to_wait(&wq, &wait,
+                    TASK_UNINTERRUPTIBLE);
+    if (condition)
+        break;
+    schedule();
+}
+finish_wait(&wq, &wait);
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{对等待队列的操作: 进程如何将自己放入等待队列?}
+\lstwaitevent
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{对等待队列的操作: 如何把队列中的进程唤醒?}
+%\lstwaitevent
+\begin{itemize}
+\item \verb|wake_up|
+\item \verb|wake_up_nr|
+\item \verb|wake_up_all|
+\item \verb|wake_up_interruptible|
+\item \verb|wake_up_interruptible_nr|
+\item \verb|wake_up_interruptible_all|
+\item \verb|wake_up_interruptible_sync|
+\item \verb|wake_up_locked|
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{对等待队列的操作: 如何把队列中的进程唤醒?}
+\begin{itemize}
+\item 所有non-exclusive的进程都被唤醒
+\item 如果名字中没有interruptible, 则唤醒所有睡眠进程(\verb|TASK_INTERRUPTIBLE|及\verb|TASK_UNINTERRUPTIBLE|).
+否则，只唤醒队列中\verb|TASK_INTERRUPTIBLE|状态的进程。
+\item 名字中含有nr的宏唤醒指定个数的exclusive进程
+\item 名字中含有all的宏唤醒全部指定状态的exclusive进程
+\item 名字中没有nr或者all的宏只唤醒一个exclusive进程
+\end{itemize}
+\end{frame}
+
+\defverbatim[colored]\lstwakeupimple{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+void wake_up(wait_queue_head_t *q)
+{
+    struct list_head *tmp;
+    wait_queue_t *curr;
+
+    list_for_each(tmp, &q->task_list) {
+        curr = list_entry(tmp, wait_queue_t, task_list);
+        if (curr->func(curr, 
+                       TASK_INTERRUPTIBLE|
+                       TASK_UNINTERRUPTIBLE, 0, NULL) 
+            && curr->flags)
+            break;
+    }
+}
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{对等待队列的操作: 如何把队列中的进程唤醒?}
+%\lstwakeupimple
+\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Linux进程表示：task\_struct结构}
@@ -1197,94 +1374,6 @@ asmlinkage int sys_clone(struct pt_regs regs)
 %\frametitle{创建进程: do\_fork函数的实现}
 %\includegraphics[width=1.0\textwidth]{dofork.png}
 %\end{frame}
-
-%\begin{frame}{操作系统中三个最重要的概念}
-%\includegraphics[width=1.0\textwidth]{osabstractions.png}
-%\end{frame}
-
-
-%\begin{frame}{用信号量解决生产者--消费者问题}
-%\begin{columns}[b]
-%\column{.5\textwidth}
-%\includegraphics[width=1.0\textwidth]{prodsem.png}
-%\column{.5\textwidth}
-%\includegraphics[width=1.0\textwidth]{conssem.png}
-%\end{columns}%[t]
-
-%该方案中，信号量empty和full具有计数和同步功能，而mutex仅有互斥功能。
-%\end{frame}
-
-%\begin{frame}{专门用来实现互斥的特殊信号量 -- 互斥锁}
-%互斥锁只有两种状态：locked (1) / unlocked (0)
-%
-%\includegraphics[width=0.5\textwidth]{mutex.png}
-%\end{frame}
-
-%\begin{frame}{互斥锁与忙等待的区别}
-%\begin{columns}[b]
-%\column{.5\textwidth}
-%\includegraphics[width=1.0\textwidth]{mutex.png}
-%\column{.5\textwidth}
-%\includegraphics[width=1.0\textwidth]{tsl.png}
-%\end{columns}%[t]
-%后者：不断利用CPU指令测试临界资源，直至时间片用光被从CPU上撤下来
-%\end{frame}
-%
-%\begin{frame}{信号量的危险情形 --- 管程机制的引入}
-%\begin{columns}[b]
-%\column{.5\textwidth}
-%\includegraphics[width=1.0\textwidth]{prodsem.png}
-%\column{.5\textwidth}
-%\includegraphics[width=1.0\textwidth]{conssem.png}
-%\end{columns}%[t]
-%\alert{危险:}如果程序员不小心把producer中的down(empty)和down(mutex)顺序颠倒，
-%则当缓冲区满时，会发生什么？
-%\end{frame}
-
-%\begin{frame}{信号量的危险情形 --- 管程机制的引入}
-%\begin{itemize}
-%\item 发生死锁。
-%\item[]
-%\item 因此，最好由编译器自动处理这种容易出错的程序段。---引入管程。
-%\item[]
-%\item 对比：C++中构造函数与析构函数
-%\end{itemize}
-%\end{frame}
-
-%\begin{frame}{管程:解决生产者--消费者问题}
-%\begin{columns}[b]
-%\column{.5\textwidth}
-%\includegraphics[width=1.0\textwidth]{mon1.png}
-%\column{.5\textwidth}
-%\includegraphics[width=1.0\textwidth]{mon2.png}
-%\end{columns}%[t]
-%
-%\alert{注意概念:} 条件变量empty, full以及wait, signal
-%
-%此外，insert与remove之间的互斥由编译器完成
-%\end{frame}
-
-%\begin{frame}{管程:解决生产者--消费者问题}
-%\begin{itemize}
-%\item 管程内程序段之间的互斥（自动）
-%\item 进程同步问题?：条件变量及wait, signal实现
-%\begin{itemize}
-%\item wait: 将当前进程阻塞，并允许其他进程进入管程
-%\item signal: 将被相应条件变量阻塞的进程唤醒
-%%\end{itemize}
-%\item 上述方法中，signal必须是最后一条指令，为什么？ 
-%\end{itemize}
-%\end{frame}
-
-%\begin{frame}{消息传递机制：解决不同机器上进程间同步问题}
-%\begin{columns}[b]
-%\column{.5\textwidth}
-%\includegraphics[width=1.0\textwidth]{msgprod.png}
-%\column{.5\textwidth}
-%\includegraphics[width=1.0\textwidth]{msgcons.png}
-%\end{columns}%[t]
-%\end{frame}
-
 
 \end{CJK*}
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  27 MAY 2012 16:04
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  29 MAY 2012 11:29
 entering extended mode
  %&-line parsing enabled.
 **1_linux.tex
@@ -1038,85 +1038,85 @@ File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 ) (./1_linux.aux)
 \openout1 = `1_linux.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 35.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
@@ -1175,7 +1175,7 @@ driver: pdftex
 \MPnumerator=\count163
 \everyMPtoPDFconversion=\toks45
 ) ABD: EveryShipout initializing macros
-Package hyperref Info: Link coloring OFF on input line 27.
+Package hyperref Info: Link coloring OFF on input line 35.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -1185,8 +1185,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count164
 )
-LaTeX Info: Redefining \ref on input line 27.
-LaTeX Info: Redefining \pageref on input line 27.
+LaTeX Info: Redefining \ref on input line 35.
+LaTeX Info: Redefining \pageref on input line 35.
  (./1_linux.out)
 (./1_linux.out)
 \@outlinefile=\write5
@@ -1194,47 +1194,47 @@ LaTeX Info: Redefining \pageref on input line 27.
 
 \AtBeginShipoutBox=\box57
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 27.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 35.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 27.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 35.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/ptm/m/n on input line 27.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 27.
+(Font)                  OT1/cmss/m/n --> OT1/ptm/m/n on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 27.
+(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 27.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 27.
+(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 27.
+(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 27.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 27.
+(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/phv/m/it on input line 27.
+(Font)                  OT1/cmr/m/it --> OT1/phv/m/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/phv/m/it on input line 27.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 27.
+(Font)                  OT1/cmr/bx/it --> OT1/phv/m/it on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 27.
+(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 27.
+(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 35.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 27.
+(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 35.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/phv/m/it --> OT1/phv/bx/it on input line 27.
+(Font)                  OT1/phv/m/it --> OT1/phv/bx/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/ptm/bx/n on input line 27.
+(Font)                  OT1/cmss/bx/n --> OT1/ptm/bx/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/phv/bx/n --> OT1/phv/bx/n on input line 27.
+(Font)                  OT1/phv/bx/n --> OT1/phv/bx/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 27.
+(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/phv/m/it --> OT1/phv/bx/it on input line 27.
+(Font)                  OT1/phv/m/it --> OT1/phv/bx/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/pcr/m/n --> OT1/pcr/bx/n on input line 27.
+(Font)                  OT1/pcr/m/n --> OT1/pcr/bx/n on input line 35.
 
 (/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
 onary/translator-basic-dictionary-English.dict
@@ -1273,9 +1273,9 @@ File: UTF8.chr 2008/12/29 4.8.2
 )
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 32.
+(hyperref)                setting the option has no effect on input line 40.
 
-LaTeX Font Info:    Try loading font information for C70+gbsn on input line 38.
+LaTeX Font Info:    Try loading font information for C70+gbsn on input line 45.
 
 (/usr/share/texmf/tex/latex/CJK/UTF8/c70gbsn.fd
 File: c70gkai.fd 2008/10/03 4.8.1
@@ -1322,43 +1322,29 @@ LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb <kernel.png, id=121, 764.8575pt x 309.155pt>
+ (./1_linux.vrb <kernel.png, id=133, 764.8575pt x 309.155pt>
 File: kernel.png Graphic file (type png)
 
 <use kernel.png>) [4
 
- <./kernel.png>]
+ <./kernel.png>] (./1_linux.toc) [5
+
+] (./1_linux.toc)
+[6
+
+] (./1_linux.toc) [7
+
+]
 \@verb\lstfox=\box58
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 82.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 87.
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [5
+ (./1_linux.vrb) [8
 
 ]
 \@verb\lstlisthead=\box59
 \@verb\lstlistheadusage=\box60
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb)
-[6
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [7
-
-]
-\@verb\lstPCBstate=\box61
-\@verb\lststates=\box62
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb
-<listhead.png, id=160, 826.08624pt x 630.355pt>
-File: listhead.png Graphic file (type png)
- <use listhead.png>) [8
-
- <./listhead.png>]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [9
@@ -1369,139 +1355,141 @@ File: listhead.png Graphic file (type png)
  (./1_linux.vrb) [10
 
 ]
+\@verb\lstPCBstate=\box61
+\@verb\lststates=\box62
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb <listhead.png, id=197, 826.08624pt x 630.355pt>
+File: listhead.png Graphic file (type png)
+
+<use listhead.png>) [11
+
+ <./listhead.png>]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [12
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb)
+[13
+
+]
 \@verb\lstcontainerof=\box63
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [11
-
-]
-\@verb\lstinit=\box64
-\openout4 = `1_linux.vrb'.
-
-
-(./1_linux.vrb) [12
-
-] [13
-
-]
-\@verb\lstadd=\box65
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [14
 
 ]
-\@verb\lstforeach=\box66
+\@verb\lstinit=\box64
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb) [15
 
+] [16
+
 ]
+\@verb\lstadd=\box65
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [17
+
+]
+\@verb\lstforeach=\box66
 \openout4 = `1_linux.vrb'.
 
 
-(./1_linux.vrb) [16
+(./1_linux.vrb) [18
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [19
 
 ]
 \@verb\lsthlist=\box67
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb
-<hlist.jpeg, id=218, 467.49657pt x 189.70876pt>
+<hlist.jpeg, id=256, 467.49657pt x 189.70876pt>
 File: hlist.jpeg Graphic file (type jpg)
- <use hlist.jpeg>) [17
+ <use hlist.jpeg>) [20
 
- <./hlist.jpeg>] [18
+ <./hlist.jpeg>] [21
 
-] <PCB.png, id=232, 339.51843pt x 545.03625pt>
+] <PCB.png, id=270, 339.51843pt x 545.03625pt>
 File: PCB.png Graphic file (type png)
- <use PCB.png> [19
+ <use PCB.png> [22
 
- <./PCB.png (PNG copy)>] [20
+ <./PCB.png (PNG copy)>] [23
 
-] <taskstruct.png, id=247, 548.0475pt x 590.205pt>
+] <taskstruct.png, id=283, 548.0475pt x 590.205pt>
 File: taskstruct.png Graphic file (type png)
 
-<use taskstruct.png> [21
+<use taskstruct.png> [24
 
  <./taskstruct.png>]
 \@verb\lstpidmax=\box68
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 367.
- [22
-
-] [23
-
-]
-\@verb\lstpidmaparray=\box69
- [24
-
-]
-\@verb\lsttasks=\box70
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 375.
  [25
 
 ] [26
 
 ]
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 461.
+\@verb\lstpidmaparray=\box69
  [27
+
+]
+\@verb\lsttasks=\box70
+ [28
+
+] [29
+
+]
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 469.
+ [30
 
 ]
 \@verb\lstrunning=\box71
 
-[28
+[31
 
 ]
 \@verb\lstprio=\box72
 \@verb\lstprioarrayt=\box73
- [29
+ [32
 
 ]
 \@verb\lstenqueue=\box74
- [30
+ [33
 
-] [31
+] [34
 
-] [32
+] [35
 
-] [33
+] [36
 
 ]
 \@verb\lstparents=\box75
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [34
+ (./1_linux.vrb) [37
 
 ]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb
-<parent2.png, id=333, 556.0775pt x 445.665pt>
+<parent2.png, id=370, 556.0775pt x 445.665pt>
 File: parent2.png Graphic file (type png)
- <use parent2.png>) [35
+ <use parent2.png>) [38
 
  <./parent2.png>]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [36
-
-]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [37
-
-]
-\@verb\lstotherrelations=\box76
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [38
-
-]
-\@verb\lstsignalstruct=\box77
-\openout4 = `1_linux.vrb'.
-
-
-(./1_linux.vrb) [39
+ (./1_linux.vrb) [39
 
 ]
 \openout4 = `1_linux.vrb'.
@@ -1509,11 +1497,29 @@ File: parent2.png Graphic file (type png)
  (./1_linux.vrb) [40
 
 ]
+\@verb\lstotherrelations=\box76
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [41
+
+]
+\@verb\lstsignalstruct=\box77
+\openout4 = `1_linux.vrb'.
+
+
+(./1_linux.vrb) [42
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [43
+
+]
 \@verb\lstpidtype=\box78
 \@verb\lstpidhashhaha=\box79
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [41
+ (./1_linux.vrb) [44
 
 ]
 \@verb\lstpidstruct=\box80
@@ -1521,35 +1527,103 @@ File: parent2.png Graphic file (type png)
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb)
-[42
+[45
 
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb <pidhash.png, id=378, 755.82375pt x 380.42125pt>
+ (./1_linux.vrb <pidhash.png, id=415, 755.82375pt x 380.42125pt>
 File: pidhash.png Graphic file (type png)
 
-<use pidhash.png>) [43
+<use pidhash.png>) [46
 
  <./pidhash.png>]
 \openout4 = `1_linux.vrb'.
 
  (./1_linux.vrb
-<pidhashes.png, id=386, 678.535pt x 621.32124pt>
+<pidhashes.png, id=422, 678.535pt x 621.32124pt>
 File: pidhashes.png Graphic file (type png)
- <use pidhashes.png>) [44
+ <use pidhashes.png>) [47
 
  <./pidhashes.png>]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [48
+
+]
 \@verb\lstwaitqueuehead=\box82
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [45
+ (./1_linux.vrb) [49
 
 ]
 \@verb\lstwaitqueue=\box83
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [46
+ (./1_linux.vrb)
+[50
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [51
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [52
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [53
+
+]
+\openout4 = `1_linux.vrb'.
+
+
+(./1_linux.vrb) [54
+
+]
+\@verb\lstsleepon=\box84
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [55
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [56
+
+]
+\@verb\lstspreparetowait=\box85
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb)
+[57
+
+]
+\@verb\lstwaitevent=\box86
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [58
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [59
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [60
+
+]
+\@verb\lstwakeupimple=\box87
+\openout4 = `1_linux.vrb'.
+
+
+(./1_linux.vrb) [61
 
 ]
 \openout4 = `1_linux.vrb'.
@@ -1560,42 +1634,42 @@ Overfull \hbox (21.20973pt too wide) in paragraph at lines 20--20
  []
 
 )
-Overfull \vbox (12.1641pt too high) detected at line 881
+Overfull \vbox (12.1641pt too high) detected at line 1058
  []
 
-[47
+[62
 
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [48
+ (./1_linux.vrb) [63
 
 ]
-\@verb\lstthreadintask=\box84
+\@verb\lstthreadintask=\box88
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [49
+ (./1_linux.vrb) [64
 
 ]
-\@verb\lstthreadstruct=\box85
+\@verb\lstthreadstruct=\box89
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [50
+ (./1_linux.vrb) [65
 
-] [51
-
-]
-[52
+] [66
 
 ]
-\openout4 = `1_linux.vrb'.
-
- (./1_linux.vrb) [53
+[67
 
 ]
 \openout4 = `1_linux.vrb'.
 
- (./1_linux.vrb) [54
+ (./1_linux.vrb) [68
+
+]
+\openout4 = `1_linux.vrb'.
+
+ (./1_linux.vrb) [69
 
 ]
 \openout4 = `1_linux.vrb'.
@@ -1606,10 +1680,10 @@ Overfull \hbox (27.77972pt too wide) in paragraph at lines 19--19
  []
 
 )
-Overfull \vbox (7.78215pt too high) detected at line 1194
+Overfull \vbox (7.78215pt too high) detected at line 1371
  []
 
-[55
+[70
 
 ]
 \tf@nav=\write6
@@ -1623,13 +1697,13 @@ Overfull \vbox (7.78215pt too high) detected at line 1194
 
  (./1_linux.aux) ) 
 Here is how much of TeX's memory you used:
- 19994 strings out of 495046
- 341825 string characters out of 1181937
- 672646 words of memory out of 3000000
- 22213 multiletter control sequences out of 15000+50000
- 83993 words of font info for 264 fonts, out of 3000000 for 9000
+ 20262 strings out of 495046
+ 345469 string characters out of 1181937
+ 729646 words of memory out of 3000000
+ 22400 multiletter control sequences out of 15000+50000
+ 88458 words of font info for 280 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 49i,11n,53p,415b,2323s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,11n,53p,415b,2543s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/s
 hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-
 texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf/fonts/type1
@@ -1640,54 +1714,55 @@ nu51.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu52.pfb></usr/share/tex
 mf/fonts/type1/arphic/gbsnu/gbsnu53.pfb></usr/share/texmf/fonts/type1/arphic/gb
 snu/gbsnu54.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu55.pfb></usr/sh
 are/texmf/fonts/type1/arphic/gbsnu/gbsnu56.pfb></usr/share/texmf/fonts/type1/ar
-phic/gbsnu/gbsnu57.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu59.pfb><
-/usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5b.pfb></usr/share/texmf/fonts/t
-ype1/arphic/gbsnu/gbsnu5c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5
-d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5e.pfb></usr/share/texmf/
-fonts/type1/arphic/gbsnu/gbsnu5f.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu
-/gbsnu60.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu61.pfb></usr/share
-/texmf/fonts/type1/arphic/gbsnu/gbsnu62.pfb></usr/share/texmf/fonts/type1/arphi
-c/gbsnu/gbsnu63.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu64.pfb></us
-r/share/texmf/fonts/type1/arphic/gbsnu/gbsnu65.pfb></usr/share/texmf/fonts/type
-1/arphic/gbsnu/gbsnu66.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu67.p
-fb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu68.pfb></usr/share/texmf/fon
-ts/type1/arphic/gbsnu/gbsnu69.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gb
-snu6a.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6b.pfb></usr/share/te
-xmf/fonts/type1/arphic/gbsnu/gbsnu6c.pfb></usr/share/texmf/fonts/type1/arphic/g
-bsnu/gbsnu6d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6e.pfb></usr/s
-hare/texmf/fonts/type1/arphic/gbsnu/gbsnu70.pfb></usr/share/texmf/fonts/type1/a
-rphic/gbsnu/gbsnu71.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu72.pfb>
-</usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu73.pfb></usr/share/texmf/fonts/
-type1/arphic/gbsnu/gbsnu74.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu
-75.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu76.pfb></usr/share/texmf
-/fonts/type1/arphic/gbsnu/gbsnu77.pfb></usr/share/texmf/fonts/type1/arphic/gbsn
-u/gbsnu78.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu79.pfb></usr/shar
-e/texmf/fonts/type1/arphic/gbsnu/gbsnu7a.pfb></usr/share/texmf/fonts/type1/arph
-ic/gbsnu/gbsnu7b.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7c.pfb></u
-sr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7d.pfb></usr/share/texmf/fonts/typ
-e1/arphic/gbsnu/gbsnu7e.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7f.
-pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu80.pfb></usr/share/texmf/fo
-nts/type1/arphic/gbsnu/gbsnu82.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/g
-bsnu88.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu89.pfb></usr/share/t
-exmf/fonts/type1/arphic/gbsnu/gbsnu8b.pfb></usr/share/texmf/fonts/type1/arphic/
-gbsnu/gbsnu8c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8d.pfb></usr/
-share/texmf/fonts/type1/arphic/gbsnu/gbsnu8e.pfb></usr/share/texmf/fonts/type1/
-arphic/gbsnu/gbsnu8f.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu90.pfb
-></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu91.pfb></usr/share/texmf/fonts
-/type1/arphic/gbsnu/gbsnu94.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsn
-u95.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu96.pfb></usr/share/texm
-f/fonts/type1/arphic/gbsnu/gbsnu97.pfb></usr/share/texmf/fonts/type1/arphic/gbs
-nu/gbsnu98.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu9a.pfb></usr/sha
-re/texmf/fonts/type1/arphic/gbsnu/gbsnuff.pfb></usr/share/texmf-texlive/fonts/t
-ype1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/p
-ublic/amsfonts/symbols/msam7.pfb></usr/share/texmf-texlive/fonts/type1/urw/cour
-ier/ucrb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></u
-sr/share/texmf-texlive/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texmf-te
-xlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1
-/urw/helvetic/uhvro8a.pfb>
-Output written on 1_linux.pdf (55 pages, 1341126 bytes).
+phic/gbsnu/gbsnu57.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu58.pfb><
+/usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu59.pfb></usr/share/texmf/fonts/t
+ype1/arphic/gbsnu/gbsnu5b.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5
+c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu5d.pfb></usr/share/texmf/
+fonts/type1/arphic/gbsnu/gbsnu5e.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu
+/gbsnu5f.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu60.pfb></usr/share
+/texmf/fonts/type1/arphic/gbsnu/gbsnu61.pfb></usr/share/texmf/fonts/type1/arphi
+c/gbsnu/gbsnu62.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu63.pfb></us
+r/share/texmf/fonts/type1/arphic/gbsnu/gbsnu64.pfb></usr/share/texmf/fonts/type
+1/arphic/gbsnu/gbsnu65.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu66.p
+fb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu67.pfb></usr/share/texmf/fon
+ts/type1/arphic/gbsnu/gbsnu68.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gb
+snu69.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6a.pfb></usr/share/te
+xmf/fonts/type1/arphic/gbsnu/gbsnu6b.pfb></usr/share/texmf/fonts/type1/arphic/g
+bsnu/gbsnu6c.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu6d.pfb></usr/s
+hare/texmf/fonts/type1/arphic/gbsnu/gbsnu6e.pfb></usr/share/texmf/fonts/type1/a
+rphic/gbsnu/gbsnu70.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu71.pfb>
+</usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu72.pfb></usr/share/texmf/fonts/
+type1/arphic/gbsnu/gbsnu73.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu
+74.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu75.pfb></usr/share/texmf
+/fonts/type1/arphic/gbsnu/gbsnu76.pfb></usr/share/texmf/fonts/type1/arphic/gbsn
+u/gbsnu77.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu78.pfb></usr/shar
+e/texmf/fonts/type1/arphic/gbsnu/gbsnu79.pfb></usr/share/texmf/fonts/type1/arph
+ic/gbsnu/gbsnu7a.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7b.pfb></u
+sr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7c.pfb></usr/share/texmf/fonts/typ
+e1/arphic/gbsnu/gbsnu7d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7e.
+pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu7f.pfb></usr/share/texmf/fo
+nts/type1/arphic/gbsnu/gbsnu80.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/g
+bsnu81.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu82.pfb></usr/share/t
+exmf/fonts/type1/arphic/gbsnu/gbsnu88.pfb></usr/share/texmf/fonts/type1/arphic/
+gbsnu/gbsnu89.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8b.pfb></usr/
+share/texmf/fonts/type1/arphic/gbsnu/gbsnu8c.pfb></usr/share/texmf/fonts/type1/
+arphic/gbsnu/gbsnu8d.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8e.pfb
+></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu8f.pfb></usr/share/texmf/fonts
+/type1/arphic/gbsnu/gbsnu90.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsn
+u91.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu94.pfb></usr/share/texm
+f/fonts/type1/arphic/gbsnu/gbsnu95.pfb></usr/share/texmf/fonts/type1/arphic/gbs
+nu/gbsnu96.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnu97.pfb></usr/sha
+re/texmf/fonts/type1/arphic/gbsnu/gbsnu98.pfb></usr/share/texmf/fonts/type1/arp
+hic/gbsnu/gbsnu9a.pfb></usr/share/texmf/fonts/type1/arphic/gbsnu/gbsnuff.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/tex
+mf-texlive/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-texlive/fonts/t
+ype1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/u
+crro8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/
+share/texmf-texlive/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on 1_linux.pdf (70 pages, 1396963 bytes).
 PDF statistics:
- 707 PDF objects out of 1000 (max. 8388607)
- 111 named destinations out of 1000 (max. 500000)
- 337 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 821 PDF objects out of 1000 (max. 8388607)
+ 144 named destinations out of 1000 (max. 500000)
+ 369 words of extra memory for PDF output out of 10000 (max. 10000000)
 
