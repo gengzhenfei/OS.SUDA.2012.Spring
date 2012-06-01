@@ -1,9 +1,14 @@
 \beamer@endinputifotherversion {3.10pt}
 \select@language {english}
-\beamer@sectionintoc {1}{本部分课程简介}{5}{0}{1}
-\beamer@sectionintoc {2}{Linux内核关键数据结构}{8}{0}{2}
-\beamer@subsectionintoc {2}{1}{双向循环链表: list\_head}{8}{0}{2}
-\beamer@subsectionintoc {2}{2}{哈希表: hlist\_head与hlist\_node}{21}{0}{2}
-\beamer@sectionintoc {3}{Linux进程描述符task\_struct}{26}{0}{3}
-\beamer@subsectionintoc {3}{1}{进程控制块, 进程描述符}{26}{0}{3}
-\beamer@subsectionintoc {3}{2}{进程描述符各字段分析}{30}{0}{3}
+\beamer@sectionintoc {1}{本部分课程简介}{6}{0}{1}
+\beamer@sectionintoc {2}{Linux内核关键数据结构}{9}{0}{2}
+\beamer@subsectionintoc {2}{1}{双向循环链表: list\_head}{9}{0}{2}
+\beamer@subsectionintoc {2}{2}{哈希表: hlist\_head与hlist\_node}{22}{0}{2}
+\beamer@sectionintoc {3}{Linux进程描述符task\_struct}{27}{0}{3}
+\beamer@subsectionintoc {3}{1}{进程控制块, 进程描述符}{27}{0}{3}
+\beamer@subsectionintoc {3}{2}{进程描述符各字段分析}{31}{0}{3}
+\beamer@sectionintoc {4}{利用等待队列组织进程}{61}{0}{4}
+\beamer@subsectionintoc {4}{1}{等待队列的定义}{61}{0}{4}
+\beamer@subsectionintoc {4}{2}{等待队列的初始化}{66}{0}{4}
+\beamer@subsectionintoc {4}{3}{队列元素的插入和删除}{69}{0}{4}
+\beamer@subsectionintoc {4}{4}{队列元素的唤醒}{76}{0}{4}

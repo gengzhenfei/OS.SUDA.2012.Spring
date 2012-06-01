@@ -793,16 +793,22 @@ static struct hlist_head *pid_hash[PIDTYPE_MAX];
 \end{lstlisting}
 }
 \begin{frame}[fragile]
-%\frametitle{Linux进程表示：task\_struct结构}
 \frametitle{表示进程其他关系的字段}
 共有四种类型的PID：进程本身PID、线程组leader的PID、进程组leader的PID以及会话组leader的PID:
 \begin{block}{include/linux/pid.h}
 \lstpidtype
 \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{表示进程其他关系的字段}
 \begin{block}{依据PID类型不同，共定义四个散列表：kernel/pid.c}
 \lstpidhashhaha
 \end{block}
-%\includegraphics[width=0.8\textwidth]{parent2.png}
+\begin{block}{思考}
+%\lstpidhashhaha
+为什么定义这个数组时使用指向\verb|hlist_head|的指针?
+\end{block}
 \end{frame}
 
 \defverbatim[colored]\lstpidstruct{
@@ -850,6 +856,10 @@ unsigned long hash_long(unsigned long val, unsigned int bits)
 \begin{block}{哈希函数的定义}
 \lsthashfunction
 \end{block}
+\begin{block}{思考}
+%\lsthashfunction
+这里的参数\verb|bits|起到什么作用?
+\end{block}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -861,6 +871,92 @@ unsigned long hash_long(unsigned long val, unsigned int bits)
 \frametitle{表示进程其他关系的字段: pid\_hash结构图} 
 \includegraphics[width=0.8\textwidth]{pidhashes.png}
 \end{frame}
+
+\begin{frame}[fragile]
+\frametitle{对进程资源使用情况进行限制的字段: rlim}
+\begin{block}{include/linux/resource.h}
+\begin{verbatim}
+struct rlimit {
+    unsigned long   rlim_cur;
+    unsigned long   rlim_max;
+};
+
+struct task_struct {
+    ...
+    struct rlimit rlim[RLIM_NLIMITS];
+    ...
+};
+\end{verbatim}
+\end{block}
+\begin{block}{相关系统调用:}
+\begin{verbatim}
+int getrlimit(int res, struct rlimit *rlim);
+int setrlimit(int res, const struct rlimit *rlim);
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{对进程资源使用情况进行限制的字段: rlim}
+\begin{block}{task\_struct结构的rlim字段: include/asm-generic/resource.h}
+\begin{verbatim}
+#define RLIMIT_CPU      0   
+#define RLIMIT_FSIZE        1  
+#define RLIMIT_DATA     2   
+#define RLIMIT_STACK        3 
+#define RLIMIT_CORE     4   
+#define RLIMIT_NOFILE      7  
+...
+#define RLIM_NLIMITS        15
+\end{verbatim}
+\end{block}
+\begin{block}{相关命令}
+cat /proc/self/limits
+\end{block}
+\end{frame}
+
+\defverbatim[colored]\lstthreadintask{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+struct task_struct {
+    ...
+    struct user_struct thread;
+    ...
+};
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{Linux进程表示：task\_struct结构}
+\frametitle{保存硬件上下文的字段: thread}
+\lstthreadintask
+
+该字段在进程上下文切换时，用于保存进程的硬件上下文（主要是寄存器的值）
+\end{frame}
+
+\defverbatim[colored]\lstthreadstruct{
+\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
+struct thread_struct {
+    unsigned long   rsp0;
+    unsigned long   rsp;
+    unsigned long   fs;
+    unsigned long   gs;
+    unsigned short  es, ds, fsindex, gsindex;
+    ...
+};
+\end{lstlisting}
+}
+\begin{frame}[fragile]
+\frametitle{保存硬件上下文的字段: thread}
+\begin{block}{include/asm-x86\_64/processor.h}
+\lstthreadstruct
+\end{block}
+\begin{block}{通用寄存器的值保存在哪里?}
+\alert{eax}, \alert{ebx}等通用寄存器在上下文切换时保存在kernel mode stack (核心态下的栈中)
+\end{block}
+\end{frame}
+
+\section{利用等待队列组织进程}
+
+\subsection{等待队列的定义}
 
 \begin{frame}[fragile]
 \frametitle{处于等待态的进程如何组织}
@@ -898,6 +994,7 @@ struct __wait_queue_head {
 \lstwaitqueuehead
 \end{block}
 其中，字段\verb|lock|用来实现对等待队列的互斥访问（因为内核中有多个地方可能需要对该队列进程操作）。
+\verb|task_list|字段是指向所有等待进程的链表的表头。
 \end{frame}
 
 
@@ -917,11 +1014,14 @@ struct __wait_queue {
 \lstwaitqueue
 \end{block}
 \begin{itemize}
-\item flags表示该进程等待的事件是否为exclusive
+\item flags表示该进程等待的事件是否为exclusive(下页介绍)
 \item task为进入等待队列的进程
-\item func为唤醒该进程的方式（函数）
+\item func为唤醒该进程的方式(函数指针)
 \item task\_list用于将所有进程连接成队列
 \end{itemize}
+\begin{block}{注意}
+每个队列元素只对应一个等待进程(\verb|__wait_queue|中的字段\verb|task|)
+\end{block}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -943,12 +1043,25 @@ struct __wait_queue {
 \end{block}
 \end{frame}
 
+\subsection{等待队列的初始化}
+
 \begin{frame}[fragile]
-\frametitle{对等待队列(wait queue)的操作: 初始化}
+\frametitle{队列表头的初始化}
 \begin{block}{include/linux/wait.h}
 \begin{itemize}
 \item \verb|DECLARE_WAIT_QUEUE_HEAD(name)|声明名为name的队头并初始化
 \item \verb|init_waitqueue_head(q)| 对动态分配的队头q初始化
+\end{itemize}
+\end{block}
+\begin{block}{课外练习}
+阅读并理解上述对队列头和队列元素初始化的函数或者宏。
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{队列元素的初始化}
+\begin{block}{include/linux/wait.h}
+\begin{itemize}
 \item \verb|init_waitqueue_entry(p,q)|对队列元素q初始化:
 \begin{verbatim}
 q->flags = 0;
@@ -958,30 +1071,56 @@ q->func = default_wake_function;
 \item \verb|DEFINE_WAIT(name)|将当前占有CPU的进程封装为名为name的队列元素
 \end{itemize}
 \end{block}
+\begin{block}{思考}
+上述\verb|init_waitqueue_entry|为什么没有对字段\verb|task_list|进行初始化?
+\end{block}
 \begin{block}{课外练习}
-阅读并理解上述对队列头和队列元素初始化的函数或者宏。
+找到并理解\verb|DEFINE_WAIT(name)|的定义。
 \end{block}
 \end{frame}
+
+\subsection{队列元素的插入和删除}
 
 \begin{frame}[fragile]
 \frametitle{对等待队列的操作: 队列元素的插入和删除}
 \begin{block}{kernel/wait.c}
 \begin{itemize}
 \item \verb|add_wait_queue(q, wait)|
+
+把队列元素\verb|wait|以non-exclusive方式插入队列\verb|q|.
 \item \verb|add_wait_queue_exclusive(q, wait)|
+
+把队列元素\verb|wait|以exclusive方式插入队列\verb|q|.
 \item \verb|remove_wait_queue(q, wait)|
-\item \verb|waitqueue_active(q)| 功能是什么？(include/linux/wait.h)
+
+把队列元素\verb|wait|从队列\verb|q|中删除
+\item \verb|waitqueue_active(q)| 
+
+功能是什么？(include/linux/wait.h)
 \end{itemize}
+\end{block}
+\begin{block}{课外练习}
+阅读上述函数的定义，能够发现什么特别之处?
 \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{对等待队列的操作: 进程如何将自己放入等待队列?}
 \begin{itemize}
-\item \verb|sleep_on|
+\item \verb|sleep_on(wq)|
+
+把当前进程(\verb|current|)放入等待队列\verb|wq|，并将其状态设置为
+\verb|TASK_INTERRUPTIBLE|
 \item \verb|interruptible_sleep_on|
+
+把当前进程(\verb|current|)放入等待队列\verb|wq|，并将其状态设置为
+\verb|TASK_UNINTERRUPTIBLE|
 \item \verb|sleep_on_timeout|
+
+定时睡眠，其余同前两个函数
 \item \verb|interruptible_sleep_on_timeout|
+
+同前一个函数，当前进程状态设置为\verb|TASK_UNINTERRUPTIBLE|
 \end{itemize}
 \end{frame}
 
@@ -1001,16 +1140,28 @@ void sleep_on(wait_queue_head_t *wq)
 \begin{frame}[fragile]
 \frametitle{对等待队列的操作: 进程如何将自己放入等待队列?}
 \lstsleepon
+\begin{block}{特别注意}
+\verb|sleep_on|第5，6行所起的作用。
+\end{block}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{对等待队列的操作: 进程如何将自己放入等待队列?}
 %\lstsleepon
 \begin{itemize}
-\item \verb|prepare_to_wait|
-\item \verb|prepare_to_wait_exclusive|
-\item \verb|finish_wait|
+\item \verb|prepare_to_wait(q, wait, state)|
+
+把当前进程设置为第3个参数值，设置队列元素wait的flags字段为0，并将wait加入队列q
+\item \verb|prepare_to_wait_exclusive(q, wait, state)|
+
+把当前进程设置为第3个参数值，设置队列元素wait的flags字段为1，并将wait加入队列q
+\item \verb|finish_wait(q, wait)|
+
+把进程状态设置为\verb|TASK_RUNNING|，并将队列元素wait从队列q中删除
 \end{itemize}
+\begin{block}{练习}
+从文件kernel/wait.c中找出并阅读以上函数的定义。
+\end{block}
 \end{frame}
 
 \defverbatim[colored]\lstspreparetowait{
@@ -1025,7 +1176,13 @@ finish_wait(&wq, &wait);
 }
 \begin{frame}[fragile]
 \frametitle{对等待队列的操作: 进程如何将自己放入等待队列?}
+\begin{block}{使用方法举例}
 \lstspreparetowait
+\end{block}
+\begin{block}{思考}
+上述代码中if语句的作用？必要性？
+%\lstspreparetowait
+\end{block}
 \end{frame}
 
 \defverbatim[colored]\lstwaitevent{
@@ -1043,33 +1200,41 @@ finish_wait(&wq, &wait);
 }
 \begin{frame}[fragile]
 \frametitle{对等待队列的操作: wait\_event(condtion)}
+\begin{block}{include/linux/wait.h}
 \lstwaitevent
+\end{block}
+\begin{block}{思考}
+%\lstwaitevent
+\verb|wait_event(wq, condition)|把当前进程放到队列\verb|wq|中去，请问其中无穷循环\verb|for (;;)|的作用是什么? 可否去掉?
+\end{block}
 \end{frame}
+
+\subsection{队列元素的唤醒}
 
 \begin{frame}[fragile]
 \frametitle{对等待队列的操作: 如何把队列中的进程唤醒?}
 %\lstwaitevent
 \begin{itemize}
-\item \verb|wake_up|
-\item \verb|wake_up_nr|
-\item \verb|wake_up_all|
-\item \verb|wake_up_interruptible|
-\item \verb|wake_up_interruptible_nr|
-\item \verb|wake_up_interruptible_all|
-\item \verb|wake_up_interruptible_sync|
-\item \verb|wake_up_locked|
+\item \verb|wake_up(x)|
+\item \verb|wake_up_nr(x, nr)|
+\item \verb|wake_up_all(x)|
+\item \verb|wake_up_interruptible(x)|
+\item \verb|wake_up_interruptible_nr(x, nr)|
+\item \verb|wake_up_interruptible_all(x)|
+\item \verb|wake_up_interruptible_sync(x)|
+\item \verb|wake_up_locked(x)|
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{对等待队列的操作: 如何把队列中的进程唤醒?}
 \begin{itemize}
-\item 所有non-exclusive的进程都被唤醒
-\item 如果名字中没有interruptible, 则唤醒所有睡眠进程(\verb|TASK_INTERRUPTIBLE|及\verb|TASK_UNINTERRUPTIBLE|).
+\item 队列中所有non-exclusive的进程都被唤醒
+\item 如果名字中没有\verb|interruptible|, 则唤醒所有睡眠进程(\verb|TASK_INTERRUPTIBLE|及\verb|TASK_UNINTERRUPTIBLE|).
 否则，只唤醒队列中\verb|TASK_INTERRUPTIBLE|状态的进程。
-\item 名字中含有nr的宏唤醒指定个数的exclusive进程
-\item 名字中含有all的宏唤醒全部指定状态的exclusive进程
-\item 名字中没有nr或者all的宏只唤醒一个exclusive进程
+\item 名字中含有\verb|nr|的宏唤醒指定个数的exclusive进程
+\item 名字中含有\verb|all|的宏唤醒全部指定状态的exclusive进程
+\item 名字中没有\verb|nr|或者\verb|all|的宏只唤醒一个exclusive进程
 \end{itemize}
 \end{frame}
 
@@ -1097,83 +1262,13 @@ void wake_up(wait_queue_head_t *q)
 %\end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
-\begin{block}{task\_struct结构的rlim字段: include/linux/resource.h}
-\begin{verbatim}
-struct rlimit {
-    unsigned long   rlim_cur;
-    unsigned long   rlim_max;
-};
-
-struct task_struct {
-    ...
-    struct rlimit rlim[RLIM_NLIMITS];
-    ...
-};
-\end{verbatim}
-\end{block}
-\begin{block}{相关系统调用:}
-\begin{verbatim}
-int getrlimit(int res, struct rlimit *rlim);
-int setrlimit(int res, const struct rlimit *rlim);
-\end{verbatim}
+\frametitle{对等待队列的操作: 如何把队列中的进程唤醒?}
+%\lstwakeupimple
+\begin{block}{练习}
+从kernel/sched.c及include/linux/wait.h两个文件中找出以上唤醒函数的定义并试着理解它们。
 \end{block}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
-\begin{block}{task\_struct结构的rlim字段: include/asm-generic/resource.h}
-\begin{verbatim}
-#define RLIMIT_CPU      0   
-#define RLIMIT_FSIZE        1  
-#define RLIMIT_DATA     2   
-#define RLIMIT_STACK        3 
-#define RLIMIT_CORE     4   
-#define RLIMIT_NOFILE      7  
-...
-#define RLIM_NLIMITS        15
-\end{verbatim}
-\end{block}
-\begin{block}{相关命令}
-cat /proc/self/limits
-\end{block}
-\end{frame}
-
-\defverbatim[colored]\lstthreadintask{
-\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
-struct task_struct {
-    ...
-    struct user_struct thread;
-    ...
-};
-\end{lstlisting}
-}
-\begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
-\lstthreadintask
-\end{frame}
-
-\defverbatim[colored]\lstthreadstruct{
-\begin{lstlisting}[tabsize=8,basicstyle=\ttfamily]
-struct thread_struct {
-    unsigned long   rsp0;
-    unsigned long   rsp;
-    unsigned long   fs;
-    unsigned long   gs;
-    unsigned short  es, ds, fsindex, gsindex;
-    ...
-};
-\end{lstlisting}
-}
-\begin{frame}[fragile]
-\frametitle{Linux进程表示：task\_struct结构}
-\begin{block}{include/asm-x86\_64/processor.h}
-\lstthreadstruct
-\end{block}
-\begin{block}{通用寄存器的值保存在哪里?}
-\alert{eax}, \alert{ebx}等通用寄存器在上下文切换时保存在kernel mode stack (核心态下的栈中)
-\end{block}
-\end{frame}
 
 %\begin{frame}{名字空间(namespaces)的概念}
 %
