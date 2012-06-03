@@ -1110,11 +1110,11 @@ q->func = default_wake_function;
 \item \verb|sleep_on(wq)|
 
 把当前进程(\verb|current|)放入等待队列\verb|wq|，并将其状态设置为
-\verb|TASK_INTERRUPTIBLE|
+\verb|TASK_UNINTERRUPTIBLE|
 \item \verb|interruptible_sleep_on|
 
 把当前进程(\verb|current|)放入等待队列\verb|wq|，并将其状态设置为
-\verb|TASK_UNINTERRUPTIBLE|
+\verb|TASK_INTERRUPTIBLE|
 \item \verb|sleep_on_timeout|
 
 定时睡眠，其余同前两个函数

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  1 JUN 2012 17:02
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  3 JUN 2012 14:53
 entering extended mode
  %&-line parsing enabled.
 **1_linux.tex
@@ -1829,7 +1829,7 @@ rw/courier/ucrb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.
 pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/t
 exmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/font
 s/type1/urw/helvetic/uhvro8a.pfb>
-Output written on 1_linux.pdf (84 pages, 1474745 bytes).
+Output written on 1_linux.pdf (84 pages, 1474743 bytes).
 PDF statistics:
  1079 PDF objects out of 1200 (max. 8388607)
  181 named destinations out of 1000 (max. 500000)
