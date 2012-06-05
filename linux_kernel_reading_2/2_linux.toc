@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {english}
+\beamer@sectionintoc {1}{80x86微处理器的地址格式}{5}{0}{1}
+\beamer@sectionintoc {2}{实现分段的硬件装置}{6}{0}{2}
+\beamer@sectionintoc {3}{Linux + Intel平台上的内存分页}{11}{0}{3}
