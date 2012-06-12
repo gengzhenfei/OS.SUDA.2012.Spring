@@ -1,0 +1,10 @@
+\frametitle {分页的实际例子}
+\includegraphics[width=0.8\textwidth]{examplepaging.png}
+
+假设内核把从\verb|0x20000000|到\verb|0x2003ffff|之间的线性地址(共64页)分配给某进程。
+\begin{itemize}
+\item 该段地址最高10位均为\verb|0010000000|, 即\verb|0x080|(十进制128)，因此第一级页表只有一个页表项有效。
+\item 该段地址中间10位范围为0 -- \verb|0x03f|(即0 -- 63). 所以第二级页表中开头64个页表项有效。(图示灰色区域)
+\item 给定线性地址\verb|0x20021406|，如何确定其对应的物理地址?
+\end{itemize}
+
