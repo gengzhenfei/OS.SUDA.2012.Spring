@@ -9,20 +9,57 @@
 \begin{CJK*}{UTF8}{gbsn}
 
 %\maketitle
-\includegraphics{headofpaper2.png}
-\section{简答题}
-\subsection{本题5分}
-采用连续存储方式记录文件在存储介质上的存放位置有什么优缺点?
-在什么情况下连续存储方式是最理想的解决方案?
-\\[1in]
-
+\includegraphics{headofpaperB.png}
+\section{Linux命令及实际应用题}
 
 \subsection{本题5分}
-请说明磁盘的第0扇区内存放的两类重要内容及每类内容的作用.
-\\[1in]
+在线调查程序生成了文件\verb|fans.txt|, 其中记录的是每个球迷最喜欢的几位球星的名字, 格式为``球迷姓名\ \ 球星1\ \ 球星2 ...''.
+其中每行所含的球星个数不固定. 现在需要用一条命令输出每个球星对应的球迷个数。例如若fans.txt内容为:
+\begin{verbatim}
+    chenjian 	戈麦斯 舍甫琴科
+    chenbing 	托雷斯 法布雷加斯
+    luchengtao  曼德祖基奇
+    wangxin 	舍甫琴科 曼德祖基奇
+    baicong	托雷斯
+    liupeng	戈麦斯 德萨戈耶夫
+\end{verbatim}
+则输出结果为:
+\begin{verbatim}
+    戈麦斯: 2
+    舍甫琴科: 2
+    托雷斯: 2
+    法布雷加斯: 1
+    曼德祖基奇: 2
+    德萨戈耶夫: 1
+\end{verbatim}
+请写出实现该功能的命令。
+\\[1.5in]
+
+\subsection{本题共10分}
+文件\verb|scores.txt|记录了某课程学生的平时成绩, 格式为: 
+
+学生姓名\ \ 第1次成绩\ \  第2次成绩\ \ 第3次成绩
+
+\noindent 要实现以下功能:
+\begin{enumerate}
+\item (2分) 打印出第3次平时成绩不及格(低于60分)的所有同学的姓名.
+\item (4分) 打印出第1次平时成绩最高分的同学姓名及成绩(仅打印一位同学即可, 不需考虑并列成绩).
+\item (4分) 如果3次平时成绩的权重分别为0.2, 0.3, 0.5. 请用一条命令输出每位同学的加权平时成绩，格式为`姓名\ \ 加权成绩'.
+\end{enumerate}
+请分别写出相应命令.
+\\[1.5in]
 
 \subsection{本题5分}
-请从至少两个角度说明为什么Linux内核源代码不能使用C标准库函数和头文件提供的功能.
+已知当前目录下有7个子目录, 名称分别为lecture1 ... lecture7. 每个目录下均有若干类型的文件(例如PDF, TXT, DOC).
+要实现下述效果:
+\begin{enumerate}
+\item 创建名为\verb|all_PDFs|的目录.
+\item 将\verb|lecture1| ... \verb|lecture7|目录中所有PDF文件拷贝到目录\verb|all_PDFs|中.
+\item 把目录\verb|all_PDFs|打包成名为\verb|all_PDFs.tar|的文件.
+\item 把文件\verb|all_PDFs.tar|压缩成文件\verb|all_PDFs.tar.bz2|
+\item 把\verb|all_PDFs.tar.bz2|解压 
+\end{enumerate}
+分别写出相应命令.
 \\[1.5in]
 
 \section{计算题}
@@ -183,55 +220,20 @@ unsigned long hash_long(unsigned long val, unsigned int bits)
 参数\verb|bits|应该是多少?
 \\[1.5in]
 
-\section{Linux命令及实际应用题}
+\section{简答题}
+\subsection{本题5分}
+采用连续存储方式记录文件在存储介质上的存放位置有什么优缺点?
+在什么情况下连续存储方式是最理想的解决方案?
+\\[1in]
+
 
 \subsection{本题5分}
-在线调查程序生成了文件\verb|fans.txt|, 其中记录的是每个球迷最喜欢的几位球星的名字, 格式为``球迷姓名\ \ 球星1\ \ 球星2 ...''.
-其中每行所含的球星个数不固定. 现在需要用一条命令输出每个球星对应的球迷个数。例如若fans.txt内容为:
-\begin{verbatim}
-    chenjian 	戈麦斯 舍甫琴科
-    chenbing 	托雷斯 法布雷加斯
-    luchengtao  曼德祖基奇
-    wangxin 	舍甫琴科 曼德祖基奇
-    baicong	托雷斯
-    liupeng	戈麦斯 德萨戈耶夫
-\end{verbatim}
-则输出结果为:
-\begin{verbatim}
-    戈麦斯: 2
-    舍甫琴科: 2
-    托雷斯: 2
-    法布雷加斯: 1
-    曼德祖基奇: 2
-    德萨戈耶夫: 1
-\end{verbatim}
-请写出实现该功能的命令。
-\\[1.5in]
-
-\subsection{本题共10分}
-文件\verb|scores.txt|记录了某课程学生的平时成绩, 格式为: 
-
-学生姓名\ \ 第1次成绩\ \  第2次成绩\ \ 第3次成绩
-
-\noindent 要实现以下功能:
-\begin{enumerate}
-\item (2分) 打印出第3次平时成绩不及格(低于60分)的所有同学的姓名.
-\item (4分) 打印出第1次平时成绩最高分的同学姓名及成绩(仅打印一位同学即可, 不需考虑并列成绩).
-\item (4分) 如果3次平时成绩的权重分别为0.2, 0.3, 0.5. 请用一条命令输出每位同学的加权平时成绩，格式为`姓名\ \ 加权成绩'.
-\end{enumerate}
-请分别写出相应命令.
-\\[1.5in]
+请说明磁盘的第0扇区内存放的两类重要内容及每类内容的作用.
+\\[1in]
 
 \subsection{本题5分}
-已知当前目录下有7个子目录, 名称分别为lecture1 ... lecture7. 每个目录下均有若干类型的文件(例如PDF, TXT, DOC).
-请依次写出以下命令:
-\begin{enumerate}
-\item 创建名为\verb|all_PDFs|的目录.
-\item 将\verb|lecture1| ... \verb|lecture7|目录中所有PDF文件拷贝到目录\verb|all_PDFs|中.
-\item 把目录\verb|all_PDFs|打包成名为\verb|all_PDFs.tar|的文件.
-\item 把文件\verb|all_PDFs.tar|压缩成文件\verb|all_PDFs.tar.bz2|
-\item 如果需要把\verb|all_PDFs.tar.bz2|解压，应该用什么命令?
-\end{enumerate}
+请从至少两个角度说明为什么Linux内核源代码不能使用C标准库函数和头文件提供的功能.
+\\[1.5in]
 
 \end{CJK*}
 \end{document}

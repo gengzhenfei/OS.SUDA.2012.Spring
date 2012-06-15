@@ -146,7 +146,7 @@ struct list_head *p;
 
 list_for_each(p, &list) {
     if (condition(p))  
-        return list_entry(p, struct task_struct, run_list);
+    	return list_entry(p, struct task_struct, run_list);
 }
 
 return NULL;
@@ -196,7 +196,9 @@ unsigned long hash_long(unsigned long val, unsigned int bits)
     baicong	托雷斯
     liupeng	戈麦斯 德萨戈耶夫
 \end{verbatim}
-则输出结果为:
+
+输出结果为:
+
 \begin{verbatim}
     戈麦斯: 2
     舍甫琴科: 2
@@ -205,6 +207,7 @@ unsigned long hash_long(unsigned long val, unsigned int bits)
     曼德祖基奇: 2
     德萨戈耶夫: 1
 \end{verbatim}
+
 请写出实现该功能的命令。
 \\[1.5in]
 
@@ -215,7 +218,7 @@ unsigned long hash_long(unsigned long val, unsigned int bits)
 
 \noindent 要实现以下功能:
 \begin{enumerate}
-\item (2分) 打印出第3次平时成绩不及格(低于60分)的所有同学的姓名.
+\item (2分) 打印出第三次平时成绩不及格(低于60分)的所有同学的姓名.
 \item (4分) 打印出第1次平时成绩最高分的同学姓名及成绩(仅打印一位同学即可, 不需考虑并列成绩).
 \item (4分) 如果3次平时成绩的权重分别为0.2, 0.3, 0.5. 请用一条命令输出每位同学的加权平时成绩，格式为`姓名\ \ 加权成绩'.
 \end{enumerate}
